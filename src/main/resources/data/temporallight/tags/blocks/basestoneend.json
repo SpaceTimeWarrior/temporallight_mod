@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:end_stone",
+    "minecraft:obsidian",
+    "minecraft:purpur_block",
+    "minecraft:stone",
+    "minecraft:granite",
+    "minecraft:diorite",
+    "minecraft:andesite"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "temporallight:block/magiwooodlog",
+    "side": "temporallight:block/magiwooodlog"
+  }
+}

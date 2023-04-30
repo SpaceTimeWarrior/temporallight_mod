@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "temporallight:block/hypersteelslab"
+    },
+    "type=double": {
+      "model": "temporallight:block/hypersteel"
+    },
+    "type=top": {
+      "model": "temporallight:block/hypersteelslab_top"
+    }
+  }
+}

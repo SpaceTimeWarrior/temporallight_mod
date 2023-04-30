@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_glass_pane_post",
+  "textures": {
+    "pane": "temporallight:block/magiwoodportal",
+    "edge": "temporallight:block/magiwoodportal_top"
+  }
+}

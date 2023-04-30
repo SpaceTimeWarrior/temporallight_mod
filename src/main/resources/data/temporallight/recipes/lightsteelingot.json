@@ -1,0 +1,39 @@
+{
+  "type": "temporallight:assembler",
+  "redstone": "1",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "minecraft:barrier"
+    },
+    {
+      "item": "temporallight:hypersteelingot"
+    },
+    {
+      "item":"minecraft:barrier"
+    },
+    {
+      "item": "temporallight:hypersteelingot"
+    },
+    {
+      "item": "temporallight:hypersteelblock"
+    },
+    {
+      "item": "temporallight:hypersteelingot"
+    },
+    {
+      "item": "minecraft:barrier"
+    },
+    {
+      "item": "temporallight:hypersteelingot"
+    },
+    {
+      "item":"minecraft:barrier"
+    }
+  ],
+  "output": {
+    "item": "temporallight:lightsteelingot"
+  }
+}

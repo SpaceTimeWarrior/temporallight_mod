@@ -1,0 +1,40 @@
+{
+  "item.temporallight.timecrystalshard": "Time Crystal Shard",
+  "item.temporallight.synthetictimecrystalshard": "Synthetic time crystal shard",
+  "item.temporallight.hypersteelingot": "Hypersteel Ingot",
+  "item.temporallight.hypersteelsword": "Hypersteel Sword",
+  "item.temporallight.hypersteelaxe": "Hypersteel Axe",
+  "item.temporallight.hypersteelPickaxe": "Hypersteel Pickaxe",
+  "item.temporallight.hypersteelshovel": "Hypersteel Shovel",
+  "item.temporallight.hypersteelhoe": "Hypersteel Hoe",
+  "item.temporallight.hypersteelboots": "Hypersteel Boots",
+  "item.temporallight.hypersteelleggings": "Hypersteel Pants",
+  "item.temporallight.hypersteelchestplate": "Hypersteel Chestplate",
+  "item.temporallight.hypersteelhelmet": "Hypersteel Helmet",
+  "item.temporallight.hypersteelhorsearmor": "Hypersteel Horse Armor",
+  "item.temporallight.lightsteelingot": "Lightsteel Ingot",
+
+  "screen.temporallight.assembler": "Hypersteel Assembler",
+
+  "block.temporallight.synthetictimecrystalore": "Synthetic Time Crystal Ore",
+  "block.temporallight.hypersteelblock": "Hypersteel Block",
+  "block.temporallight.hypersteelstairs": "Hypersteel Stairs",
+  "block.temporallight.hypersteelrailing": "Hypersteel Guardrail",
+  "block.temporallight.hypersteelrailinggate": "Hypersteel Guardrail Gate",
+  "block.temporallight.hypersteelslab": "Hypersteel Slab",
+  "block.temporallight.magiwooodlog": "Magiwoood Log",
+  "block.temporallight.magiwoood": "Magiwoood",
+  "block.temporallight.magiwooodstrippedlog": "Stripped Magiwoood Log",
+  "block.temporallight.magiwooodstripped": "Stripped Magiwoood",
+  "block.temporallight.magiwooodplanks": "Magiwood Planks",
+  "block.temporallight.magiwooodleaves": "Magiwood Leaves",
+  "block.temporallight.magiwooodsapling": "Magiwood Sapling",
+  "block.temporallight.hypersteelassembler": "Hypersteel Purification Assembler",
+
+  "itemGroup.temporallightprophecy": "Temporal Prophecy items",
+  "itemGroup.temporallightmaterials": "Temporal Light Materials",
+  "itemGroup.temporallightblocks": "Temporal Light common Blocks",
+  "itemGroup.temporallighttools": "Temporal Light common tools",
+
+  "jei.temporallight.assembler.redstone": "minimum signal: %s"
+}

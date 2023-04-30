@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XLX"
+  ],
+  "key": {
+    "X": {
+      "item": "temporallight:hypersteelingot"
+    },
+    "L":{
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": {
+    "item": "temporallight:hypersteelboots"
+  }
+}
