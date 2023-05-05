@@ -15,6 +15,7 @@
   "item.temporallight.lightsteelingot": "Lightsteel Ingot",
 
   "screen.temporallight.assembler": "Hypersteel Assembler",
+  "screen.temporallight.assembler.redstone": "current signal: %s",
 
   "block.temporallight.synthetictimecrystalore": "Synthetic Time Crystal Ore",
   "block.temporallight.hypersteelblock": "Hypersteel Block",

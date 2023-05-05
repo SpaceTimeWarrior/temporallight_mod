@@ -30,10 +30,12 @@ import java.util.function.Function;
 public class TLMagiwoodTeleporter implements ITeleporter  {
     public static BlockPos thisPos = BlockPos.ZERO;
     public static boolean insideDimension = true;
+    protected final ServerWorld world;
 
-    public TLMagiwoodTeleporter(BlockPos pos,boolean insideDimension) {
+    public TLMagiwoodTeleporter(BlockPos pos,boolean insideDimension,ServerWorld world) {
         this.thisPos = pos;
         this.insideDimension = insideDimension;
+        this.world = world;
     }
     @Override
     public Entity placeEntity(Entity entity, ServerWorld currentWorld, ServerWorld destinationWorld,
@@ -68,6 +70,7 @@ public class TLMagiwoodTeleporter implements ITeleporter  {
             }
 
             if (doSetBlock) {
+                // makePortal(destinationPos,entity.getHorizontalFacing().getAxis());
                 magiwoodPortalBlock.createPortal(thisPos,destinationPos,destinationWorld);
                 //destinationWorld.setBlockState(destinationPos, blockRegistry.MAGIWOODPORTAL.get().getDefaultState());
             }
@@ -75,4 +78,6 @@ public class TLMagiwoodTeleporter implements ITeleporter  {
 
         return entity;
     }
+
+
 }

@@ -41,7 +41,7 @@ public class TemporalLight
     public static final String MOD_ID = "temporallight";
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
-
+    public static boolean optifineLoaded = false;
     public TemporalLight() {
         // Register the setup method for modloading
         IEventBus Eventbus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -85,8 +85,11 @@ public class TemporalLight
         //LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
         RenderTypeLookup.setRenderLayer(blockRegistry.MAGIWOODSAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(blockRegistry.MAGIWOODLEAVES.get(), RenderType.getCutout());
+        //RenderTypeLookup.setRenderLayer(blockRegistry.MAGIWOODPORTAL.get(), RenderType.getTranslucentMovingBlock());
+        //RenderTypeLookup.setRenderLayer(blockRegistry.MAGIWOODPORTAL.get(), RenderType.getCutout());
         TLItemModelProperties.makeBow(ItemRegistry.HYPERSTEELBOW.get());
         ScreenManager.registerFactory(ContainerRegistry.ASSEMBLER_CONTAINER.get(), assemblerScreen::new);
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)

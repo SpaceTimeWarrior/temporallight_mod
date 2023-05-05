@@ -10,6 +10,7 @@ import java.util.function.Supplier;
 public enum Itemtiers implements IItemTier {
 
     HYPERSTEEL(configRegistry.harvestlv_floor.get(),4096,12F,8F,30,()->Ingredient.fromItems(ItemRegistry.HYPERSTEELINGOT.get())),
+
     TIMECRYSTAL(configRegistry.harvestlv_floor.get()+5,-1,64F,64.0F,120,()->Ingredient.fromItems((ItemRegistry.TIMECRYSTALSHARD.get())));
 
     private final int harvestLevel;

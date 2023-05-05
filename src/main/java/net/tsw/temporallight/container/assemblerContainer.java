@@ -43,6 +43,9 @@ public class assemblerContainer extends Container {
     public boolean isPowered(){
         return (tileentity.getWorld().getRedstonePower(tileentity.getPos(),null)>0);
     }
+    public int getPower(){
+        return (tileentity.getWorld().getRedstonePower(tileentity.getPos(),null));
+    }
     @Override
     public boolean canInteractWith(PlayerEntity playerIn) {
         return isWithinUsableDistance(IWorldPosCallable.of(tileentity.getWorld(),tileentity.getPos()),playerIn, blockRegistry.HYPERSTEEL_ASSEMBLER.get());

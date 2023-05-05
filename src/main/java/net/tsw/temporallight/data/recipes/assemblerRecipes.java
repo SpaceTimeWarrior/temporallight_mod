@@ -34,8 +34,13 @@ public class assemblerRecipes implements IassemblerRecipe{
 
     @Override
     public boolean matches(IInventory inv, World worldIn) {
-        boolean hasFuel = recipeItems.get(0).test(inv.getStackInSlot(0));
         ItemStack air = new ItemStack(Blocks.BARRIER.asItem());
+        boolean hasFuel;
+        if(recipeItems.get(0).test(air)){
+            hasFuel = inv.getStackInSlot(0).getCount()==0;
+        }else {
+            hasFuel =recipeItems.get(0).test(inv.getStackInSlot(0));
+        }
         boolean hasMats0,hasMats1,hasMats2,hasMats3,hasMats4,hasMats5,hasMats6,hasMats7,hasMats8;
         if(recipeItems.get(1).test(air)){
             hasMats0 = inv.getStackInSlot(1).getCount()==0;
