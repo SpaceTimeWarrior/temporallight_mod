@@ -20,8 +20,7 @@ public class TLStructureGeneration {
         Set<BiomeDictionary.Type> types = BiomeDictionary.getTypes(key);
         generateinModBiomes(TLBiomeRegistry.MAGIWOOD_BIOME.get(),event,"magiwood_dim");
     }
-    public static void generateinModBiomes(Biome biomeToSpawnIn,
-                                           final BiomeLoadingEvent event, String dimension){
+    public static void generateinModBiomes(Biome biomeToSpawnIn, final BiomeLoadingEvent event, String dimension){
         if(event.getName().toString().contains(biomeToSpawnIn.getRegistryName().toString())) {
             List<Supplier<StructureFeature<?, ?>>> structures = event.getGeneration().getStructures();
             structures.add(() -> TLStructureRegistry.MAGIWOODTREE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));

@@ -3,6 +3,7 @@ package net.tsw.temporallight.item;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
+import net.tsw.temporallight.block.blockRegistry;
 import net.tsw.temporallight.util.configRegistry;
 
 import java.util.function.Supplier;
@@ -10,6 +11,8 @@ import java.util.function.Supplier;
 public enum Itemtiers implements IItemTier {
 
     HYPERSTEEL(configRegistry.harvestlv_floor.get(),4096,12F,8F,30,()->Ingredient.fromItems(ItemRegistry.HYPERSTEELINGOT.get())),
+    MAGIWOOD(configRegistry.harvestlv_floor.get()-1,1000,1,24.5F,128,()->Ingredient.fromItems(blockRegistry.MAGIWOODPLANKS.get().asItem())),
+    LIGHTSTEEL(configRegistry.harvestlv_floor.get()+1, 8192,24F,8F,60,()->Ingredient.fromItems(ItemRegistry.LIGHTSTEELINGOT.get())),
 
     TIMECRYSTAL(configRegistry.harvestlv_floor.get()+5,-1,64F,64.0F,120,()->Ingredient.fromItems((ItemRegistry.TIMECRYSTALSHARD.get())));
 

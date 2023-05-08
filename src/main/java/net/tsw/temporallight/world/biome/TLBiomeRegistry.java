@@ -24,6 +24,29 @@ public class TLBiomeRegistry{
     public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, TemporalLight.MOD_ID);
     public static RegistryObject<Biome> MAGIWOOD_BIOME = BIOMES.register("magiwood_biome",
             () -> makeMagiwoodBiome(() -> TLConfiguredSurfaceBuilders.MAGIWOODS_SURFACE, 0.125f, 0.05f));
+    public static RegistryObject<Biome> EARTH44 = BIOMES.register("earth44_biome",()->makeEarth44Biome(()->TLConfiguredSurfaceBuilders.EARTH44_SURFACE,0.666f,0.06f));
+    public static Biome makeEarth44Biome(final Supplier<ConfiguredSurfaceBuilder<?>> surfaceBuilder, float depth, float scale){
+        MobSpawnInfo.Builder mobspawninfo$builder = new MobSpawnInfo.Builder();
+
+        BiomeGenerationSettings.Builder biomegenerationsettings$builder = (new BiomeGenerationSettings.Builder()).withSurfaceBuilder(surfaceBuilder);
+        DefaultBiomeFeatures.withCavesAndCanyons(biomegenerationsettings$builder);
+        DefaultBiomeFeatures.withBadlandsStructures(biomegenerationsettings$builder);
+        DefaultBiomeFeatures.withCommonOverworldBlocks(biomegenerationsettings$builder);
+        DefaultBiomeFeatures.withLavaLakes(biomegenerationsettings$builder);
+        DefaultBiomeFeatures.withDebrisOre(biomegenerationsettings$builder);
+        DefaultBiomeFeatures.withDesertDeadBushes(biomegenerationsettings$builder);
+        DefaultBiomeFeatures.withFossils(biomegenerationsettings$builder);
+        return (new Biome.Builder()).precipitation(Biome.RainType.SNOW).category(Biome.Category.MESA).depth(depth).scale(scale)
+                .temperature(0.0F).downfall(1F).setEffects((new BiomeAmbience.Builder()).setWaterColor(0x000000).setWaterFogColor(0x000000)
+                        .setFogColor(0x000000).withFoliageColor(0x000000).withGrassColor(0x000000).withSkyColor(0)
+                        .setParticle(new ParticleEffectAmbience(ParticleTypes.ASH, 0.3f))
+                        .setAmbientSound(SoundEvents.AMBIENT_BASALT_DELTAS_LOOP)
+                        .setMoodSound(new MoodSoundAmbience(SoundEvents.AMBIENT_BASALT_DELTAS_MOOD, 2000, 2, 2.0D))
+                        .setAdditionsSound(new SoundAdditionsAmbience(SoundEvents.AMBIENT_BASALT_DELTAS_ADDITIONS, 0.1D))
+                        .setMusic(BackgroundMusicTracks.getDefaultBackgroundMusicSelector(SoundEvents.MUSIC_NETHER_BASALT_DELTAS))
+                        .build())
+                .withMobSpawnSettings(mobspawninfo$builder.build()).withGenerationSettings(biomegenerationsettings$builder.build()).build();
+    }
     public static Biome makeMagiwoodBiome(final Supplier<ConfiguredSurfaceBuilder<?>> surfaceBuilder, float depth, float scale){
         MobSpawnInfo.Builder mobspawninfo$builder = new MobSpawnInfo.Builder();
         DefaultBiomeFeatures.withPassiveMobs(mobspawninfo$builder);
@@ -32,8 +55,7 @@ public class TLBiomeRegistry{
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ZOMBIFIED_PIGLIN, 50, 4, 4));
         mobspawninfo$builder.withSpawner(EntityClassification.MONSTER, new MobSpawnInfo.Spawners(EntityType.ENDERMAN, 50, 4, 4));
 
-        BiomeGenerationSettings.Builder biomegenerationsettings$builder =
-                (new BiomeGenerationSettings.Builder()).withSurfaceBuilder(surfaceBuilder);
+        BiomeGenerationSettings.Builder biomegenerationsettings$builder = (new BiomeGenerationSettings.Builder()).withSurfaceBuilder(surfaceBuilder);
         DefaultBiomeFeatures.withForestBirchTrees(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withCavesAndCanyons(biomegenerationsettings$builder);
         DefaultBiomeFeatures.withEndermen(mobspawninfo$builder);

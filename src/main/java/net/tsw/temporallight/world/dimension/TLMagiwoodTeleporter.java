@@ -51,9 +51,9 @@ public class TLMagiwoodTeleporter implements ITeleporter  {
 
         int tries = 0;
         while ((destinationWorld.getBlockState(destinationPos).getMaterial() != Material.AIR) &&
-                !destinationWorld.getBlockState(destinationPos).isReplaceable(Fluids.WATER) &&
+                !destinationWorld.getBlockState(destinationPos).isReplaceable(Fluids.EMPTY) &&
                 destinationWorld.getBlockState(destinationPos.up()).getMaterial() != Material.AIR &&
-                !destinationWorld.getBlockState(destinationPos.up()).isReplaceable(Fluids.WATER) && tries < 25) {
+                !destinationWorld.getBlockState(destinationPos.up()).isReplaceable(Fluids.EMPTY) && tries < 25) {
             destinationPos = destinationPos.up(2);
             tries++;
         }

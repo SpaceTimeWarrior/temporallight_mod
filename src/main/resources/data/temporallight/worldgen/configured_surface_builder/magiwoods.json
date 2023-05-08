@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:default",
+  "config": {
+    "top_material": {
+      "Name": "minecraft:grass"
+    },
+    "under_material": {
+      "Name": "minecraft:basalt",
+      "Properties": {
+        "axis": "x"
+      }
+    },
+    "underwater_material": {
+      "Name": "minecraft:ancient_debris"
+    }
+  }
+}

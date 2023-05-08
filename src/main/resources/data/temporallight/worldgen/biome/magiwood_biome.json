@@ -1,5 +1,5 @@
 {
-  "surface_builder": "minecraft:grass",
+  "surface_builder": "temporallight:magiwoods",
   "depth": 0.125,
   "scale": 0.05,
   "temperature": 0.5,
@@ -14,15 +14,15 @@
     "water_fog_color": 9502425,
     "grass_color": 16751001,
     "foliage_color": 13421823,
-    "ambient_sound": "minecraft:ambient.warped_forest.loop",
+    "ambient_sound": "minecraft:ambient.warped_forest_loop",
     "mood_sound": {
-      "sound": "minecraft:ambient.warped_forest.mood",
+      "sound": "minecraft:ambient.warped_forest_mood",
       "tick_delay": 6000,
       "block_search_extent": 8,
       "offset": 2
     },
     "additions_sound": {
-      "sound": "minecraft:ambient.underwater.loop_ultra_rare",
+      "sound": "minecraft:ambient.underwater_loop_ultra_rare",
       "tick_chance": 0.0111
     },
     "music": {
@@ -130,7 +130,8 @@
       "minecraft:trees_jungle_edge"
     ],
     [
-      "minecraft:freeze_top_layer"
+      "minecraft:freeze_top_layer",
+      "temporallight:magiwood"
     ]
   ]
 }

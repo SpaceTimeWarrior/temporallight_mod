@@ -16,6 +16,12 @@ public class TLConfiguredSurfaceBuilders {
                     Blocks.BASALT.getDefaultState(),
                     Blocks.ANCIENT_DEBRIS.getDefaultState()
             )));
+    public static ConfiguredSurfaceBuilder<?> EARTH44_SURFACE = register("earth44",
+            SurfaceBuilder.ERODED_BADLANDS.func_242929_a(new SurfaceBuilderConfig(
+                    Blocks.BLACKSTONE.getDefaultState(),
+                    Blocks.COARSE_DIRT.getDefaultState(),
+                    Blocks.LAVA.getDefaultState()
+            )));
 
     private static <SC extends ISurfaceBuilderConfig>ConfiguredSurfaceBuilder<SC> register(String name,
                                                                                            ConfiguredSurfaceBuilder<SC> csb) {

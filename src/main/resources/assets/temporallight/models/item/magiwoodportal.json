@@ -1,3 +1,6 @@
 {
-  "parent": "temporallight:block/magiwoodportal"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0":  "temporallight:block/magiwoodportal"
+  }
 }

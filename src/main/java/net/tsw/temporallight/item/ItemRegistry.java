@@ -11,9 +11,9 @@ import net.tsw.temporallight.item.custom.TLCustomBowItem;
 
 public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TemporalLight.MOD_ID) ;
-    public static final RegistryObject<Item> TIMECRYSTALSHARD = ITEMS.register("timecrystalshard",()->new Item(new Item.Properties().maxStackSize(7).group(ItemgroupRegistry.TemporalLightProphecygroup)));
-    public static final RegistryObject<Item> SYNTHTIMECRYSTALSHARD = ITEMS.register("synthetictimecrystalshard",()->new Item(new Item.Properties().maxStackSize(32).group(ItemgroupRegistry.TemporalLightMaterials)));
-    public static final RegistryObject<Item> HYPERSTEELINGOT = ITEMS.register("hypersteelingot",()->new Item(new Item.Properties().group(ItemgroupRegistry.TemporalLightMaterials).isImmuneToFire()));
+    public static final RegistryObject<Item> TIMECRYSTALSHARD = ITEMS.register("timecrystalshard",()->new customItem(new Item.Properties().maxStackSize(7).group(ItemgroupRegistry.TemporalLightProphecygroup)));
+    public static final RegistryObject<Item> SYNTHTIMECRYSTALSHARD = ITEMS.register("synthetictimecrystalshard",()->new customItem(new Item.Properties().maxStackSize(32).group(ItemgroupRegistry.TemporalLightMaterials)));
+    public static final RegistryObject<Item> HYPERSTEELINGOT = ITEMS.register("hypersteelingot",()->new customItem(new Item.Properties().group(ItemgroupRegistry.TemporalLightMaterials).isImmuneToFire()));
     public static final RegistryObject<Item> HYPERSTEELSWORD = ITEMS.register("hypersteelsword",()->new SwordItem(Itemtiers.HYPERSTEEL,8,4F,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
     public static final RegistryObject<Item> HYPERSTEELPICKAXE = ITEMS.register("hypersteelpickaxe",()->new PickaxeItem(Itemtiers.HYPERSTEEL,6,2F,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
     public static final RegistryObject<Item> HYPERSTEELAXE = ITEMS.register("hypersteelaxe",()->new AxeItem(Itemtiers.HYPERSTEEL,16,-2F,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
@@ -24,9 +24,24 @@ public class ItemRegistry {
     public static final RegistryObject<Item> HYPERSTEELCHESTPLATE = ITEMS.register("hypersteelchestplate",()->new ArmorItem(armormaterialregistry.HYPERSTEEL, EquipmentSlotType.CHEST,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
     public static final RegistryObject<Item> HYPERSTEELHELMET = ITEMS.register("hypersteelhelmet",()->new ArmorItem(armormaterialregistry.HYPERSTEEL, EquipmentSlotType.HEAD,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
     public static final RegistryObject<Item> HYPERSTEELHORSEARMOR = ITEMS.register("hypersteelhorsearmor",()->new HorseArmorItem(16,"hypersteel",new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
-    public static final RegistryObject<Item> HYPERSTEELBOW = ITEMS.register("hypersteelbow",()->new TLCustomBowItem(new Item.Properties().group(ItemgroupRegistry.TemporalLightMaterials).defaultMaxDamage(4000).isImmuneToFire(),0));
+    public static final RegistryObject<Item> HYPERSTEELBOW = ITEMS.register("hypersteelbow",()->new TLCustomBowItem(new Item.Properties().group(ItemgroupRegistry.TemporalLightMaterials).group(ItemgroupRegistry.TemporalLightTOOLS).defaultMaxDamage(4000).isImmuneToFire(),0));
 
-    public static final RegistryObject<Item> LIGHTSTEELINGOT = ITEMS.register("lightsteelingot",()->new Item(new Item.Properties().group(ItemgroupRegistry.TemporalLightMaterials).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELINGOT = ITEMS.register("lightsteelingot",()->new customItem(new Item.Properties().group(ItemgroupRegistry.TemporalLightMaterials).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELSWORD = ITEMS.register("lightsteelsword",()->new SwordItem(Itemtiers.LIGHTSTEEL,8,4F,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> MAGIWOODCLUB = ITEMS.register("magiwoodclub",()->new SwordItem(Itemtiers.MAGIWOOD,0,0F,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> MAGIWOODBOOTS = ITEMS.register("magiwoodboots",()->new ArmorItem(armormaterialregistry.MAGIWOOD, EquipmentSlotType.FEET,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> MAGIWOODLEGGINGS = ITEMS.register("magiwoodleggings",()->new ArmorItem(armormaterialregistry.MAGIWOOD, EquipmentSlotType.LEGS,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> MAGIWOODCHESTPLATE = ITEMS.register("magiwoodchestplate",()->new ArmorItem(armormaterialregistry.MAGIWOOD, EquipmentSlotType.CHEST,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> MAGIWOODHELMET = ITEMS.register("magiwoodhelmet",()->new ArmorItem(armormaterialregistry.MAGIWOOD, EquipmentSlotType.HEAD,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELPICKAXE = ITEMS.register("lightsteelpickaxe",()->new PickaxeItem(Itemtiers.LIGHTSTEEL,6,2F,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELAXE = ITEMS.register("lightsteelaxe",()->new AxeItem(Itemtiers.LIGHTSTEEL,16,-2F,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELSHOVEL = ITEMS.register("lightsteelshovel",()->new ShovelItem(Itemtiers.LIGHTSTEEL,2,2F,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELHOE = ITEMS.register("lightsteelhoe",()->new HoeItem(Itemtiers.LIGHTSTEEL,1,0,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELBOOTS = ITEMS.register("lightsteelboots",()->new ArmorItem(armormaterialregistry.LIGHTSTEEL, EquipmentSlotType.FEET,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELLEGGINGS = ITEMS.register("lightsteelleggings",()->new ArmorItem(armormaterialregistry.LIGHTSTEEL, EquipmentSlotType.LEGS,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELCHESTPLATE = ITEMS.register("lightsteelchestplate",()->new ArmorItem(armormaterialregistry.LIGHTSTEEL, EquipmentSlotType.CHEST,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELHELMET = ITEMS.register("lightsteelhelmet",()->new ArmorItem(armormaterialregistry.LIGHTSTEEL, EquipmentSlotType.HEAD,new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
+    public static final RegistryObject<Item> LIGHTSTEELHORSEARMOR = ITEMS.register("lightsteelhorsearmor",()->new HorseArmorItem(18,"lightsteel",new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
     public static void register(IEventBus eventbus){
         ITEMS.register(eventbus);
     }

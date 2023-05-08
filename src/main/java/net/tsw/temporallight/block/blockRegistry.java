@@ -25,19 +25,27 @@ public class blockRegistry {
     public static final DeferredRegister<Block>BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, TemporalLight.MOD_ID);
 
     public static final RegistryObject<Block> SYNTHETICTIMECRYSTALORE = registerBlock("synthetictimecrystalore",()->new Block(AbstractBlock.Properties.create(Material.DRAGON_EGG).hardnessAndResistance(5f).harvestLevel(4).harvestTool(ToolType.HOE).setRequiresTool()));
-    /* from iron hsl+
+    /* from iron hsl+   hypersteel
      168
      65
      -83
      0
       */
+    /* lightsteel
+    168
+    65
+    36
+    0
+     */
     public static final RegistryObject<Block> HYPERSTEEL_BLOCK = registerBlockim("hypersteelblock",()->new Block(AbstractBlock.Properties.create(Material.IRON).hardnessAndResistance(10f).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),42);
     public static final RegistryObject<Block> HYPERSTEEL_STAIRS = registerBlockim("hypersteelstairs",()->new StairsBlock(()->HYPERSTEEL_BLOCK.get().getDefaultState(),AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),42);
     public static final RegistryObject<Block> HYPERSTEEL_RAILING =registerBlockim("hypersteelrailing",()->new FenceBlock(AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),42);
     public static final RegistryObject<Block> HYPERSTEEL_RAILING_gate =registerBlockim("hypersteelrailinggate",()->new FenceGateBlock(AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),42);
     public static final RegistryObject<Block> HYPERSTEEL_SLAB =registerBlockim("hypersteelslab",()->new SlabBlock(AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),42);
+    public static final RegistryObject<Block> HYPERSTEEL_BUTTON = registerBlockim("hypersteelbutton",()-> new StoneButtonBlock(AbstractBlock.Properties.create(Material.IRON).doesNotBlockMovement()),42);
+    public static final RegistryObject<Block> HYPERSTEEL_PRESSUREPLATE = registerBlockim("hypersteelpressureplate",()->new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS,AbstractBlock.Properties.create(Material.IRON).doesNotBlockMovement().sound(SoundType.STONE)),42);
     public static final RegistryObject<Block> MAGIWOODLOG =registerBlockim("magiwooodlog",()->new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_LOG).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),64);
-    /* from acacia hsl+
+    /* from acacia hsl+ magiwood
     -80
     75
     22

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "temporallight:block/hypersteelpressureplate"
+    },
+    "powered=true": {
+      "model": "temporallight:block/hypersteelpressureplate_down"
+    }
+  }
+}

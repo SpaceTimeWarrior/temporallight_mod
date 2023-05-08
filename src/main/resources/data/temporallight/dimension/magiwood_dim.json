@@ -2,7 +2,7 @@
   "type": "minecraft:overworld_caves",
   "generator": {
     "type": "minecraft:noise",
-    "seed": 399010391,
+    "seed": 2098544774,
     "settings": {
       "name": "minecraft:floating_islands",
       "bedrock_roof_position": -10,
