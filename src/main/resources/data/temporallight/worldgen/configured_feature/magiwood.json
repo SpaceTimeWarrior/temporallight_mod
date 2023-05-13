@@ -1,33 +1,45 @@
 {
-  "type": "minecraft:decorated",
+  "type": "minecraft:tree",
   "config": {
-    "decorator": {
-      "type": "minecraft:count_multilayer",
-      "config": {
-        "count": 40
-      }
+    "max_water_depth": 0,
+    "ignore_vines": true,
+    "heightmap": "WORLD_SURFACE",
+    "minimum_size": {
+      "type": "minecraft:two_layers_feature_size",
+      "limit": 6,
+      "lower_size": 1,
+      "upper_size": 5
     },
-    "feature": {
-      "type": "minecraft:delta_feature",
-      "config": {
-        "contents": {
-          "Name": "minecraft:lava",
-          "Properties": {
-            "level": "0"
-          }
-        },
-        "rim": {
-          "Name": "minecraft:magma_block"
-        },
-        "size": {
-          "base": 3,
-          "spread": 4
-        },
-        "rim_size": {
-          "base": 0,
-          "spread": 2
+    "trunk_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "temporallight:magiwooodlog",
+        "Properties": {
+          "axis": "y"
         }
       }
-    }
+    },
+    "leaves_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "temporallight:magiwooodleaves",
+        "Properties": {
+          "persistent": "false",
+          "distance": "7"
+        }
+      }
+    },
+    "trunk_placer": {
+      "type": "minecraft:forking_trunk_placer",
+      "base_height": 31,
+      "height_rand_a": 3,
+      "height_rand_b": 1
+    },
+    "foliage_placer": {
+      "type": "minecraft:acacia_foliage_placer",
+      "radius": 2,
+      "offset": 0
+    },
+    "decorators": []
   }
 }

@@ -42,6 +42,7 @@ public class TemporalLight
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
     public static boolean optifineLoaded = false;
+    public static int portalcooldown = 0;
     public TemporalLight() {
         // Register the setup method for modloading
         IEventBus Eventbus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -78,6 +79,7 @@ public class TemporalLight
                     .put(blockRegistry.MAGIWOOD.get(),blockRegistry.MAGIWOODSTRIPPED.get()).build();
         });
         TLStructureRegistry.setupStructures();
+
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {

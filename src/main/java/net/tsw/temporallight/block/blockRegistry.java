@@ -2,10 +2,8 @@ package net.tsw.temporallight.block;
 
 import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.trees.OakTree;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
@@ -13,7 +11,8 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.tsw.temporallight.TemporalLight;
 import net.tsw.temporallight.block.custom.assemblerBlock;
-import net.tsw.temporallight.block.custom.magiwoodPortalBlock;
+import net.tsw.temporallight.block.custom.customPortalBlock;
+import net.tsw.temporallight.block.custom.earth44portalBlock;
 import net.tsw.temporallight.block.custom.tree.MagiwoodTree;
 import net.tsw.temporallight.item.ItemRegistry;
 import net.tsw.temporallight.item.ItemgroupRegistry;
@@ -55,10 +54,18 @@ public class blockRegistry {
     public static final RegistryObject<Block> MAGIWOODSTRIPPEDLOG =registerBlockim("magiwooodstrippedlog",()->new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_OAK_LOG).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),64);
     public static final RegistryObject<Block> MAGIWOODSTRIPPED =registerBlockim("magiwooodstripped",()->new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_OAK_WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),64);
     public static final RegistryObject<Block> MAGIWOODPLANKS =registerBlockim("magiwooodplanks",()->new Block(AbstractBlock.Properties.from(Blocks.OAK_PLANKS).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),64);
+    public static final RegistryObject<Block> MAGIWOOD_STAIRS = registerBlockim("magiwoodstairs",()->new StairsBlock(()->MAGIWOODPLANKS.get().getDefaultState(),AbstractBlock.Properties.create(Material.WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),42);
+    public static final RegistryObject<Block> MAGIWOOD_FENCE =registerBlockim("magiwoodfence",()->new FenceBlock(AbstractBlock.Properties.create(Material.WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),42);
+    public static final RegistryObject<Block> MAGIWOOD_FENCE_gate =registerBlockim("magiwoodfencegate",()->new FenceGateBlock(AbstractBlock.Properties.create(Material.WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),42);
+    public static final RegistryObject<Block> MAGIWOOD_SLAB =registerBlockim("magiwoodslab",()->new SlabBlock(AbstractBlock.Properties.create(Material.WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),42);
+    public static final RegistryObject<Block> MAGIWOOD_BUTTON = registerBlockim("magiwoodbutton",()-> new StoneButtonBlock(AbstractBlock.Properties.create(Material.WOOD).doesNotBlockMovement()),42);
+    public static final RegistryObject<Block> MAGIWOOD_PRESSUREPLATE = registerBlockim("magiwoodpressureplate",()->new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,AbstractBlock.Properties.create(Material.WOOD).doesNotBlockMovement().sound(SoundType.WOOD)),42);
+
     public static final RegistryObject<Block> MAGIWOODLEAVES =registerBlockim("magiwooodleaves",()->new LeavesBlock(AbstractBlock.Properties.create(Material.LEAVES).hardnessAndResistance(.75F).tickRandomly().sound(SoundType.PLANT).notSolid()),64);
     public static final RegistryObject<Block> MAGIWOODSAPLING =registerBlockim("magiwooodsapling",()->new TLSaplingBlock(new MagiwoodTree(),AbstractBlock.Properties.create(Material.PLANTS).doesNotBlockMovement().tickRandomly().zeroHardnessAndResistance().sound(SoundType.PLANT)),64);
     public static final RegistryObject<Block> HYPERSTEEL_ASSEMBLER = registerBlockim("hypersteelassembler",()->new assemblerBlock(AbstractBlock.Properties.create(Material.IRON).hardnessAndResistance(10f).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),42);
-    public static final RegistryObject<Block> MAGIWOODPORTAL = registerBlockim("magiwoodportal",()->new magiwoodPortalBlock(AbstractBlock.Properties.create(Material.PORTAL)),64);
+    public static final RegistryObject<Block> MAGIWOODPORTAL = registerBlockim("magiwoodportal",()->new customPortalBlock(AbstractBlock.Properties.create(Material.PORTAL).doesNotBlockMovement()),64);
+    public static final RegistryObject<Block> Earth44PortalS = registerBlockim("earth44portal",()->new earth44portalBlock(AbstractBlock.Properties.create(Material.PORTAL).doesNotBlockMovement()),64);
 
     private static <T extends Block>RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

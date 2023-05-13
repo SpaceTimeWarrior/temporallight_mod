@@ -10,5 +10,6 @@ public class TLDimensionRegistry {
     public static RegistryKey<World> MAGIWOOD_DIM = RegistryKey.getOrCreateKey(Registry.WORLD_KEY,
             new ResourceLocation(TemporalLight.MOD_ID, "magiwood_dim"));
     public static RegistryKey<World> EARTH_44 = RegistryKey.getOrCreateKey(Registry.WORLD_KEY,
-            new ResourceLocation(TemporalLight.MOD_ID, "earth44"));
+            new ResourceLocation(TemporalLight.MOD_ID, "earth44_dim"));
+
 }

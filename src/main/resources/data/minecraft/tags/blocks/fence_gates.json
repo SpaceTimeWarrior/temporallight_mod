@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "temporallight:hypersteelrailinggate"
+    "temporallight:hypersteelrailinggate",
+    "temporallight:magiwoodfencegate"
   ]
 }

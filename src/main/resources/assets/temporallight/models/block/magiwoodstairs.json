@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "temporallight:block/magiwooodplanks",
+    "top": "temporallight:block/magiwooodplanks",
+    "side": "temporallight:block/magiwooodplanks"
+  }
+}

@@ -3,49 +3,75 @@ package net.tsw.temporallight.block.custom;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.shapes.IBooleanFunction;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.GameRules;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
+import net.minecraft.world.*;
 import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.tsw.temporallight.TemporalLight;
 import net.tsw.temporallight.block.blockRegistry;
+
 import net.tsw.temporallight.world.dimension.TLDimensionRegistry;
 import net.tsw.temporallight.world.dimension.TLMagiwoodTeleporter;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
-public class magiwoodPortalBlock extends PaneBlock {
+public class customPortalBlock extends customBlock {
+    public RegistryKey<World> dim;
+    public RegistryKey<World> dim2;
+    protected static final VoxelShape SHAPE = Block.makeCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 16.0D, 16.0D);
+    //public TileEntity createNewTileEntity(IBlockReader worldIn) {
+      //  return new PortalTileEntity();
+   // }
 
-
-
-    public magiwoodPortalBlock(Properties properties) {
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return SHAPE;
+    }
+    public customPortalBlock(Properties properties) {
         super(properties);
+        properties.doesNotBlockMovement();
         this.setDefaultState(this.stateContainer.getBaseState());
+        dim = TLDimensionRegistry.MAGIWOOD_DIM;
+        dim2 = World.OVERWORLD;
+    }
+    public customPortalBlock(Properties properties, RegistryKey<World> dim){
+        super(properties);
+        properties.doesNotBlockMovement();
+        this.setDefaultState(this.stateContainer.getBaseState());
+        this.dim = dim;
+        dim2 = World.OVERWORLD;
+    }
+    public customPortalBlock(Properties properties, RegistryKey<World> dim, RegistryKey<World> dim2){
+        super(properties);
+        properties.notSolid();
+        this.setDefaultState(this.stateContainer.getBaseState());
+        this.dim = dim;
+        this.dim2 = dim2;
+    }
+
+    @Override
+    public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
+        if(TemporalLight.portalcooldown>0){
+            TemporalLight.portalcooldown--;
+        }
+        this.properties.notSolid();
+        super.tick(state, worldIn, pos, rand);
     }
 
     public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
+        tick(state,worldIn,pos,random);
         if (worldIn.getDimensionType().isNatural() && worldIn.getGameRules().getBoolean(GameRules.DO_MOB_SPAWNING) && random.nextInt(2000) < worldIn.getDifficulty().getId()) {
             while(worldIn.getBlockState(pos).matchesBlock(this)) {
                 pos = pos.down();
@@ -121,55 +147,61 @@ public class magiwoodPortalBlock extends PaneBlock {
         Pos0 = new BlockPos(xxx,yyy,zzz+1);
         destinationWorld.setBlockState(Pos0,Blocks.AIR.getDefaultState());
     }
+    private boolean hascooldown(PlayerEntity player){
+        if (TemporalLight.portalcooldown>0){
+            player.setPortalCooldown();
+        }
+        return TemporalLight.portalcooldown>0;
+    }
+    private boolean hascooldown(Entity player){
+        if (TemporalLight.portalcooldown>0){
+            player.setPortalCooldown();
+        }
+        return TemporalLight.portalcooldown>0;
+    }
+    private boolean hascooldown(){
+        return TemporalLight.portalcooldown>0;
+    }
+    private void tock(){
+        if(TemporalLight.portalcooldown>0){
+            TemporalLight.portalcooldown--;
+        }
+        this.properties.notSolid();
+    }
+    public Entity changeDimension(Entity player,ServerWorld world,BlockPos pos,boolean insideDim,int teleporternumber){
+        player.setPortalCooldown();
+        if(teleporternumber==0){
+            return player.changeDimension(world);
+        }else if(teleporternumber == 1){
+           return player.changeDimension(world);
+        }else if(teleporternumber ==2) {
+            return player.changeDimension(world, new TLMagiwoodTeleporter(pos, insideDim, world));
+        }
+        return player.changeDimension(world, new TLMagiwoodTeleporter(pos, insideDim, world));
+    }
     @Override
     public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos,
                                              PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        if (!worldIn.isRemote()) {
-            if (!player.isCrouching()&&!player.hasPortalCooldown() && player.canChangeDimension()) {
-                player.setPortalCooldown();
-                MinecraftServer server = worldIn.getServer();
 
-                if (server != null) {
-                    if (worldIn.getDimensionKey() == TLDimensionRegistry.MAGIWOOD_DIM) {
-                        ServerWorld overWorld = server.getWorld(World.OVERWORLD);
-                        if (overWorld != null) {
-                            player.changeDimension(overWorld, new TLMagiwoodTeleporter(pos, false,overWorld));
-                        }
-                    } else {
-                        ServerWorld MAGIWOOD_DIM = server.getWorld(TLDimensionRegistry.MAGIWOOD_DIM);
-                        if (MAGIWOOD_DIM != null) {
-                            player.changeDimension(MAGIWOOD_DIM, new TLMagiwoodTeleporter(pos, true,MAGIWOOD_DIM));
-                        }
-                    }
-                    return ActionResultType.SUCCESS;
-                }
-            }
-        }
-
+        onEntityCollision(state,worldIn,pos,player);
         return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
     }
     @Override
     public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-        if (!worldIn.isRemote()) {
-            if (!entityIn.hasPortalCooldown() && entityIn.canChangeDimension()) {
-                entityIn.setPortalCooldown();
-                MinecraftServer server = worldIn.getServer();
-                if (server != null) {
-                    if (worldIn.getDimensionKey() == TLDimensionRegistry.MAGIWOOD_DIM) {
-                        ServerWorld overWorld = server.getWorld(World.OVERWORLD);
-                        if (overWorld != null) {
-                            entityIn.changeDimension(overWorld, new TLMagiwoodTeleporter(pos, false,overWorld));
-                        }
-                    } else {
-                        ServerWorld MAGIWOOD_DIM = server.getWorld(TLDimensionRegistry.MAGIWOOD_DIM);
-                        if (MAGIWOOD_DIM != null) {
-                            entityIn.changeDimension(MAGIWOOD_DIM, new TLMagiwoodTeleporter(pos, true,MAGIWOOD_DIM));
-                        }
-                    }
-                }
+        if (worldIn instanceof ServerWorld && !entityIn.isPassenger() && !entityIn.isBeingRidden()&&!entityIn.hasPortalCooldown() && entityIn.canChangeDimension() && VoxelShapes.compare(VoxelShapes.create(entityIn.getBoundingBox().offset((double)(-pos.getX()), (double)(-pos.getY()), (double)(-pos.getZ()))), state.getShape(worldIn, pos), IBooleanFunction.AND)) {
+            RegistryKey<World> registrykey = worldIn.getDimensionKey() == dim ? dim2 : dim;
+            ServerWorld serverworld = ((ServerWorld)worldIn).getServer().getWorld(registrykey);
+            if (serverworld == null) {
+                return;
             }
+            boolean inside = false;
+            if(worldIn.getDimensionKey()==dim){
+                inside = true;
+            }
+            entityIn.setPortalCooldown();
+            changeDimension(entityIn,serverworld,pos,inside,2);
         }
-        super.onEntityCollision(state, worldIn, pos, entityIn);
+
     }
 
 }
