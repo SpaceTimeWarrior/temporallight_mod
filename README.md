@@ -13,4 +13,5 @@ dependencies {
   implementation fg.deobf('net.tsw.temporallight:[filename without the .jar]:[mod ver]')
 }
 
+then rebuild the gradle
 
