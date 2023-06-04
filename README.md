@@ -2,7 +2,7 @@
  for dependency use download the mod
  
  
- inside the build.gradle put replace anything with [] to what is specified
+ inside the build.gradle put replace anything with [] to what is specified below
  
  repositories {
   flatDir{dirs 'path to mod folder'}
