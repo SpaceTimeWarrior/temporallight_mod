@@ -1,6 +1,6 @@
 {
   "type": "temporallight:assembler",
-  "redstone": "16",
+  "redstone": "15",
   "ingredients": [
     {
       "item": "minecraft:string"
