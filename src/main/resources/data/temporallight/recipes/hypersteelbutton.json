@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XR"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "X": {
+      "item": "temporallight:hypersteelingot"
+    }
+  },
+  "result": {
+    "item": "temporallight:hypersteelbutton"
+  }
+}

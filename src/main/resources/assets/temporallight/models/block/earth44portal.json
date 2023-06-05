@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "temporallight:block/magiwoodportal"
+    "all": "temporallight:block/earth44portal"
   }
 }

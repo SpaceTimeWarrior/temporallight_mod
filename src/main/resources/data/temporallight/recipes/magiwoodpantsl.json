@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "LXL",
+    "LXL"
+  ],
+  "key": {
+    "X": {
+      "item": "temporallight:magiwooodplanks"
+    },
+    "L":{
+       "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "temporallight:magiwoodleggings"
+  }
+}
