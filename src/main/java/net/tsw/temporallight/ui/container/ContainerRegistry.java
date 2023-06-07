@@ -1,4 +1,4 @@
-package net.tsw.temporallight.container;
+package net.tsw.temporallight.ui.container;
 
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.util.math.BlockPos;

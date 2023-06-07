@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "temporallight:netheritedress"
+    }
+  ],
+  "result": {
+    "item": "minecraft:netherite_chestplate"
+  }
+}

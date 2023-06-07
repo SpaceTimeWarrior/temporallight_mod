@@ -1,4 +1,4 @@
-package net.tsw.temporallight.screen;
+package net.tsw.temporallight.ui.screen;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.tsw.temporallight.TemporalLight;
-import net.tsw.temporallight.container.assemblerContainer;
+import net.tsw.temporallight.ui.container.assemblerContainer;
 
 public class assemblerScreen extends ContainerScreen<assemblerContainer> {
     private final ResourceLocation GUI = new ResourceLocation(TemporalLight.MOD_ID,"textures/gui/assembler_gui.png");

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "temporallight:hypersteeldress"
+    }
+  ],
+  "result": {
+    "item": "temporallight:hypersteelchestplate"
+  }
+}

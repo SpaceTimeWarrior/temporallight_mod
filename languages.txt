@@ -1,0 +1,4 @@
+us english en_us
+pirate-en  en_pt
+lolcat	   lol_us
+Quenya     qya_aa  

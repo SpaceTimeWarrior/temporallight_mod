@@ -1,42 +1,29 @@
 package net.tsw.temporallight.tileentity;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameters;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.*;
 import net.minecraft.util.Direction;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
-import net.minecraft.world.server.ServerWorld;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.tsw.temporallight.block.blockRegistry;
-import net.tsw.temporallight.container.assemblerContainer;
+import net.tsw.temporallight.ui.container.assemblerContainer;
 import net.tsw.temporallight.data.recipes.RecipieTypeRegistry;
 import net.tsw.temporallight.data.recipes.assemblerRecipes;
-import net.tsw.temporallight.item.ItemRegistry;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
 import java.util.Optional;
-
-import static net.minecraft.block.ShulkerBoxBlock.CONTENTS;
 
 public class assemblerTileEntity extends LockableLootTileEntity implements ITickableTileEntity {
     private final ItemStackHandler itemstackhandler = createHandler();

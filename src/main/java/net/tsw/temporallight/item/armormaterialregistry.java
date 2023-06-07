@@ -28,6 +28,8 @@ public enum armormaterialregistry implements IArmorMaterial {
     private final float toughness;
     private final float knockbackResistance;
     private final LazyValue<Ingredient> repairMaterial;
+    private final int color;
+
 
     private armormaterialregistry(String name, int maxDamageFactor, int[] damageReductionAmountArray, int enchantability, SoundEvent soundEvent, float toughness, float knockbackResistance, Supplier<Ingredient> repairMaterial) {
         this.name = name;
@@ -38,6 +40,7 @@ public enum armormaterialregistry implements IArmorMaterial {
         this.toughness = toughness;
         this.knockbackResistance = knockbackResistance;
         this.repairMaterial = new LazyValue<>(repairMaterial);
+        this.color=0;
     }
     public int getDurability(EquipmentSlotType slotIn) {
         return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor;
@@ -63,11 +66,14 @@ public enum armormaterialregistry implements IArmorMaterial {
     public String getName() {
         return TemporalLight.MOD_ID +":"+ this.name;
     }
+    @OnlyIn(Dist.CLIENT)
+    public String getIName() {
+        return this.name;
+    }
 
     public float getToughness() {
         return this.toughness;
     }
-
     /**
      * Gets the percentage of knockback resistance provided by armor of the material.
      */

@@ -7,6 +7,9 @@ import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.AxeItem;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,10 +25,10 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.tsw.temporallight.block.blockRegistry;
-import net.tsw.temporallight.container.ContainerRegistry;
+import net.tsw.temporallight.ui.container.ContainerRegistry;
 import net.tsw.temporallight.data.recipes.RecipieTypeRegistry;
 import net.tsw.temporallight.item.ItemRegistry;
-import net.tsw.temporallight.screen.assemblerScreen;
+import net.tsw.temporallight.ui.screen.assemblerScreen;
 import net.tsw.temporallight.tileentity.TileEntityRegistry;
 import net.tsw.temporallight.util.TLItemModelProperties;
 import net.tsw.temporallight.util.configRegistry;
@@ -85,8 +88,10 @@ public class TemporalLight
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
         //LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get().options);
+
         RenderTypeLookup.setRenderLayer(blockRegistry.MAGIWOODSAPLING.get(), RenderType.getCutout());
         RenderTypeLookup.setRenderLayer(blockRegistry.MAGIWOODLEAVES.get(), RenderType.getCutout());
+
         //RenderTypeLookup.setRenderLayer(blockRegistry.MAGIWOODPORTAL.get(), RenderType.getTranslucentMovingBlock());
         //RenderTypeLookup.setRenderLayer(blockRegistry.MAGIWOODPORTAL.get(), RenderType.getCutout());
         TLItemModelProperties.makeBow(ItemRegistry.HYPERSTEELBOW.get());
@@ -118,6 +123,12 @@ public class TemporalLight
     // Event bus for receiving Registry Events)
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
+        @OnlyIn(Dist.CLIENT)
+        @SubscribeEvent
+        public static void onColorsRegistry(final ColorHandlerEvent.Item event)
+        {
+            ItemRegistry.register(event.getItemColors());
+        }
         @SubscribeEvent
         public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
             // register a new block here

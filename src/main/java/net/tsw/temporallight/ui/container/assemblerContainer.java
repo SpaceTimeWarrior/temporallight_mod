@@ -1,9 +1,8 @@
-package net.tsw.temporallight.container;
+package net.tsw.temporallight.ui.container;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
-import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IWorldPosCallable;
@@ -14,8 +13,6 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 import net.tsw.temporallight.block.blockRegistry;
-
-import javax.annotation.Nullable;
 
 public class assemblerContainer extends Container {
     private final TileEntity tileentity;
