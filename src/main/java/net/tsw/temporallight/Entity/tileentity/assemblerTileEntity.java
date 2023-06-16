@@ -1,4 +1,4 @@
-package net.tsw.temporallight.tileentity;
+package net.tsw.temporallight.Entity.tileentity;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

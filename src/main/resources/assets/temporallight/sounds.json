@@ -1,0 +1,21 @@
+{
+  "phoenix_talk": {
+    "category": "blocks",
+    "subtitle": "temporallight.phoenix_talk",
+    "sounds": [
+      "temporallight:phoenix_talk"
+    ]
+  },"phoenix_accept": {
+  "category": "blocks",
+  "subtitle": "temporallight.phoenix_accept",
+  "sounds": [
+    "temporallight:phoenix_accept"
+  ]
+  },"phoenix_decline": {
+  "category": "blocks",
+  "subtitle": "temporallight.phoenix_decline",
+  "sounds": [
+    "temporallight:phoenix_decline"
+  ]
+}
+}

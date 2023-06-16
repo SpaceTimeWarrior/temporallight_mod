@@ -41,7 +41,7 @@
   "starts": [
     "minecraft:mineshaft",
     "minecraft:stronghold",
-    "minecraft:ruined_portal"
+    "minecraft:ruined_portal",
   ],
   "spawners": {
     "monster": [
@@ -70,6 +70,12 @@
         "weight": 100,
         "minCount": 7,
         "maxCount": 10
+      },
+      {
+        "type": "temporallight:mphoenix",
+        "weight": 50,
+        "minCount": 0,
+        "maxCount": 10
       }
     ],
     "ambient": [
@@ -82,7 +88,14 @@
     ],
     "water_creature": [],
     "water_ambient": [],
-    "misc": []
+    "misc": [
+      {
+        "type": "temporallight:phoenix",
+        "weight": 10,
+        "minCount": 4,
+        "maxCount": 8
+      }
+    ]
   },
   "spawn_costs": {},
   "carvers": {

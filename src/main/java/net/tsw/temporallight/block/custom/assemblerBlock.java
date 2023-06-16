@@ -29,8 +29,8 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.network.NetworkHooks;
 import net.tsw.temporallight.ui.container.assemblerContainer;
-import net.tsw.temporallight.tileentity.TileEntityRegistry;
-import net.tsw.temporallight.tileentity.assemblerTileEntity;
+import net.tsw.temporallight.Entity.tileentity.TileEntityRegistry;
+import net.tsw.temporallight.Entity.tileentity.assemblerTileEntity;
 
 import javax.annotation.Nullable;
 import java.util.List;

@@ -1,0 +1,15 @@
+{
+  "name": "temporallight:mvillage/magiwood_village",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "temporallight:magiwood_village_staircase",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

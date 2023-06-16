@@ -7,7 +7,6 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.particles.ParticleTypes;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -22,7 +21,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.tsw.temporallight.TemporalLight;
 import net.tsw.temporallight.block.blockRegistry;
-import net.tsw.temporallight.tileentity.PortalTileEntity;
 import net.tsw.temporallight.world.dimension.TLDimensionRegistry;
 import net.tsw.temporallight.world.dimension.TLMagiwoodTeleporter;
 

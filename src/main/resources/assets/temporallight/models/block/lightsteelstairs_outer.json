@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "temporallight:block/lightsteel_block",
+    "top": "temporallight:block/lightsteel_block",
+    "side": "temporallight:block/lightsteel_block"
+  }
+}

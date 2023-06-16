@@ -24,6 +24,7 @@ public class TLStructureGeneration {
         if(event.getName().toString().contains(biomeToSpawnIn.getRegistryName().toString())) {
             List<Supplier<StructureFeature<?, ?>>> structures = event.getGeneration().getStructures();
             structures.add(() -> TLStructureRegistry.MAGIWOODTREE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
+            //structures.add(() -> TLStructureRegistry.MAGIWOODVILLAGE.get().withConfiguration(IFeatureConfig.NO_FEATURE_CONFIG));
         }
     }
 }

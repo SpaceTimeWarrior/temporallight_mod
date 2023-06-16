@@ -1,0 +1,12 @@
+us english en_us
+pirate-en  en_pt
+lolcat	   lol_us
+Quenya     qya_aa
+
+if direct translations don't exist use these suggestions (priority is first)
+hypersteel = hyper steel = death steel = death metal
+magiwood = magic wood = strange wood = unearthly wood = pink wood
+lightsteel = light steel = purified death steel = purified death metal
+
+railing = fence
+dress = hide(as in animal skins)

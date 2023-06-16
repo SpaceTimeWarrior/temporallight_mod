@@ -9,10 +9,14 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.tsw.temporallight.Entity.Mob.MobRegistry;
 import net.tsw.temporallight.TemporalLight;
+import net.tsw.temporallight.integration.compatabilityItemRegistry;
 import net.tsw.temporallight.item.custom.DressArmorItem;
 import net.tsw.temporallight.item.custom.DyeableDressArmorItem;
 import net.tsw.temporallight.item.custom.TLCustomBowItem;
+import net.tsw.temporallight.item.custom.custom_spawn_eggs;
+
 public class ItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TemporalLight.MOD_ID);
     public static final RegistryObject<Item> TIMECRYSTALSHARD = ITEMS.register("timecrystalshard", () -> new customItem(new Item.Properties().maxStackSize(7).group(ItemgroupRegistry.TemporalLightProphecygroup)));
@@ -55,8 +59,11 @@ public class ItemRegistry {
     public static final RegistryObject<Item> LIGHTSTEELHELMET = ITEMS.register("lightsteelhelmet", () -> new ArmorItem(armormaterialregistry.LIGHTSTEEL, EquipmentSlotType.HEAD, new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
     public static final RegistryObject<Item> LIGHTSTEELHORSEARMOR = ITEMS.register("lightsteelhorsearmor", () -> new HorseArmorItem(18, "lightsteel", new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
 
+    public static final RegistryObject<custom_spawn_eggs> PHEONIX_SPAWN_EGG = ITEMS.register("phoenix_spawn_egg", () -> new custom_spawn_eggs(MobRegistry.PHEONIX, 0xFF0000, 0xFF9B00, new Item.Properties().group(ItemgroupRegistry.TemporalLightProphecygroup)));
+    public static final RegistryObject<custom_spawn_eggs> MALE_PHEONIX_SPAWN_EGG = ITEMS.register("male_phoenix_spawn_egg", () -> new custom_spawn_eggs(MobRegistry.MALEPHEONIX, 0xFF0000, 0x7bd4ff, new Item.Properties().group(ItemgroupRegistry.TemporalLightProphecygroup)));
     public static void register(IEventBus eventbus) {
         ITEMS.register(eventbus);
+        compatabilityItemRegistry.register(eventbus);
     }
 
     @OnlyIn(Dist.CLIENT)

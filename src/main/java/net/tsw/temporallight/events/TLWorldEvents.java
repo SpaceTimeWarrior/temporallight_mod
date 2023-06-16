@@ -1,4 +1,4 @@
-package net.tsw.temporallight.world;
+package net.tsw.temporallight.events;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.util.ResourceLocation;
@@ -32,7 +32,7 @@ public class TLWorldEvents {
         TLStructureGeneration.generateStructures(event);
         TLOreGeneration.generateOres(event);
         TLTreeGeneration.generateTrees(event);
-
+        TLMobGeneration.onEntitySpawn(event);
     }
     @SubscribeEvent
     public static void addDimensionalSpacing(final WorldEvent.Load event) {

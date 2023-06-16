@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "temporallight:lightsteelblock"
+    }
+  },
+  "result": {
+    "item": "temporallight:lightsteelstairs",
+    "count": 4
+  }
+}

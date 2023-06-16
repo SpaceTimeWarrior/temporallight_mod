@@ -38,6 +38,8 @@
   "item.temporallight.hypersteeldress": "Dark Irun Dwess",
   "item.temporallight.lightsteeldress": "Shiny Irun Dwess",
 
+  "item.temporallight.speednecklace": "speedEd NEKLAS K?",
+
   "screen.temporallight.assembler": "Dark Irun Makur",
   "screen.temporallight.assembler.redstone": "currrant signalz: %s",
 
@@ -49,6 +51,13 @@
   "block.temporallight.hypersteelpressureplate": "Dark Irun Pressar Plat",
   "block.temporallight.hypersteelbutton": "Dark Irun Button",
   "block.temporallight.hypersteelslab": "Dark Irun Sleb",
+  "block.temporallight.lightsteelblock": "Block of Shiny Irony",
+  "block.temporallight.lightsteelstairs": "Shiny Irun Stairz",
+  "block.temporallight.lightsteelfence": "Shiny Irun Fanse",
+  "block.temporallight.lightsteelfencegate": "Shiny Irun Fenc Gate",
+  "block.temporallight.lightsteelpressureplate": "Shiny Irun Pressar Plat",
+  "block.temporallight.lightsteelbutton": "Shiny Irun Button",
+  "block.temporallight.lightsteelslab": "Shiny Irun Slab",
   "block.temporallight.magiwooodlog": "Pinky Wuud Lawg",
   "block.temporallight.magiwoood": "Pinky Wuud",
   "block.temporallight.magiwooodstrippedlog": "naked Pinky Wuud Lawg",

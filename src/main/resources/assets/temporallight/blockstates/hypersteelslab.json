@@ -4,7 +4,7 @@
       "model": "temporallight:block/hypersteelslab"
     },
     "type=double": {
-      "model": "temporallight:block/hypersteel"
+      "model": "temporallight:block/hypersteelblock"
     },
     "type=top": {
       "model": "temporallight:block/hypersteelslab_top"

@@ -12,6 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.tsw.temporallight.TemporalLight;
 import net.tsw.temporallight.world.structure.structures.MagiwoodTreeHouse;
+import net.tsw.temporallight.world.structure.structures.MagiwoodVillage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +22,8 @@ public class TLStructureRegistry {
 
     public static final RegistryObject<Structure<NoFeatureConfig>> MAGIWOODTREE =
             STRUCTURES.register("magiwoodtree", MagiwoodTreeHouse::new);
-
+    //public static final RegistryObject<Structure<NoFeatureConfig>> MAGIWOODVILLAGE =
+            //STRUCTURES.register("magiwoodvillage", MagiwoodVillage::new);
     /* average distance apart in chunks between spawn attempts */
     /* minimum distance apart in chunks between spawn attempts. MUST BE LESS THAN ABOVE VALUE*/
     /* this modifies the seed of the structure so no two structures always spawn over each-other.
@@ -30,6 +32,7 @@ public class TLStructureRegistry {
         setupMapSpacingAndLand(MAGIWOODTREE.get(),
                 new StructureSeparationSettings(100,50, 1234567890),
                 true);
+       // setupMapSpacingAndLand(MAGIWOODVILLAGE.get(),new StructureSeparationSettings(100,50,1234567890),false);
     }
 
     /**

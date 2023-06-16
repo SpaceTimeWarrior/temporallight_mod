@@ -6,7 +6,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
+import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.item.AxeItem;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -15,7 +17,9 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -24,12 +28,18 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.tsw.temporallight.Entity.Mob.MobRegistry;
+import net.tsw.temporallight.Entity.Mob.render.MalepheonixRenderer;
+import net.tsw.temporallight.Entity.Mob.render.pheonixRenderer;
 import net.tsw.temporallight.block.blockRegistry;
+import net.tsw.temporallight.integration.curios.curiosmodcommunications;
+import net.tsw.temporallight.integration.phoenixrenderermod_comm;
 import net.tsw.temporallight.ui.container.ContainerRegistry;
 import net.tsw.temporallight.data.recipes.RecipieTypeRegistry;
 import net.tsw.temporallight.item.ItemRegistry;
 import net.tsw.temporallight.ui.screen.assemblerScreen;
-import net.tsw.temporallight.tileentity.TileEntityRegistry;
+import net.tsw.temporallight.Entity.tileentity.TileEntityRegistry;
+import net.tsw.temporallight.util.CustomSoundEvents;
 import net.tsw.temporallight.util.TLItemModelProperties;
 import net.tsw.temporallight.util.configRegistry;
 import net.tsw.temporallight.world.biome.TLBiomeRegistry;
@@ -42,8 +52,9 @@ import org.apache.logging.log4j.Logger;
 public class TemporalLight
 {
     public static final String MOD_ID = "temporallight";
+    public static phoenixrenderermod_comm ph_com = new phoenixrenderermod_comm();
     // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
     public static boolean optifineLoaded = false;
     public static int portalcooldown = 0;
     public TemporalLight() {
@@ -54,11 +65,15 @@ public class TemporalLight
         blockRegistry.register(Eventbus);
         TileEntityRegistry.register(Eventbus);
         ContainerRegistry.register(Eventbus);
+        CustomSoundEvents.register(Eventbus);
+        MobRegistry.register(Eventbus);
         TLStructureRegistry.register(Eventbus);
         RecipieTypeRegistry.register(Eventbus);
         TLBiomeRegistry.register(Eventbus);
-
-
+        /*ph_com.add(new ResourceLocation(TemporalLight.MOD_ID,"textures/entity/phoenix/shepherd.png"), VillagerProfession.SHEPHERD);
+        ph_com.add(new ResourceLocation(TemporalLight.MOD_ID,"textures/entity/phoenix/mason.png"), VillagerProfession.MASON);
+        ph_com.add(new ResourceLocation(TemporalLight.MOD_ID,"textures/entity/phoenix/leatherworker.png"), VillagerProfession.LEATHERWORKER);
+*/
         Eventbus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
         Eventbus.addListener(this::enqueueIMC);
@@ -96,6 +111,8 @@ public class TemporalLight
         //RenderTypeLookup.setRenderLayer(blockRegistry.MAGIWOODPORTAL.get(), RenderType.getCutout());
         TLItemModelProperties.makeBow(ItemRegistry.HYPERSTEELBOW.get());
         ScreenManager.registerFactory(ContainerRegistry.ASSEMBLER_CONTAINER.get(), assemblerScreen::new);
+        RenderingRegistry.registerEntityRenderingHandler(MobRegistry.PHEONIX.get(), pheonixRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(MobRegistry.MALEPHEONIX.get(), MalepheonixRenderer::new);
 
     }
 
@@ -103,6 +120,9 @@ public class TemporalLight
     {
         // some example code to dispatch IMC to another mod
         InterModComms.sendTo("net/tsw/temporallight", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        if(ModList.get().isLoaded("curios")){
+            curiosmodcommunications.comm();
+        }
     }
 
     private void processIMC(final InterModProcessEvent event)

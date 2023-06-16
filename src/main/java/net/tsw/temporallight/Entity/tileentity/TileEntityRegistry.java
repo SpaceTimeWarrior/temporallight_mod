@@ -1,4 +1,4 @@
-package net.tsw.temporallight.tileentity;
+package net.tsw.temporallight.Entity.tileentity;
 
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
