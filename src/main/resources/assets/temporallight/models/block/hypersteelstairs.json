@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "temporallight:block/hypersteelblock",
-    "top": "temporallight:block/hypersteelblock",
-    "side": "temporallight:block/hypersteelblock"
-  }
-}
