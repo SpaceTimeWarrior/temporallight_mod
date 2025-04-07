@@ -26,3 +26,5 @@ forge*changelog.txt
 run-data/config/fml.toml
 /run-data
 /src/generated
+/run-data
+/run-data

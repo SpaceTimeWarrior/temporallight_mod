@@ -1,0 +1,12 @@
+// 1.20.6	2025-04-04T00:53:03.0443423	Tags for minecraft:block mod id temporal_light
+fb5645292c08269b6325034fe636fda38a441c32 data/forge/tags/blocks/needs_netherite_tool.json
+0ad83cb3cbc9086c2550917c1b26cdebc15ac42b data/forge/tags/blocks/ores.json
+4b08c2b021c61709956a9b36649dd94bb139bbe2 data/minecraft/tags/blocks/fences.json
+361b2e61dbe044a83b19b5f65f5cdf61c0149a6b data/minecraft/tags/blocks/fence_gates.json
+810937951a7842c35da10fe29f0fad2a06f6b0a5 data/minecraft/tags/blocks/mineable/axe.json
+0ad83cb3cbc9086c2550917c1b26cdebc15ac42b data/minecraft/tags/blocks/mineable/hoe.json
+182cc9b9fa6f0d2f642d11de6488d6d31180eb71 data/minecraft/tags/blocks/mineable/pickaxe.json
+69dadfca4fbd831c8f8838369b714a89d0d47717 data/minecraft/tags/blocks/planks.json
+dfbf36656bc03cf2325515f231be9875a8d60d31 data/minecraft/tags/blocks/stairs.json
+51d3aed17bbc95a106c43fa0d98555d456b45023 data/temporal_light/tags/blocks/incorrect_for_hypersteel_tool.json
+577e7440034a70366bfa9c500aed75a455c5c1c9 data/temporal_light/tags/blocks/needs_hypersteel_tool.json
