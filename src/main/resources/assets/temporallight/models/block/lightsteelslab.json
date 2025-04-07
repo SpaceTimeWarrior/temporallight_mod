@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "temporallight:block/lightsteel_block",
-    "top": "temporallight:block/lightsteel_block",
-    "side": "temporallight:block/lightsteel_block"
-  }
-}

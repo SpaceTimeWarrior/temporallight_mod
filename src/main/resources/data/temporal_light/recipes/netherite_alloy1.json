@@ -1,0 +1,19 @@
+{
+  "type": "temporal_light:hypersteel_assemble",
+  "ingredients": [
+    {"item": "minecraft:blaze_rod"},
+    {"item": "minecraft:amethyst_shard"},
+    {"item": "minecraft:copper_ingot"},
+    {"item": "minecraft:amethyst_shard"},
+    {"item": "minecraft:gold_ingot"},
+    {"item": "minecraft:emerald"},
+    {"item": "minecraft:gold_ingot"},
+    {"item": "minecraft:amethyst_shard"},
+    {"item": "minecraft:iron_ingot"},
+    {"item": "minecraft:amethyst_shard"}
+  ],
+  "output": {
+    "id": "minecraft:netherite_ingot"
+  },
+  "min_redstone_strength": 5
+}
