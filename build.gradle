@@ -118,6 +118,20 @@ repositories {
     // flatDir {
     //     dir 'libs'
     // }
+
+    maven { url 'https://maven.minecraftforge.net' }
+    //maven { url 'https://www.cursemaven.com' } // For JEI
+    mavenCentral()
+    maven {
+        // location of the maven that hosts JEI files since January 2023
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+//    maven {
+//        // location of a maven mirror for JEI files, as a fallback
+//        name = "ModMaven"
+//        url = "https://modmaven.dev"
+//    }
 }
 
 dependencies {
@@ -127,7 +141,9 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-
+//    minecraft 'net.minecraftforge:forge:1.20.6-50.2.0' // Your Forge version
+//    compileOnly fg.deobf("mezz.jei:jei-1.20.6-forge:15.3.0.4:api") // JEI API for compilation
+//    runtimeOnly fg.deobf("mezz.jei:jei-1.20.6-forge:15.3.0.4") // Full JEI for runtime
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
@@ -142,6 +158,13 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    // compile against the JEI API but do not include it at runtime
+    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+    // at runtime, use the full JEI jar for Forge
+    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+    //implementation files('libs/jei-1.20.6-forge-18.0.0.65')
+    //compileOnly files('libs/jei-1.20.6-forge-18.0.0.65.jar') // Use full JEI for API
+    //runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
