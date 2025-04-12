@@ -11,14 +11,12 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.tsw.temporal_light.Blocks.TLBlocksRegistry;
 import net.tsw.temporal_light.Temporal_Light;
 
 import java.util.EnumMap;
 import java.util.List;
 import java.util.function.Supplier;
-
-import static java.util.List.*;
-import static java.util.List.of;
 
 public class TLArmorMaterials {
     public static final Holder<ArmorMaterial> HYPERSTEEL_ARMOR_MATERIAL = register("hypersteel", Util.make(new EnumMap<>(ArmorItem.Type.class), attribute ->{
@@ -28,6 +26,13 @@ public class TLArmorMaterials {
         attribute.put(ArmorItem.Type.HELMET,6);
         attribute.put(ArmorItem.Type.BODY,19);
     }),30,6f,0.2f,()->TLItemRegistry.HYPERSTEELINGOT.get());
+    public static final Holder<ArmorMaterial> MAGIWOOD_ARMOR_MATERIAL = register("magiwood", Util.make(new EnumMap<>(ArmorItem.Type.class), attribute ->{
+        attribute.put(ArmorItem.Type.BOOTS,4);
+        attribute.put(ArmorItem.Type.LEGGINGS,10);
+        attribute.put(ArmorItem.Type.CHESTPLATE,14);
+        attribute.put(ArmorItem.Type.HELMET,4);
+        attribute.put(ArmorItem.Type.BODY,17);
+    }),40,4f,0.6f,()-> TLBlocksRegistry.MAGIWOODPLANKS.get().asItem());
 
     private static Holder<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> typeProtection,
                                                   int enchantability, float toughness, float knockbackResistance,

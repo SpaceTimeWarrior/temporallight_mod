@@ -28,7 +28,17 @@ public class TLGENBlockTagProvider extends BlockTagsProvider {
                 .add(TLBlocksRegistry.HYPERSTEEL_RAILING_gate.get())
                 .add(TLBlocksRegistry.HYPERSTEEL_SLAB.get())
                 .add(TLBlocksRegistry.HYPERSTEEL_STAIRS.get())
-                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get());
+                .add(TLBlocksRegistry.LIGHTSTEELBLOCK.get())
+                .add(TLBlocksRegistry.LIGHTSTEELBUTTON.get())
+                .add(TLBlocksRegistry.LIGHTSTEELPRESSUREPLATE.get())
+                .add(TLBlocksRegistry.LIGHTSTEELFENCE.get())
+                .add(TLBlocksRegistry.LIGHTSTEELFENCEGATE.get())
+                .add(TLBlocksRegistry.LIGHTSTEELSLAB.get())
+                .add(TLBlocksRegistry.LIGHTSTEELSTAIRS.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_DEEPSLATE.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_END.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_NETHER.get());
         this.tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(TLBlocksRegistry.MAGIWOOD.get())
                 .add(TLBlocksRegistry.MAGIWOODSTRIPPEDLOG.get())
@@ -36,14 +46,21 @@ public class TLGENBlockTagProvider extends BlockTagsProvider {
                 .add(TLBlocksRegistry.MAGIWOODLOG.get());
         this.tag(BlockTags.FENCES)
                 .add(TLBlocksRegistry.HYPERSTEEL_RAILING.get())
+                .add(TLBlocksRegistry.LIGHTSTEELFENCE.get())
                 .add(TLBlocksRegistry.MAGIWOOD_FENCE.get());
         this.tag(BlockTags.FENCE_GATES)
                 .add(TLBlocksRegistry.HYPERSTEEL_RAILING_gate.get())
+                .add(TLBlocksRegistry.LIGHTSTEELFENCEGATE.get())
                 .add(TLBlocksRegistry.MAGIWOOD_FENCE_gate.get());
         this.tag(BlockTags.STAIRS)
                 .add(TLBlocksRegistry.HYPERSTEEL_STAIRS.get())
+                .add(TLBlocksRegistry.LIGHTSTEELSTAIRS.get())
                 .add(TLBlocksRegistry.MAGIWOOD_STAIRS.get());
-        this.tag(Tags.Blocks.ORES).add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get());
+        this.tag(Tags.Blocks.ORES)
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_DEEPSLATE.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_END.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_NETHER.get());
         this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
                 .add(TLBlocksRegistry.HYPERSTEEL_BLOCK.get())
                 .add(TLBlocksRegistry.HYPERSTEEL_BUTTON.get())
@@ -56,10 +73,38 @@ public class TLGENBlockTagProvider extends BlockTagsProvider {
                 .add(TLBlocksRegistry.MAGIWOODLOG.get())
                 .add(TLBlocksRegistry.MAGIWOODSTRIPPEDLOG.get())
                 .add(TLBlocksRegistry.MAGIWOODSTRIPPED.get())
-                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get());
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_DEEPSLATE.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_END.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_NETHER.get());
         this.tag(BlockTags.PLANKS).add(TLBlocksRegistry.MAGIWOODPLANKS.get());
-        this.tag(BlockTags.MINEABLE_WITH_HOE).add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get());
-        this.tag(TLTagRegistry.Blocks.NEEDS_HYPERSTEEL_TOOL).addTag(Tags.Blocks.NEEDS_NETHERITE_TOOL);
-        this.tag(TLTagRegistry.Blocks.INCORRECT_FOR_HYPERSTEEL_TOOL).addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL).remove(TLTagRegistry.Blocks.NEEDS_HYPERSTEEL_TOOL);
+        this.tag(BlockTags.LOGS)
+                .add(TLBlocksRegistry.MAGIWOODSTRIPPEDLOG.get())
+                .add(TLBlocksRegistry.MAGIWOODLOG.get())
+                .add(TLBlocksRegistry.MAGIWOOD.get())
+                .add(TLBlocksRegistry.MAGIWOODSTRIPPED.get());
+        this.tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get())
+                .add(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_NETHER.get());
+        this.tag(TLTagRegistry.Blocks.NEEDS_HYPERSTEEL_TOOL)
+                .addTag(Tags.Blocks.NEEDS_NETHERITE_TOOL)
+                .add(TLBlocksRegistry.LIGHTSTEELBLOCK.get())
+                .add(TLBlocksRegistry.LIGHTSTEELFENCE.get())
+                .add(TLBlocksRegistry.LIGHTSTEELFENCEGATE.get())
+                .add(TLBlocksRegistry.LIGHTSTEELSTAIRS.get())
+                .add(TLBlocksRegistry.LIGHTSTEELPRESSUREPLATE.get())
+                .add(TLBlocksRegistry.LIGHTSTEELSLAB.get());
+        this.tag(TLTagRegistry.Blocks.NEEDS_MAGIWOOD_TOOL).addTag(TLTagRegistry.Blocks.NEEDS_HYPERSTEEL_TOOL);
+        this.tag(TLTagRegistry.Blocks.INCORRECT_FOR_HYPERSTEEL_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL)
+                .remove(TLTagRegistry.Blocks.NEEDS_HYPERSTEEL_TOOL);
+        this.tag(TLTagRegistry.Blocks.INCORRECT_FOR_MAGIWOOD_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL)
+                .remove(TLTagRegistry.Blocks.NEEDS_MAGIWOOD_TOOL);
+        this.tag(TLTagRegistry.Blocks.RAW_MAGIWOOD_BLOCKS)
+                .add(TLBlocksRegistry.MAGIWOODLOG.get())
+                .add(TLBlocksRegistry.MAGIWOOD.get())
+                .add(TLBlocksRegistry.MAGIWOODSTRIPPED.get())
+                .add(TLBlocksRegistry.MAGIWOODSTRIPPEDLOG.get());
     }
 }

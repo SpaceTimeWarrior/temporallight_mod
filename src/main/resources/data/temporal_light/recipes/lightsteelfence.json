@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "W#W",
+    "W#W"
+  ],
+  "key": {
+    "#": {
+      "item": "temporal_light:lightsteelingot"
+    },
+    "W": {
+      "item": "temporal_light:lightsteelblock"
+    }
+  },
+  "result": {
+    "id": "temporal_light:lightsteelfence",
+    "count": 3
+  }
+}

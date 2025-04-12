@@ -28,8 +28,20 @@ public class TLGENItemTagGenerator extends ItemTagsProvider {
                         TLItemRegistry.HYPERSTEELHELMET.get(),
                         TLItemRegistry.HYPERSTEELBOOTS.get(),
                         TLItemRegistry.HYPERSTEELCHESTPLATE.get(),
-                        TLItemRegistry.HYPERSTEELLEGGINGS.get());
+                        TLItemRegistry.HYPERSTEELLEGGINGS.get())
+                .add(
+                        TLItemRegistry.MAGIWOOD_HELMET.get(),
+                        TLItemRegistry.MAGIWOOD_BOOTS.get(),
+                        TLItemRegistry.MAGIWOOD_CHESTPLATE.get(),
+                        TLItemRegistry.MAGIWOOD_LEGGINGS.get());
+        this.tag(ItemTags.LOGS)
+                .add(TLBlocksRegistry.MAGIWOOD.get().asItem())
+                .add(TLBlocksRegistry.MAGIWOODSTRIPPED.get().asItem())
+                .add(TLBlocksRegistry.MAGIWOODSTRIPPEDLOG.get().asItem())
+                .add(TLBlocksRegistry.MAGIWOODLOG.get().asItem());
         this.tag(ItemTags.PLANKS)
                 .add(TLBlocksRegistry.MAGIWOODPLANKS.get().asItem());
+        this.tag(ItemTags.SIGNS).add(TLItemRegistry.MAGI_SIGN.get());
+        this.tag(ItemTags.HANGING_SIGNS).add(TLItemRegistry.MAGI_HANGING_SIGN.get());
     }
 }

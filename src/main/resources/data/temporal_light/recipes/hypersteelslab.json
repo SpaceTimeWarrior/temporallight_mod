@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "temporal_light:hypersteelblock"
+    }
+  },
+  "result": {
+    "id": "temporal_light:hypersteelslab",
+    "count": 6
+  }
+}

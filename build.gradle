@@ -32,7 +32,6 @@ minecraft {
     // Use non-default mappings at your own risk. They may not always work.
     // Simply re-run your setup task after changing the mappings to update your workspace.
     mappings channel: mapping_channel, version: mapping_version
-    
     // Tell FG to not automtically create the reobf tasks, as we now use Official mappings at runtime, If you don't use them at dev time then you'll have to fix your reobf yourself.
     reobf = false
 
@@ -82,10 +81,20 @@ minecraft {
         client {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', mod_id
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+            property("mixin.env.remapRefMap", "true")
+            property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
+            property 'forge.artifact_mapping_fallback', 'official'
         }
 
         server {
             property 'forge.enabledGameTestNamespaces', mod_id
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
+            property("mixin.env.remapRefMap", "true")
+            property("mixin.env.refMapRemappingFile", "${projectDir}/build/createSrgToMcp/output.srg")
+            property 'forge.artifact_mapping_fallback', 'official'
             args '--nogui'
         }
 
@@ -132,6 +141,12 @@ repositories {
 //        name = "ModMaven"
 //        url = "https://modmaven.dev"
 //    }
+    maven {
+            url = "https://maven.theillusivec4.top/"
+        }
+    maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
+    maven { url = "https://maven.tterrag.com" } // Registrate
+    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" }
 }
 
 dependencies {
@@ -141,30 +156,24 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-//    minecraft 'net.minecraftforge:forge:1.20.6-50.2.0' // Your Forge version
-//    compileOnly fg.deobf("mezz.jei:jei-1.20.6-forge:15.3.0.4:api") // JEI API for compilation
-//    runtimeOnly fg.deobf("mezz.jei:jei-1.20.6-forge:15.3.0.4") // Full JEI for runtime
-    // Example mod dependency with JEI
-    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
-    // compileOnly "mezz.jei:jei-${mc_version}-forge-api:${jei_version}"
-    // runtimeOnly "mezz.jei:jei-${mc_version}-forge:${jei_version}"
+//    minecraft 'net.minecraftforge:forge:1.20.6-50.2.0'
 
-    // Example mod dependency using a mod jar from ./libs with a flat dir repository
-    // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
-    // The group id is ignored when searching -- in this case, it is "blank"
-    // implementation fg.deobf("blank:coolmod-${mc_version}:${coolmod_version}")
+      compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+      runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
+    //curios mod
+       //runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+       //compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+    //the create mod
+    //implementation(fg.deobf("com.simibubi.create:create-${cminecraft_version}:${create_version}:all") { transitive = false })
+    //implementation(fg.deobf("net.createmod.ponder:Ponder-Forge-${cminecraft_version}:${ponder_version}"))
+    //compileOnly(fg.deobf("dev.engine-room.flywheel:flywheel-forge-api-${cminecraft_version}:${flywheel_version}"))
+    //runtimeOnly(fg.deobf("dev.engine-room.flywheel:flywheel-forge-${cminecraft_version}:${flywheel_version}"))
+    //implementation(fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}"))
+    //compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
+    //implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
+    //compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchuli_version}:api")
+    //runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchuli_version}")//won't work as no 1.20.6 versions are available
 
-    // For more info:
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-    // compile against the JEI API but do not include it at runtime
-    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
-    // at runtime, use the full JEI jar for Forge
-    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
-    //implementation files('libs/jei-1.20.6-forge-18.0.0.65')
-    //compileOnly files('libs/jei-1.20.6-forge-18.0.0.65.jar') // Use full JEI for API
-    //runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

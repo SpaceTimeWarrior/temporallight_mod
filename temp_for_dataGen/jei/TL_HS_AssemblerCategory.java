@@ -18,7 +18,7 @@ import net.tsw.temporal_light.recipes.TL_HS_AssemblerRecipes;
 
 public class TL_HS_AssemblerCategory implements IRecipeCategory<TL_HS_AssemblerRecipes> {
     public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID,"hypersteel_assemble");
-    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID,"texture/gui/assembler_gui.png");
+    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID,"textures/gui/assembler_gui_jei.png");
 
     public static final RecipeType<TL_HS_AssemblerRecipes> TL_HS_ASSEMBLER_RECIPE_RECIPE_TYPE = new RecipeType<>(UID,TL_HS_AssemblerRecipes.class);
 
@@ -26,7 +26,7 @@ public class TL_HS_AssemblerCategory implements IRecipeCategory<TL_HS_AssemblerR
     private final IDrawable icon;
 
     public TL_HS_AssemblerCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE,0,0,176,168);
+        this.background = helper.createDrawable(TEXTURE,0,0,176,152);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,new ItemStack(TLBlocksRegistry.HYPERSTEEL_ASSEMBLER.get()));
     }
 
@@ -53,7 +53,7 @@ public class TL_HS_AssemblerCategory implements IRecipeCategory<TL_HS_AssemblerR
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, TL_HS_AssemblerRecipes recipe, IFocusGroup focuses) {
         int cgridx;int cgridy;int fuelx;int fuely;int outputx;int outputy;
-        cgridx=8;cgridy = 20;fuelx=88;fuely=31;outputx = 128;outputy = 53;
+        cgridx=8;cgridy = 20;fuelx=80;fuely=31;outputx = 120;outputy = 53;
         builder.addSlot(RecipeIngredientRole.INPUT, fuelx,fuely).addIngredients(recipe.getIngredients().get(0));
         for(int i = 0;i<3;++i){
             for(int l = 0;l<3;l++){
@@ -61,9 +61,10 @@ public class TL_HS_AssemblerCategory implements IRecipeCategory<TL_HS_AssemblerR
             }}
         builder.addSlot(RecipeIngredientRole.OUTPUT,outputx,outputy).addItemStack(recipe.getResultItem(null));
         ItemStack minStack = new ItemStack(Items.REDSTONE.asItem(),recipe.getMinRedstoneStrength());
-        ItemStack maxStack = new ItemStack(Items.REDSTONE.asItem(),recipe.getMaxRedstoneStrength());
-        builder.addSlot(RecipeIngredientRole.INPUT,fuelx-32,fuely-32).addItemStack(maxStack);
-        builder.addSlot(RecipeIngredientRole.INPUT, fuelx+32, fuely+32).addItemStack(minStack);
-
+        if(recipe.getMaxRedstoneStrength()!=null){
+            ItemStack maxStack = new ItemStack(Items.REDSTONE.asItem(),recipe.getMaxRedstoneStrength());
+            builder.addSlot(RecipeIngredientRole.INPUT,fuelx,fuely+4*16+18).addItemStack(maxStack);
+        }
+        builder.addSlot(RecipeIngredientRole.INPUT, fuelx, fuely+4*16).addItemStack(minStack);
     }
 }
