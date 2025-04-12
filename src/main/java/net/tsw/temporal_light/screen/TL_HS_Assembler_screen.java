@@ -11,7 +11,7 @@ import net.tsw.temporal_light.Temporal_Light;
 
 public class TL_HS_Assembler_screen extends AbstractContainerScreen<TL_HS_Assembler_Menu> {
     @SuppressWarnings("depricated")
-    private static final ResourceLocation TEXTURE = new ResourceLocation(Temporal_Light.MOD_ID,"textures/gui/assembler_gui.png");
+    private static final ResourceLocation TEXTURE =ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID,"textures/gui/assembler_gui.png");
     public TL_HS_Assembler_screen(TL_HS_Assembler_Menu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }

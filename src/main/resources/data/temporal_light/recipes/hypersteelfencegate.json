@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "key": {
+    "#": {
+      "item": "temporal_light:hypersteelingot"
+    },
+    "W": {
+      "item": "temporal_light:hypersteelblock"
+    }
+  },
+  "result": {
+    "id": "temporal_light:hypersteelrailinggate"
+  }
+}

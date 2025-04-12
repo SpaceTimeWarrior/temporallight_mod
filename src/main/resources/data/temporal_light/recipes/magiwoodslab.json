@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "temporal_light:magiwooodplanks"
+    }
+  },
+  "result": {
+    "id": "temporal_light:magiwoodslab",
+    "count": 6
+  }
+}

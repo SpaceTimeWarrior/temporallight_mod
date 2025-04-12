@@ -25,5 +25,6 @@ public class TLGENDataGenerators {
         generator.addProvider(event.includeClient(),new TLGENItemModelsProvider(packOutput,existingFileHelper));
         TLGENBlockTagProvider blockTagProvider = generator.addProvider(event.includeServer(),new TLGENBlockTagProvider(packOutput,lookupProvider,existingFileHelper));
         generator.addProvider(event.includeServer(),new TLGENItemTagGenerator(packOutput,lookupProvider,blockTagProvider.contentsGetter(),existingFileHelper));
+        generator.addProvider(event.includeServer(), new TLGENDatapackEntries(packOutput, lookupProvider));
     }
 }

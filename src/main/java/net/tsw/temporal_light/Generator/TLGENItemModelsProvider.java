@@ -47,6 +47,7 @@ public class TLGENItemModelsProvider extends ItemModelProvider {
         handheldItem(TLItemRegistry.HYPERSTEELPICKAXE);
         handheldItem(TLItemRegistry.HYPERSTEELSHOVEL);
         handheldItem(TLItemRegistry.HYPERSTEELSWORD);
+        handheldItem(TLItemRegistry.MAGIWOODCLUB);
         fenceItem(TLBlocksRegistry.HYPERSTEEL_RAILING,TLBlocksRegistry.HYPERSTEEL_BLOCK);
         buttonItem(TLBlocksRegistry.HYPERSTEEL_BUTTON,TLBlocksRegistry.HYPERSTEEL_BLOCK);
         evenSimplerBlockItem(TLBlocksRegistry.HYPERSTEEL_STAIRS);
@@ -62,9 +63,20 @@ public class TLGENItemModelsProvider extends ItemModelProvider {
         evenSimplerBlockItem(TLBlocksRegistry.HYPERSTEEL_PRESSUREPLATE);
         evenSimplerBlockItem(TLBlocksRegistry.MAGIWOOD_PRESSUREPLATE);
         simpleItem(TLItemRegistry.LIGHTSTEELINGOT);
-
+        fenceItem(TLBlocksRegistry.LIGHTSTEELFENCE,TLBlocksRegistry.LIGHTSTEELBLOCK);
+        buttonItem(TLBlocksRegistry.LIGHTSTEELBUTTON,TLBlocksRegistry.LIGHTSTEELBLOCK);
+        evenSimplerBlockItem(TLBlocksRegistry.LIGHTSTEELSTAIRS);
+        evenSimplerBlockItem(TLBlocksRegistry.LIGHTSTEELFENCEGATE);
+        evenSimplerBlockItem(TLBlocksRegistry.LIGHTSTEELSLAB);
+        evenSimplerBlockItem(TLBlocksRegistry.LIGHTSTEELPRESSUREPLATE);
+        saplingItem(TLBlocksRegistry.MAGIWOODSAPLING);
+        simpleItem(TLItemRegistry.HEALING_POWDER);
     }
-
+    private ItemModelBuilder saplingItem(RegistryObject<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                ResourceLocation.parse("item/generated")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID,"block/" + item.getId().getPath()));
+    }
     private ItemModelBuilder simpleItem(RegistryObject<Item>item){
         return withExistingParent(item.getId().getPath(),
                  ResourceLocation.parse("item/generated")).texture("layer0",ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID,"item/"+ item.getId().getPath()));

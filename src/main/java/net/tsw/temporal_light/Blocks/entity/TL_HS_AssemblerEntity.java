@@ -227,7 +227,7 @@ public class TL_HS_AssemblerEntity extends BlockEntity implements MenuProvider {
                     (containerId, playerInv, p) -> new TL_HS_Assembler_Menu(containerId, playerInv, this.pos),
                     Component.literal("HS Assembler")
             ), buf -> buf.writeBlockPos(this.pos)); // This sends the BlockPos
-            craft_item();
+            //craft_item();
         }
         return InteractionResult.SUCCESS;
     }

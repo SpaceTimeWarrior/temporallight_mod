@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -17,6 +18,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.minecraft.core.Direction;
 import net.tsw.temporal_light.Blocks.Custom.TL_HS_Assembler_Block;
 import net.tsw.temporal_light.Blocks.Custom.Wood.TLRotatedPillarBlock;
+import net.tsw.temporal_light.Blocks.Custom.Wood.TLSaplingBlock;
 import net.tsw.temporal_light.Blocks.Custom.sign.block.TLHangingSignBlock;
 import net.tsw.temporal_light.Blocks.Custom.sign.block.TLStandingSignBlock;
 import net.tsw.temporal_light.Blocks.Custom.sign.block.TLWallHangingSignBlock;
@@ -24,6 +26,7 @@ import net.tsw.temporal_light.Blocks.Custom.sign.block.TLWallSignBlock;
 import net.tsw.temporal_light.Items.TLItemRegistry;
 import net.tsw.temporal_light.Temporal_Light;
 import net.tsw.temporal_light.util.TLWoodTypeRegistry;
+import net.tsw.temporal_light.world.Features.tree.TLTreeGrowerRegistry;
 
 import java.util.function.Supplier;
 
@@ -32,6 +35,10 @@ public class TLBlocksRegistry {
 
 
     public static final RegistryObject<Block> SYNTHETICTIMECRYSTALORE = registerBlock("synthetictimecrystalore",()->new DropExperienceBlock(UniformInt.of(3,6), BlockBehaviour.Properties.ofFullCopy(Blocks.DRAGON_EGG).strength(5f).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SYNTHETICTIMECRYSTALORE_DEEPSLATE = registerBlock("synthetictimecrystalore_deepslate",()->new DropExperienceBlock(UniformInt.of(3,6), BlockBehaviour.Properties.ofFullCopy(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get()).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SYNTHETICTIMECRYSTALORE_NETHER = registerBlock("synthetictimecrystalore_nether",()->new DropExperienceBlock(UniformInt.of(3,6), BlockBehaviour.Properties.ofFullCopy(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get()).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> SYNTHETICTIMECRYSTALORE_END = registerBlock("synthetictimecrystalore_end",()->new DropExperienceBlock(UniformInt.of(3,6), BlockBehaviour.Properties.ofFullCopy(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE.get()).requiresCorrectToolForDrops()));
+
     public static final RegistryObject<Block> HYPERSTEEL_BLOCK = registerBlockIM("hypersteelblock",()-> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).strength(10f).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> HYPERSTEEL_STAIRS = registerBlockIM("hypersteelstairs", ()-> new StairBlock(TLBlocksRegistry.HYPERSTEEL_BLOCK.get().defaultBlockState(),BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).strength(10f).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> HYPERSTEEL_RAILING = registerBlockIM("hypersteelrailing",()-> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_FENCE).strength(10f).requiresCorrectToolForDrops()));
@@ -88,20 +95,22 @@ public class TLBlocksRegistry {
     public static final RegistryObject<Block> MAGIWOOD_SLAB = registerBlockIM("magiwoodslab",()-> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)));
     public static final RegistryObject<Block> MAGIWOOD_BUTTON = registerBlockIM("magiwoodbutton",()-> new ButtonBlock(BlockSetType.IRON,10, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
     public static final RegistryObject<Block> MAGIWOOD_PRESSUREPLATE = registerBlockIM("magiwoodpressureplate",()-> new PressurePlateBlock(BlockSetType.CHERRY,BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)));
-
+    public static final RegistryObject<Block> LIGHTSTEELBLOCK = registerBlockIM("lightsteelblock",()->new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()),64);
+    public static final RegistryObject<Block> LIGHTSTEELSTAIRS = registerBlockIM("lightsteelstairs",()->new StairBlock(LIGHTSTEELBLOCK.get().defaultBlockState(),BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()),64);
+    public static final RegistryObject<Block> LIGHTSTEELFENCE = registerBlockIM("lightsteelfence",()->new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()),64);
+    public static final RegistryObject<Block> LIGHTSTEELFENCEGATE = registerBlockIM("lightsteelfencegate",()->new FenceGateBlock(WoodType.OAK,BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()),64);
+    public static final RegistryObject<Block> LIGHTSTEELSLAB = registerBlockIM("lightsteelslab",()->new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).requiresCorrectToolForDrops()),64);
+    public static final RegistryObject<Block> LIGHTSTEELBUTTON = registerBlockIM("lightsteelbutton",()-> new ButtonBlock(BlockSetType.IRON,10, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
+    public static final RegistryObject<Block> LIGHTSTEELPRESSUREPLATE = registerBlockIM("lightsteelpressureplate",()->new PressurePlateBlock(BlockSetType.GOLD,BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).sound(SoundType.METAL)),64);
+    public static final RegistryObject<Block> MAGIWOODSAPLING = registerBlock("magiwooodsapling",()->new TLSaplingBlock(TLTreeGrowerRegistry.MAGIWOOD,BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON),()->Blocks.END_STONE,()->Blocks.NETHERRACK));
     /*+
-    public static final RegistryObject<Block> MAGIWOODLOG =registerBlockim("magiwooodlog",()->new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_LOG).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),64);
-
-    public static final RegistryObject<Block> MAGIWOOD =registerBlockim("magiwoood",()->new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.OAK_WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),64);
-    public static final RegistryObject<Block> MAGIWOODSTRIPPEDLOG =registerBlockim("magiwooodstrippedlog",()->new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_OAK_LOG).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),64);
-    public static final RegistryObject<Block> MAGIWOODSTRIPPED =registerBlockim("magiwooodstripped",()->new RotatedPillarBlock(AbstractBlock.Properties.from(Blocks.STRIPPED_OAK_WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),64);
-    public static final RegistryObject<Block> MAGIWOODPLANKS =registerBlockim("magiwooodplanks",()->new customBlock(AbstractBlock.Properties.from(Blocks.OAK_PLANKS).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),64);
-    public static final RegistryObject<Block> MAGIWOOD_STAIRS = registerBlockim("magiwoodstairs",()->new StairsBlock(()->MAGIWOODPLANKS.get().getDefaultState(),AbstractBlock.Properties.create(Material.WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),42);
-    public static final RegistryObject<Block> MAGIWOOD_FENCE =registerBlockim("magiwoodfence",()->new FenceBlock(AbstractBlock.Properties.create(Material.WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),42);
-    public static final RegistryObject<Block> MAGIWOOD_FENCE_gate =registerBlockim("magiwoodfencegate",()->new FenceGateBlock(AbstractBlock.Properties.create(Material.WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),42);
-    public static final RegistryObject<Block> MAGIWOOD_SLAB =registerBlockim("magiwoodslab",()->new SlabBlock(AbstractBlock.Properties.create(Material.WOOD).harvestLevel(4).harvestTool(ToolType.AXE).setRequiresTool()),42);
-    public static final RegistryObject<Block> MAGIWOOD_BUTTON = registerBlockim("magiwoodbutton",()-> new StoneButtonBlock(AbstractBlock.Properties.create(Material.WOOD).doesNotBlockMovement()),42);
-    public static final RegistryObject<Block> MAGIWOODLEAVES =registerBlockim("magiwooodleaves",()->new LeavesBlock(AbstractBlock.Properties.create(Material.LEAVES).hardnessAndResistance(.75F).tickRandomly().sound(SoundType.PLANT).notSolid()),64);
+    public static final RegistryObject<Block> LIGHTSTEELBLOCK = registerBlockim("lightsteelblock",()->new customBlock(AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),64);
+    public static final RegistryObject<Block> LIGHTSTEELSTAIRS = registerBlockim("lightsteelstairs",()->new StairsBlock(()->LIGHTSTEELBLOCK.get().getDefaultState(),AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),64);
+    public static final RegistryObject<Block> LIGHTSTEELFENCE = registerBlockim("lightsteelfence",()->new FenceBlock(AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),64);
+    public static final RegistryObject<Block> LIGHTSTEELFENCEGATE = registerBlockim("lightsteelfencegate",()->new FenceGateBlock(AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),64);
+    public static final RegistryObject<Block> LIGHTSTEELSLAB = registerBlockim("lightsteelslab",()->new SlabBlock(AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),64);
+    public static final RegistryObject<Block> LIGHTSTEELBUTTON = registerBlockim("lightsteelbutton",()->new StoneButtonBlock(AbstractBlock.Properties.create(Material.IRON).doesNotBlockMovement()),64);
+    public static final RegistryObject<Block> LIGHTSTEELPRESSUREPLATE = registerBlockim("lightsteelpressureplate",()->new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS,AbstractBlock.Properties.create(Material.IRON).doesNotBlockMovement().sound(SoundType.METAL)),64);
 
 
  */

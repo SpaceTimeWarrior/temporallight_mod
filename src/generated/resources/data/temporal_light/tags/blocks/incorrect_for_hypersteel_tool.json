@@ -1,0 +1,8 @@
+{
+  "remove": [
+    "#temporal_light:needs_hypersteel_tool"
+  ],
+  "values": [
+    "#minecraft:incorrect_for_netherite_tool"
+  ]
+}

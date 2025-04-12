@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SSS",
+    "SSS",
+    " B "
+  ],
+  "key": {
+    "S": {
+      "item": "temporal_light:magiwooodplanks"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "temporal_light:magiwood_item_sign"
+  }
+}

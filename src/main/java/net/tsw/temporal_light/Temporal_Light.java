@@ -1,13 +1,11 @@
 package net.tsw.temporal_light;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,8 +18,8 @@ import net.tsw.temporal_light.Blocks.TLBlocksRegistry;
 import net.tsw.temporal_light.Blocks.entity.TLBlockEntityRegistry;
 import net.tsw.temporal_light.Items.TLCreativeTabRegistry;
 import net.tsw.temporal_light.Items.TLItemRegistry;
+import net.tsw.temporal_light.compatability.TLcompatabilityRegistry;
 import net.tsw.temporal_light.recipes.TLRecipeTypeRegistry;
-import net.tsw.temporal_light.recipes.TL_HS_AssemblerSerializer;
 import net.tsw.temporal_light.screen.TLMenuTypesRegistry;
 import net.tsw.temporal_light.screen.TL_HS_Assembler_screen;
 import net.tsw.temporal_light.util.TLWoodTypeRegistry;
@@ -44,15 +42,12 @@ public class Temporal_Light
         TLBlocksRegistry.register(modEventBus);
         TLRecipeTypeRegistry.register(modEventBus);
         TLBlockEntityRegistry.register(modEventBus);
+        TLcompatabilityRegistry.register(modEventBus);
         TLMenuTypesRegistry.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
         System.out.println("Serializer ID: " + TLRecipeTypeRegistry.HYPERSTEEL_ASSEMBLE_SERIALIZER.getId());
         System.out.println("Recipe Type ID: " + TLRecipeTypeRegistry.TL_HS_ASSEMBLER.getId());
 
@@ -74,11 +69,6 @@ public class Temporal_Light
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
     }
 
-    // Add the tsw block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-
-    }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent

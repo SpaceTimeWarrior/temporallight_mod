@@ -20,7 +20,9 @@ public class TLGENBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         blockwithItem(TLBlocksRegistry.HYPERSTEEL_BLOCK);
         blockwithItem(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE);
-
+        blockwithItem(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_DEEPSLATE);
+        blockwithItem(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_END);
+        blockwithItem(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_NETHER);
         stairsBlock(((StairBlock) TLBlocksRegistry.HYPERSTEEL_STAIRS.get()),blockTexture(TLBlocksRegistry.HYPERSTEEL_BLOCK.get()));
         slabBlock(((SlabBlock) TLBlocksRegistry.HYPERSTEEL_SLAB.get()),blockTexture(TLBlocksRegistry.HYPERSTEEL_BLOCK.get()),blockTexture(TLBlocksRegistry.HYPERSTEEL_BLOCK.get()));
 
@@ -58,6 +60,21 @@ public class TLGENBlockStateProvider extends BlockStateProvider {
         fenceBlock(((FenceBlock) TLBlocksRegistry.MAGIWOOD_FENCE.get()),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()));
         fenceGateBlock(((FenceGateBlock) TLBlocksRegistry.MAGIWOOD_FENCE_gate.get()),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()));
         blockwithItem(TLBlocksRegistry.HYPERSTEEL_ASSEMBLER);
+        blockwithItem(TLBlocksRegistry.LIGHTSTEELBLOCK);
+
+        stairsBlock(((StairBlock) TLBlocksRegistry.LIGHTSTEELSTAIRS.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+        slabBlock(((SlabBlock) TLBlocksRegistry.LIGHTSTEELSLAB.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+
+        buttonBlock(((ButtonBlock) TLBlocksRegistry.LIGHTSTEELBUTTON.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+        pressurePlateBlock(((PressurePlateBlock) TLBlocksRegistry.LIGHTSTEELPRESSUREPLATE.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+
+        fenceBlock(((FenceBlock) TLBlocksRegistry.LIGHTSTEELFENCE.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+        fenceGateBlock(((FenceGateBlock) TLBlocksRegistry.LIGHTSTEELFENCEGATE.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+        saplingBlock(TLBlocksRegistry.MAGIWOODSAPLING);
+    }
+    private void saplingBlock(RegistryObject<Block> blockRegistryObject) {
+        simpleBlock(blockRegistryObject.get(),
+                models().cross(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), blockTexture(blockRegistryObject.get())).renderType("cutout"));
     }
     public void hangingSignBlock(Block signBlock, Block wallSignBlock, ResourceLocation texture) {
         ModelFile sign = models().sign(name(signBlock), texture);
