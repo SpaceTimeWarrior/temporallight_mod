@@ -234,11 +234,11 @@ public class TL_HS_AssemblerEntity extends BlockEntity implements MenuProvider {
     @Nullable
     @Override
     public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        if (pPlayerInventory.player.level().isClientSide) {
+        /*if (pPlayerInventory.player.level().isClientSide) {
             System.out.println("Client: BlockEntity data access attempted.");
         } else {
             System.out.println("Server: BlockEntity data access attempted.");
-        }
+        }*/
         return new TL_HS_Assembler_Menu(pContainerId,pPlayerInventory, this.pos);
     }
     public int get_power(){
@@ -250,7 +250,7 @@ public class TL_HS_AssemblerEntity extends BlockEntity implements MenuProvider {
         pTag.put("inventory", inventoryTag);
         pTag.putInt("tl_hs_assembler_power", PowerIn);
         super.saveAdditional(pTag, pRegistries);
-        System.out.println("Saving inventory: " + inventoryTag.toString());
+        //System.out.println("Saving inventory: " + inventoryTag.toString());
     }
 
     @Override
@@ -259,7 +259,7 @@ public class TL_HS_AssemblerEntity extends BlockEntity implements MenuProvider {
         if (pTag.contains("inventory")) {
             CompoundTag inventoryTag = pTag.getCompound("inventory");
             itemHandler.deserializeNBT(pRegistries, inventoryTag); // Updated for 1.20.6
-            System.out.println("Loading inventory: " + inventoryTag.toString());
+            //System.out.println("Loading inventory: " + inventoryTag.toString());
         } else {
             System.out.println("No inventory tag found in NBT: " + pTag.toString());
         }
@@ -285,7 +285,7 @@ public class TL_HS_AssemblerEntity extends BlockEntity implements MenuProvider {
             tag.putInt("tl_hs_assembler_power", PowerIn);
             super.handleUpdateTag(tag, holders);
         }
-        System.out.println("handleUpdateTag:"+tag.toString());
+        //System.out.println("handleUpdateTag:"+tag.toString());
     }
 
     @Override

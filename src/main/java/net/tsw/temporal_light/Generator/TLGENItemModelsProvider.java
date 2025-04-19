@@ -71,6 +71,9 @@ public class TLGENItemModelsProvider extends ItemModelProvider {
         evenSimplerBlockItem(TLBlocksRegistry.LIGHTSTEELPRESSUREPLATE);
         saplingItem(TLBlocksRegistry.MAGIWOODSAPLING);
         simpleItem(TLItemRegistry.HEALING_POWDER);
+        simpleItem(TLItemRegistry.HEALING_CROP_SEEDS);
+        simpleItem(TLItemRegistry.RAW_HEALING_CROP);
+        withExistingParent(TLItemRegistry.KITSUNE_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
     }
     private ItemModelBuilder saplingItem(RegistryObject<Block> item) {
         return withExistingParent(item.getId().getPath(),

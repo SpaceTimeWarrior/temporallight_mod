@@ -1,4 +1,5 @@
-// 1.20.6	2025-04-10T23:57:26.2779647	Item Models: temporal_light
+// 1.20.6	2025-04-14T23:08:25.376885	Item Models: temporal_light
+3b7f63f5abef5ffc73627c702e3f1d3c91dfc96a assets/temporal_light/models/item/healing_crop_seeds.json
 105ced25a55a129193b20454817a512c231abf32 assets/temporal_light/models/item/healing_powder.json
 5f8fc20be112e908ac5f645da9a66e169d6e62c3 assets/temporal_light/models/item/hypersteelaxe.json
 9975f02444f59929b07918f8c3986fe68add9062 assets/temporal_light/models/item/hypersteelbutton.json
@@ -12,6 +13,7 @@ cbe5b6001c57c66b0e11d70a074613bb0bdb2f6a assets/temporal_light/models/item/hyper
 1bc85655ee99af33a1acb75add807acf752aeb2f assets/temporal_light/models/item/hypersteelslab.json
 0ab86afe40fae9965df5a79ef29f1af75cd00b49 assets/temporal_light/models/item/hypersteelstairs.json
 93861875ddbd48e14c242bf61a8061331f9bddd9 assets/temporal_light/models/item/hypersteelsword.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/temporal_light/models/item/kitsune_spawn_egg.json
 f787b028fd705dc490dffc4a575a3d9f7da3d407 assets/temporal_light/models/item/lightsteelbutton.json
 191922367d0e82468a01ea9c5045607dace694b6 assets/temporal_light/models/item/lightsteelfence.json
 070ec42835ac50484b4877c9e13bf25944e7ac02 assets/temporal_light/models/item/lightsteelfencegate.json
@@ -29,5 +31,6 @@ f3d59a9664a087a11bee1622a217a684dcf1797c assets/temporal_light/models/item/magiw
 d8802b8c49e56c4a6cabcca2b914964d6e0173c1 assets/temporal_light/models/item/magiwood_item_hanging_sign.json
 333f71e63982a3c6155778a135260b5b7d937d44 assets/temporal_light/models/item/magiwood_item_sign.json
 aa6eeb4ac3c79043af3455d19b4939e973ba1ffd assets/temporal_light/models/item/magiwooodsapling.json
+6d0fc25998c3c076ea18cf5458dd9cce871ae836 assets/temporal_light/models/item/raw_healing_crop.json
 b93af08b8eda5d8faf0961aa6342d4f7e3dcf5bb assets/temporal_light/models/item/synthetictimecrystalshard.json
 acbabda5770475e22a9b9f8914890bb4bca7c18e assets/temporal_light/models/item/timecrystalshard.json

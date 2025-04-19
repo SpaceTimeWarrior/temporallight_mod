@@ -16,13 +16,16 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.minecraft.core.Direction;
+import net.tsw.temporal_light.Blocks.Custom.TLEatherianPortal;
 import net.tsw.temporal_light.Blocks.Custom.TL_HS_Assembler_Block;
+import net.tsw.temporal_light.Blocks.Custom.TL_Portal_1;
 import net.tsw.temporal_light.Blocks.Custom.Wood.TLRotatedPillarBlock;
 import net.tsw.temporal_light.Blocks.Custom.Wood.TLSaplingBlock;
 import net.tsw.temporal_light.Blocks.Custom.sign.block.TLHangingSignBlock;
 import net.tsw.temporal_light.Blocks.Custom.sign.block.TLStandingSignBlock;
 import net.tsw.temporal_light.Blocks.Custom.sign.block.TLWallHangingSignBlock;
 import net.tsw.temporal_light.Blocks.Custom.sign.block.TLWallSignBlock;
+import net.tsw.temporal_light.Blocks.crops.TLCropBlock2high;
 import net.tsw.temporal_light.Items.TLItemRegistry;
 import net.tsw.temporal_light.Temporal_Light;
 import net.tsw.temporal_light.util.TLWoodTypeRegistry;
@@ -103,6 +106,11 @@ public class TLBlocksRegistry {
     public static final RegistryObject<Block> LIGHTSTEELBUTTON = registerBlockIM("lightsteelbutton",()-> new ButtonBlock(BlockSetType.IRON,10, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
     public static final RegistryObject<Block> LIGHTSTEELPRESSUREPLATE = registerBlockIM("lightsteelpressureplate",()->new PressurePlateBlock(BlockSetType.GOLD,BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).sound(SoundType.METAL)),64);
     public static final RegistryObject<Block> MAGIWOODSAPLING = registerBlock("magiwooodsapling",()->new TLSaplingBlock(TLTreeGrowerRegistry.MAGIWOOD,BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON),()->Blocks.END_STONE,()->Blocks.NETHERRACK));
+    public static final RegistryObject<Block> HEALINGCROP = BLOCKS.register("healing_crop", () -> new TLCropBlock2high(BlockBehaviour.Properties.ofFullCopy(Blocks.WHEAT).noOcclusion().noCollission()));
+    public static final RegistryObject<Block> ERESPAWNANCHOR = registerBlock("end_respawn_anchor", () -> new RespawnAnchorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RESPAWN_ANCHOR)));
+
+    public static final RegistryObject<Block> EATHERIAN_SLEEP_PORTAL = registerBlock("eatherian_sleep_portal",()->new TLEatherianPortal(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noCollission()));
+    //public static final RegistryObject<Block> ERESPAWNANCHOR = BLOCKS.register("end_respawn_anchor",()->new RespawnAnchorBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RESPAWN_ANCHOR)));
     /*+
     public static final RegistryObject<Block> LIGHTSTEELBLOCK = registerBlockim("lightsteelblock",()->new customBlock(AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),64);
     public static final RegistryObject<Block> LIGHTSTEELSTAIRS = registerBlockim("lightsteelstairs",()->new StairsBlock(()->LIGHTSTEELBLOCK.get().getDefaultState(),AbstractBlock.Properties.create(Material.IRON).harvestLevel(4).harvestTool(ToolType.PICKAXE).setRequiresTool()),64);

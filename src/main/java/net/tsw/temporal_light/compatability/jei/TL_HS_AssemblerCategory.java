@@ -1,4 +1,4 @@
-package net.tsw.temporal_light.compatability.jei;
+/*package net.tsw.temporal_light.compatability.jei;
 
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -68,3 +68,4 @@ public class TL_HS_AssemblerCategory implements IRecipeCategory<TL_HS_AssemblerR
         builder.addSlot(RecipeIngredientRole.INPUT, fuelx, fuely+4*16).addItemStack(minStack);
     }
 }
+*/

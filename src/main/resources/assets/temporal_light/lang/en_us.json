@@ -17,6 +17,9 @@
   "item.temporal_light.magiwoodhelmet": "Magiwood Helmet",
   "item.temporal_light.magiwoodclub": "Magiwood Club",
   "item.temporal_light.healing_powder": "Healing Powder",
+  "item.temporal_light.healing_crop_seeds": "Healing Crop Seeds",
+  "item.temporal_light.raw_healing_crop": "Inedible Raw Healing Crop",
+  "item.temporal_light.kitsune_spawn_egg": "Kitsune Spawn Egg",
 
   "item.temporal_light.lightsteelingot": "Lightsteel Ingot",
 
@@ -54,6 +57,14 @@
   "block.temporal_light.lightsteelpressureplate": "Lightsteel Pressure Plate",
   "block.temporal_light.lightsteelbutton": "Lightsteel Button",
   "block.temporal_light.lightsteelslab": "Lightsteel Slab",
+  "block.temporal_light.end_respawn_anchor": "End Respawn Anchor",
+  "block.temporal_light.eatherian_sleep_portal": "Eatherian Dreams 64 Portal",
+
+  "entity.temporal_light.kitsune": "Kitsune",
+
+  "entity.minecraft.villager.temporal_light.end_trader": "End Trader",
+
+  "temporal_light.bunny_hop_mountains": "Bunny Hop Mountains",
 
   "creativetab.temporallightprophecy": "Temporal Prophecy items",
   "creativetab.temporallightmaterials": "Temporal Light Materials",
