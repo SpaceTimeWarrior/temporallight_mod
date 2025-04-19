@@ -13,7 +13,10 @@ import net.tsw.temporal_light.Temporal_Light;
 public class TLBlockEntityRegistry {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, Temporal_Light.MOD_ID);
-
+    public static final RegistryObject<BlockEntityType<TLEatherian_portal>> EATHERIAN_PORTAL =
+            BLOCK_ENTITIES.register("eatherian_portal", () ->
+                    BlockEntityType.Builder.of(TLEatherian_portal::new,
+                            TLBlocksRegistry.EATHERIAN_SLEEP_PORTAL.get()).build(null));
     public static final RegistryObject<BlockEntityType<TL_HS_AssemblerEntity>> TLASSEMBLER =
             BLOCK_ENTITIES.register("tlassembler", () ->
                     BlockEntityType.Builder.of(TL_HS_AssemblerEntity::new,

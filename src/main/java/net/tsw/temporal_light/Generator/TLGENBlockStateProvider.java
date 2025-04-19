@@ -3,13 +3,18 @@ package net.tsw.temporal_light.Generator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tsw.temporal_light.Blocks.TLBlocksRegistry;
+import net.tsw.temporal_light.Blocks.crops.TLCropBlock2high;
 import net.tsw.temporal_light.Temporal_Light;
+
+import java.util.function.Function;
 
 public class TLGENBlockStateProvider extends BlockStateProvider {
     public TLGENBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -71,6 +76,9 @@ public class TLGENBlockStateProvider extends BlockStateProvider {
         fenceBlock(((FenceBlock) TLBlocksRegistry.LIGHTSTEELFENCE.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
         fenceGateBlock(((FenceGateBlock) TLBlocksRegistry.LIGHTSTEELFENCEGATE.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
         saplingBlock(TLBlocksRegistry.MAGIWOODSAPLING);
+        makeHealingCrop(((CropBlock) TLBlocksRegistry.HEALINGCROP.get()), "healing_stage_", "healing_stage_");
+        blockwithItem(TLBlocksRegistry.ERESPAWNANCHOR);
+        blockwithItem(TLBlocksRegistry.EATHERIAN_SLEEP_PORTAL);
     }
     private void saplingBlock(RegistryObject<Block> blockRegistryObject) {
         simpleBlock(blockRegistryObject.get(),
@@ -103,7 +111,19 @@ public class TLGENBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile(Temporal_Light.MOD_ID +
                 ":block/" + ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath()));
     }
+    public void makeHealingCrop(CropBlock block, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function = state -> healingStates(state, block, modelName, textureName);
 
+        getVariantBuilder(block).forAllStates(function);
+    }
+
+    private ConfiguredModel[] healingStates(BlockState state, CropBlock block, String modelName, String textureName) {
+        ConfiguredModel[] models = new ConfiguredModel[1];
+        models[0] = new ConfiguredModel(models().crop(modelName + state.getValue(((TLCropBlock2high) block).getAgeProperty()),
+                ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "block/" + textureName + state.getValue(((TLCropBlock2high) block).getAgeProperty()))).renderType("cutout"));
+
+        return models;
+    }
     private void blockwithItem(RegistryObject<Block>blockRegistryObject){
         simpleBlockWithItem(blockRegistryObject.get(),cubeAll(blockRegistryObject.get()));
     }

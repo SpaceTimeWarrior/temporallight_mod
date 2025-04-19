@@ -1,6 +1,7 @@
 package net.tsw.temporal_light.Items;
 
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -8,6 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.tsw.temporal_light.Blocks.TLBlocksRegistry;
 import net.tsw.temporal_light.Items.custom.TLArmorItem;
 import net.tsw.temporal_light.Temporal_Light;
+import net.tsw.temporal_light.entity.TLEntityRegistry;
 
 public class TLItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Temporal_Light.MOD_ID);
@@ -57,8 +59,13 @@ public class TLItemRegistry {
     public static final RegistryObject<Item> MAGIWOOD_BOOTS = ITEMS.register("magiwoodboots",
             ()-> new TLArmorItem(TLArmorMaterials.MAGIWOOD_ARMOR_MATERIAL,ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(BootsDurability*HYPERSTEELDURABILITY*2)));
-
+    public static final RegistryObject<Item> HEALING_CROP_SEEDS = ITEMS.register("healing_crop_seeds",
+            () -> new ItemNameBlockItem(TLBlocksRegistry.HEALINGCROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> RAW_HEALING_CROP = ITEMS.register("raw_healing_crop",
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LIGHTSTEELINGOT = ITEMS.register("lightsteelingot",()->new Item(new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<Item> KITSUNE_SPAWN_EGG = ITEMS.register("kitsune_spawn_egg",()->new ForgeSpawnEggItem(()->TLEntityRegistry.KITSUNE.get(),0xffaf5344,0xffaf8844,new Item.Properties()));
     /*
     public static final RegistryObject<Item> MAGIWOODCLUB = ITEMS.register("magiwoodclub", () -> new SwordItem(Itemtiers.MAGIWOOD, 0, 0F, new Item.Properties().group(ItemgroupRegistry.TemporalLightTOOLS).isImmuneToFire()));
 

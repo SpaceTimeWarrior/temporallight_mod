@@ -1,4 +1,4 @@
-package net.tsw.temporal_light.compatability.jei;
+/*package net.tsw.temporal_light.compatability.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
@@ -49,4 +49,4 @@ public class TLJEIPlugin implements  IModPlugin{
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(TLBlocksRegistry.HYPERSTEEL_ASSEMBLER.get().asItem()),TL_HS_AssemblerCategory.TL_HS_ASSEMBLER_RECIPE_RECIPE_TYPE);
     }
-}
+}*/

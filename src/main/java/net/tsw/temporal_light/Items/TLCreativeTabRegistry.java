@@ -17,6 +17,9 @@ public class TLCreativeTabRegistry {
         pOutput.accept((TLItemRegistry.TIMECRYSTALSHARD.get()));
         pOutput.accept(TLBlocksRegistry.MAGIWOODSAPLING.get());
         pOutput.accept((TLItemRegistry.HEALING_POWDER.get()));
+        pOutput.accept((TLItemRegistry.HEALING_CROP_SEEDS.get()));
+        pOutput.accept((TLItemRegistry.RAW_HEALING_CROP.get()));
+        pOutput.accept((TLItemRegistry.KITSUNE_SPAWN_EGG.get()));
     })).build());
     public static final RegistryObject<CreativeModeTab> TemporalLightMaterials = CTABS.register("temporallightmaterials",()-> CreativeModeTab.builder().icon(()->new ItemStack(TLItemRegistry.SYNTHTIMECRYSTALSHARD.get())).title(Component.translatable("creativetab.temporallightmaterials")).displayItems(((pParameters, pOutput) -> {
         pOutput.accept((TLItemRegistry.SYNTHTIMECRYSTALSHARD.get()));
@@ -60,6 +63,7 @@ public class TLCreativeTabRegistry {
         pOutput.accept(TLBlocksRegistry.LIGHTSTEELSTAIRS.get());
         pOutput.accept(TLBlocksRegistry.MAGIWOODSAPLING.get());
 
+        pOutput.accept(TLBlocksRegistry.ERESPAWNANCHOR.get());
         pOutput.accept(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_DEEPSLATE.get());
         pOutput.accept(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_NETHER.get());
         pOutput.accept(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_END.get());

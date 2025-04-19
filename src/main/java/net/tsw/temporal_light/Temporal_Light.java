@@ -3,6 +3,7 @@ package net.tsw.temporal_light;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.Sheets;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -19,10 +20,14 @@ import net.tsw.temporal_light.Blocks.entity.TLBlockEntityRegistry;
 import net.tsw.temporal_light.Items.TLCreativeTabRegistry;
 import net.tsw.temporal_light.Items.TLItemRegistry;
 import net.tsw.temporal_light.compatability.TLcompatabilityRegistry;
+import net.tsw.temporal_light.entity.TLEntityRegistry;
+import net.tsw.temporal_light.entity.client.KitsuneRenderer;
 import net.tsw.temporal_light.recipes.TLRecipeTypeRegistry;
 import net.tsw.temporal_light.screen.TLMenuTypesRegistry;
 import net.tsw.temporal_light.screen.TL_HS_Assembler_screen;
 import net.tsw.temporal_light.util.TLWoodTypeRegistry;
+import net.tsw.temporal_light.villagers.TLVillagerRegistry;
+import net.tsw.temporal_light.world.Features.biome.TLBiomeRegistry;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -40,10 +45,13 @@ public class Temporal_Light
         TLCreativeTabRegistry.register(modEventBus);
         TLItemRegistry.register(modEventBus);
         TLBlocksRegistry.register(modEventBus);
+        TLVillagerRegistry.register(modEventBus);
         TLRecipeTypeRegistry.register(modEventBus);
         TLBlockEntityRegistry.register(modEventBus);
+        TLEntityRegistry.register(modEventBus);
         TLcompatabilityRegistry.register(modEventBus);
         TLMenuTypesRegistry.register(modEventBus);
+        TLBiomeRegistry.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         // Register ourselves for server and other game events we are interested in
@@ -57,6 +65,7 @@ public class Temporal_Light
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event){
             Sheets.addWoodType(TLWoodTypeRegistry.MAGI);
+            EntityRenderers.register(TLEntityRegistry.KITSUNE.get(), KitsuneRenderer::new);
             MenuScreens.register(TLMenuTypesRegistry.TL_HS_ASSEMBLER_MENU.get(), TL_HS_Assembler_screen::new);
 
         }
