@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:gunpowder"
+    },
+    "S": {
+      "item": "temporal_light:end_respawn_anchor"
+    }
+  },
+  "result": {
+    "item": "temporal_light:eatherian_sleep_portal"
+  }
+}

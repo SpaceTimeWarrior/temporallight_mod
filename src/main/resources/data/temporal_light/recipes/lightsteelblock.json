@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "HHH",
+    "HHH",
+    "HHH"
+  ],
+  "key": {
+    "H": {
+      "item": "temporal_light:lightsteelingot"
+    }
+  },
+  "result": {
+    "item": "temporal_light:lightsteelblock"
+  }
+}

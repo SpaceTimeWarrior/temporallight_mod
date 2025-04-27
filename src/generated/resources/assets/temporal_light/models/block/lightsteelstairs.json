@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "temporal_light:block/lightsteelblock",
+    "side": "temporal_light:block/lightsteelblock",
+    "top": "temporal_light:block/lightsteelblock"
+  }
+}

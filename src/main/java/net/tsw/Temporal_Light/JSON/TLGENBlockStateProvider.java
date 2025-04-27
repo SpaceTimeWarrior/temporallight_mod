@@ -1,0 +1,132 @@
+package net.tsw.Temporal_Light.JSON;
+
+import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+import net.tsw.Temporal_Light.Temporal_Light;
+import net.tsw.Temporal_Light.blocks.TLBlocksRegistry;
+import net.tsw.Temporal_Light.blocks.Custom.crops.TLCropBlock2high;
+
+import java.util.function.Function;
+
+public class TLGENBlockStateProvider extends BlockStateProvider {
+    public TLGENBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
+        super(output, Temporal_Light.MOD_ID, exFileHelper);
+    }
+
+    @Override
+    protected void registerStatesAndModels() {
+        blockwithItem(TLBlocksRegistry.HYPERSTEEL_BLOCK);
+        blockwithItem(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE);
+        blockwithItem(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_DEEPSLATE);
+        blockwithItem(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_END);
+        blockwithItem(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_NETHER);
+        stairsBlock(((StairBlock) TLBlocksRegistry.HYPERSTEEL_STAIRS.get()),blockTexture(TLBlocksRegistry.HYPERSTEEL_BLOCK.get()));
+        slabBlock(((SlabBlock) TLBlocksRegistry.HYPERSTEEL_SLAB.get()),blockTexture(TLBlocksRegistry.HYPERSTEEL_BLOCK.get()),blockTexture(TLBlocksRegistry.HYPERSTEEL_BLOCK.get()));
+
+        buttonBlock(((ButtonBlock) TLBlocksRegistry.HYPERSTEEL_BUTTON.get()),blockTexture(TLBlocksRegistry.HYPERSTEEL_BLOCK.get()));
+        pressurePlateBlock(((PressurePlateBlock) TLBlocksRegistry.HYPERSTEEL_PRESSUREPLATE.get()),blockTexture(TLBlocksRegistry.HYPERSTEEL_BLOCK.get()));
+
+        fenceBlock(((FenceBlock) TLBlocksRegistry.HYPERSTEEL_RAILING.get()),blockTexture(TLBlocksRegistry.HYPERSTEEL_BLOCK.get()));
+        fenceGateBlock(((FenceGateBlock) TLBlocksRegistry.HYPERSTEEL_RAILING_gate.get()),blockTexture(TLBlocksRegistry.HYPERSTEEL_BLOCK.get()));
+
+        logBlock(((RotatedPillarBlock) TLBlocksRegistry.MAGIWOODLOG.get()));
+        axisBlock(((RotatedPillarBlock) TLBlocksRegistry.MAGIWOOD.get()), blockTexture(TLBlocksRegistry.MAGIWOODLOG.get()), blockTexture(TLBlocksRegistry.MAGIWOODLOG.get()));
+
+        axisBlock(((RotatedPillarBlock) TLBlocksRegistry.MAGIWOODSTRIPPEDLOG.get()), blockTexture(TLBlocksRegistry.MAGIWOODSTRIPPEDLOG.get()),
+                 ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "block/magiwooodstrippedlog_top"));
+        axisBlock(((RotatedPillarBlock) TLBlocksRegistry.MAGIWOODSTRIPPED.get()), blockTexture(TLBlocksRegistry.MAGIWOODSTRIPPEDLOG.get()),
+                blockTexture(TLBlocksRegistry.MAGIWOODSTRIPPEDLOG.get()));
+
+        blockItem(TLBlocksRegistry.MAGIWOODLOG);
+        blockItem(TLBlocksRegistry.MAGIWOOD);
+        blockItem(TLBlocksRegistry.MAGIWOODSTRIPPEDLOG);
+        blockItem(TLBlocksRegistry.MAGIWOODSTRIPPED);
+
+        blockwithItem(TLBlocksRegistry.MAGIWOODPLANKS);
+
+        leavesBlock(TLBlocksRegistry.MAGIWOODLEAVES);
+
+        signBlock(((StandingSignBlock) TLBlocksRegistry.MAGIWOOD_SIGN.get()),((WallSignBlock) TLBlocksRegistry.MAGIWOOD_WALL_SIGN.get()),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()));
+        hangingSignBlock( TLBlocksRegistry.MAGIWOOD_HANGING_SIGN.get(), TLBlocksRegistry.MAGIWOOD_WALL_HANGING_SIGN.get(),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()));
+        stairsBlock(((StairBlock) TLBlocksRegistry.MAGIWOOD_STAIRS.get()),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()));
+        slabBlock(((SlabBlock) TLBlocksRegistry.MAGIWOOD_SLAB.get()),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()));
+
+        buttonBlock(((ButtonBlock) TLBlocksRegistry.MAGIWOOD_BUTTON.get()),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()));
+        pressurePlateBlock(((PressurePlateBlock) TLBlocksRegistry.MAGIWOOD_PRESSUREPLATE.get()),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()));
+
+        fenceBlock(((FenceBlock) TLBlocksRegistry.MAGIWOOD_FENCE.get()),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()));
+        fenceGateBlock(((FenceGateBlock) TLBlocksRegistry.MAGIWOOD_FENCE_gate.get()),blockTexture(TLBlocksRegistry.MAGIWOODPLANKS.get()));
+        blockwithItem(TLBlocksRegistry.HYPERSTEEL_ASSEMBLER);
+
+        saplingBlock(TLBlocksRegistry.MAGIWOODSAPLING);
+        /*blockwithItem(TLBlocksRegistry.EATHERIAN_SLEEP_PORTAL);*/
+        blockwithItem(TLBlocksRegistry.LIGHTSTEELBLOCK);
+
+        stairsBlock(((StairBlock) TLBlocksRegistry.LIGHTSTEELSTAIRS.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+        slabBlock(((SlabBlock) TLBlocksRegistry.LIGHTSTEELSLAB.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+
+        buttonBlock(((ButtonBlock) TLBlocksRegistry.LIGHTSTEELBUTTON.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+        pressurePlateBlock(((PressurePlateBlock) TLBlocksRegistry.LIGHTSTEELPRESSUREPLATE.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+
+        fenceBlock(((FenceBlock) TLBlocksRegistry.LIGHTSTEELFENCE.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+        fenceGateBlock(((FenceGateBlock) TLBlocksRegistry.LIGHTSTEELFENCEGATE.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));
+        makeHealingCrop(((CropBlock) TLBlocksRegistry.HEALINGCROP.get()), "healing_stage_", "healing_stage_");
+        blockwithItem(TLBlocksRegistry.ERESPAWNANCHOR);
+
+    }
+    private void saplingBlock(RegistryObject<Block> blockRegistryObject) {
+        simpleBlock(blockRegistryObject.get(),
+                models().cross(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), blockTexture(blockRegistryObject.get())).renderType("cutout"));
+    }
+    public void hangingSignBlock(Block signBlock, Block wallSignBlock, ResourceLocation texture) {
+        ModelFile sign = models().sign(name(signBlock), texture);
+        hangingSignBlock(signBlock, wallSignBlock, sign);
+    }
+
+    public void hangingSignBlock(Block signBlock, Block wallSignBlock, ModelFile sign) {
+        simpleBlock(signBlock, sign);
+        simpleBlock(wallSignBlock, sign);
+    }
+
+    private String name(Block block) {
+        return key(block).getPath();
+    }
+
+    private ResourceLocation key(Block block) {
+        return ForgeRegistries.BLOCKS.getKey(block);
+    }
+    private void leavesBlock(RegistryObject<Block> blockRegistryObject) {
+        simpleBlockWithItem(blockRegistryObject.get(),
+                models().singleTexture(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(),  ResourceLocation.parse("minecraft:block/leaves"),
+                        "all", blockTexture(blockRegistryObject.get())).renderType("cutout"));
+    }
+
+    private void blockItem(RegistryObject<Block> blockRegistryObject) {
+        simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile(Temporal_Light.MOD_ID +
+                ":block/" + ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath()));
+    }
+    public void makeHealingCrop(CropBlock block, String modelName, String textureName) {
+        Function<BlockState, ConfiguredModel[]> function = state -> healingStates(state, block, modelName, textureName);
+
+        getVariantBuilder(block).forAllStates(function);
+    }
+
+    private ConfiguredModel[] healingStates(BlockState state, CropBlock block, String modelName, String textureName) {
+        ConfiguredModel[] models = new ConfiguredModel[1];
+        models[0] = new ConfiguredModel(models().crop(modelName + state.getValue(((TLCropBlock2high) block).getAgeProperty()),
+                ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "block/" + textureName + state.getValue(((TLCropBlock2high) block).getAgeProperty()))).renderType("cutout"));
+
+        return models;
+    }
+    private void blockwithItem(RegistryObject<Block>blockRegistryObject){
+        simpleBlockWithItem(blockRegistryObject.get(),cubeAll(blockRegistryObject.get()));
+    }
+}

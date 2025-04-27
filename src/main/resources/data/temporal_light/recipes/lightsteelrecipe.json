@@ -1,0 +1,19 @@
+{
+  "type": "temporal_light:hypersteel_assemble",
+  "ingredients": [
+    {"item": "minecraft:netherite_ingot"},
+    [],
+    {"item": "temporal_light:hypersteelingot"},
+    [],
+    {"item": "temporal_light:hypersteelingot"},
+    {"item": "temporal_light:hypersteelblock"},
+    {"item": "temporal_light:hypersteelingot"},
+    [],
+    {"item": "temporal_light:hypersteelingot"},
+    []
+  ],
+  "output": {"item": "temporal_light:lightsteelingot"},
+  "redtype": 2,
+  "min_redstone_strength": 1,
+  "max_redstone_strength": 10
+}

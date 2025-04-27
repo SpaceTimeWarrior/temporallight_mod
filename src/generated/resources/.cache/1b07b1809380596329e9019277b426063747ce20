@@ -1,0 +1,7 @@
+// 1.20.1	2025-04-25T19:13:07.0554788	Tags for minecraft:item mod id temporal_light
+d6d2b0d5fc032d921693f3a0fed84cd6046ed26b data/minecraft/tags/items/hanging_signs.json
+829dcfe7aadefdc4092df990e031b0ae33cbc79a data/minecraft/tags/items/logs.json
+69dadfca4fbd831c8f8838369b714a89d0d47717 data/minecraft/tags/items/planks.json
+c8e723944bc68c724eba96f551f3521369d01741 data/minecraft/tags/items/signs.json
+a691e792050e5e05689d7f32a766ce34b26c6e4b data/minecraft/tags/items/trimmable_armor.json
+cb9bf99a5a4ad4b982f8b8d458c192363823f249 data/minecraft/tags/items/trim_materials.json

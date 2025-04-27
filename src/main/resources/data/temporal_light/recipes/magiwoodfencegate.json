@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_fence_gate",
+  "pattern": [
+    "#W#",
+    "#W#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "temporal_light:magiwooodplanks"
+    }
+  },
+  "result": {
+    "item": "temporal_light:magiwoodfencegate"
+  }
+}

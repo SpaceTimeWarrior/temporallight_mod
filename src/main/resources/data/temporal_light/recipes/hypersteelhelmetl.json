@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XLX"
+  ],
+  "key": {
+    "X": {
+      "item": "temporal_light:hypersteelingot"
+    },
+    "L":{
+       "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "temporal_light:hypersteelhelmet"
+  }
+}

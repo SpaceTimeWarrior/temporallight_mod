@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "temporal_light:block/magiwooodlog_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "temporal_light:block/magiwooodlog"
+    },
+    "axis=z": {
+      "model": "temporal_light:block/magiwooodlog_horizontal",
+      "x": 90
+    }
+  }
+}

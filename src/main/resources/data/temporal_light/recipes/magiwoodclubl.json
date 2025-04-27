@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    " X ",
+    "l#l"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    },
+    "X": {
+      "item": "temporal_light:magiwooodplanks"
+    }
+  },
+  "result": {
+    "item": "temporal_light:magiwoodclub"
+  }
+}

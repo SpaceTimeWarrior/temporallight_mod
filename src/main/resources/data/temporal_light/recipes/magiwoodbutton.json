@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "group": "wooden_button",
+  "ingredients": [
+    {
+      "item": "temporal_light:magiwooodplanks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "temporal_light:magiwoodbutton"
+  }
+}

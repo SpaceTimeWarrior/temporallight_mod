@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "temporal_light:hypersteelblock"
+    }
+  },
+  "result": {
+    "item": "temporal_light:hypersteelstairs",
+    "count": 4
+  }
+}

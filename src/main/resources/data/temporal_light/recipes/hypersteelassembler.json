@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XRX"
+  ],
+  "key": {
+    "#": {
+      "item": "temporal_light:magiwooodplanks"
+    },
+    "R": {
+      "item": "minecraft:comparator"
+    },
+    "X": {
+      "item": "temporal_light:hypersteelingot"
+    }
+  },
+  "result": {
+    "item": "temporal_light:hypersteelassembler"
+  }
+}
