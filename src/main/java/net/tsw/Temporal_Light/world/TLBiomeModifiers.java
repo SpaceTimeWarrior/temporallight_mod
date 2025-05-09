@@ -12,9 +12,11 @@ import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ForgeBiomeModifiers;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.tsw.Temporal_Light.Temporal_Light;
 import net.tsw.Temporal_Light.entity.TLEntityRegistry;
+
 
 import java.util.List;
 
@@ -49,19 +51,19 @@ public class TLBiomeModifiers {
                 HolderSet.direct(placedFeature.getOrThrow(TLPlacedFeaturesRegistry.TC_PLACED_ORE_END)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
         // Individual Biomes
-        context.register(ADD_MAGIWOOD, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                 HolderSet.direct(biomes.getOrThrow(Biomes.CHERRY_GROVE), biomes.getOrThrow(Biomes.DRIPSTONE_CAVES)),
-                 HolderSet.direct(placedFeature.getOrThrow(TLPlacedFeaturesRegistry.MAGIWOOD_PLACED_KEY)),
-                 GenerationStep.Decoration.VEGETAL_DECORATION));
+            context.register(ADD_MAGIWOOD, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                    HolderSet.direct(biomes.getOrThrow(Biomes.CHERRY_GROVE), biomes.getOrThrow(Biomes.DRIPSTONE_CAVES)),
+                    HolderSet.direct(placedFeature.getOrThrow(TLPlacedFeaturesRegistry.MAGIWOOD_PLACED_KEY)),
+                    GenerationStep.Decoration.VEGETAL_DECORATION));
         context.register(ADD_END_MAGIWOOD, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.END_BARRENS), biomes.getOrThrow(Biomes.SMALL_END_ISLANDS)),
                 HolderSet.direct(placedFeature.getOrThrow(TLPlacedFeaturesRegistry.MAGIWOOD_PLACED_END_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
-        //spawn Mobs
-        context.register(SPAWN_KITSUNE, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
-                HolderSet.direct(biomes.getOrThrow(Biomes.CHERRY_GROVE),biomes.getOrThrow(Biomes.GROVE),biomes.getOrThrow(Biomes.LUSH_CAVES)),
-                List.of(new MobSpawnSettings.SpawnerData(TLEntityRegistry.KITSUNE.get(),5,1,5))));
 
+        //spawn Mobs
+            context.register(SPAWN_KITSUNE, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                    HolderSet.direct(biomes.getOrThrow(Biomes.CHERRY_GROVE), biomes.getOrThrow(Biomes.GROVE), biomes.getOrThrow(Biomes.LUSH_CAVES)),
+                    List.of(new MobSpawnSettings.SpawnerData(TLEntityRegistry.KITSUNE.get(), 5, 1, 5))));
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

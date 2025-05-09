@@ -18,5 +18,11 @@ public class TLcompatabilityRegistry {
             Temporal_Light.LOGGER.debug("Twilight Forest did not load here is a list of items it did not load");
             Temporal_Light.LOGGER.debug("");
         }
+        if(ModList.get().isLoaded("mekanismgenerators")){
+            net.tsw.Temporal_Light.Intermod.mekanismgenerators.TLMGRegistry.register(eventbus);
+        }else{
+            Temporal_Light.LOGGER.debug("Mekanism-generators did not load here is a list of items it did not load");
+            Temporal_Light.LOGGER.debug("");
+        }
     }
 }

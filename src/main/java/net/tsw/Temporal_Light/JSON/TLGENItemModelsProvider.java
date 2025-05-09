@@ -84,11 +84,32 @@ public class TLGENItemModelsProvider extends ItemModelProvider {
         evenSimplerBlockItem(TLBlocksRegistry.LIGHTSTEELFENCEGATE);
         evenSimplerBlockItem(TLBlocksRegistry.LIGHTSTEELSLAB);
         evenSimplerBlockItem(TLBlocksRegistry.LIGHTSTEELPRESSUREPLATE);
+        handheldItem(TLItemRegistry.LIGHTSTEELAXE);
+        handheldItem(TLItemRegistry.LIGHTSTEELHOE);
+        handheldItem(TLItemRegistry.LIGHTSTEELPICKAXE);
+        handheldItem(TLItemRegistry.LIGHTSTEELSHOVEL);
+        handheldItem(TLItemRegistry.LIGHTSTEELSWORD);
+        handheldItem(TLItemRegistry.LIGHTNING_STAFF);
+        handheldItem(TLItemRegistry.FIRE_STAFF);
+        handheldItem(TLItemRegistry.EARTH_STAFF);
+        handheldItem(TLItemRegistry.REDSTONE_STAFF);
+        handheldItem(TLItemRegistry.LIFE_STAFF);
         saplingItem(TLBlocksRegistry.MAGIWOODSAPLING);
         simpleItem(TLItemRegistry.HEALING_POWDER);
         simpleItem(TLItemRegistry.HEALING_CROP_SEEDS);
         simpleItem(TLItemRegistry.RAW_HEALING_CROP);
+        simpleItem(TLItemRegistry.MAGIC_ESSENCE_NULL);
+        simpleItem(TLItemRegistry.MAGIC_ESSENCE_ELECTRICITY);
+        simpleItem(TLItemRegistry.MAGIC_ESSENCE_FIRE);
+        simpleItem(TLItemRegistry.MAGIC_ESSENCE_FIRE_BURNABLE);
+        simpleItem(TLItemRegistry.MAGIC_ESSENCE_EARTH);
+        simpleItem(TLItemRegistry.MAGIC_ESSENCE_LIFE);
+        simpleItem(TLItemRegistry.LIGHTNING_CHARGE);
+        simpleItem(TLItemRegistry.HYPERSTEELHORSEARMOR);
+        simpleItem(TLItemRegistry.HYPERSTEELWIRE);
+        simpleItem(TLItemRegistry.REDSTONE_HYPERCOIL);
         withExistingParent(TLItemRegistry.KITSUNE_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
+        withExistingParent(TLItemRegistry.PHOENIX_F_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
     }
     private void trimmedArmorItem(RegistryObject<Item> itemRegistryObject) {
         final String MOD_ID = Temporal_Light.MOD_ID; // Change this to your mod id

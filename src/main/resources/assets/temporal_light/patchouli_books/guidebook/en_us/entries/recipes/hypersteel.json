@@ -1,0 +1,70 @@
+{
+  "sortnum": 1,
+  "name": " Hypersteel ",
+  "icon": "temporal_light:hypersteelingot",
+  "category": "temporal_light:recipes",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "temporal_light:hypersteelingot",
+      "text": "This is one of the lowest tiers of this mod."
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteel",
+      "recipe2": "temporal_light:hypersteel2",
+      "title": "ingot Recipes",
+      "text": "these are necessary for the next few recipes next up Tool creation"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteelaxe",
+      "recipe2": "temporal_light:hypersteelaxe2"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteelhoe",
+      "recipe2": "temporal_light:hypersteelhoe2"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteelpickaxe",
+      "recipe2": "temporal_light:hypersteelshovel"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteelsword",
+      "recipe2": "temporal_light:hypersteelblock",
+      "text": "next is the armor recipes"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteelhelmetl",
+      "recipe": "temporal_light:hypersteelhelmetw",
+      "text": "the wool or leather is used to prevent skin irritation"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteelchestplatel",
+      "recipe": "temporal_light:hypersteelchestplatew",
+      "text": "the wool or leather is used to prevent skin irritation"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteelpantsl",
+      "recipe": "temporal_light:hypersteelpantsw",
+      "text": "the wool or leather is used to prevent skin irritation"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteelbootsl",
+      "recipe": "temporal_light:hypersteelbootsw",
+      "text": "the wool or leather is used to prevent skin irritation. next up is crafting station(s) using hypersteel"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteelassembler",
+      "text": "using a combination of redstone and lightning the assembler can weld metals together. the magiwood in the core is used for it's heat resistance as well as magical qualities. this is necessary for the next few tiers. right click while crouching will craft if a recipe and correct redstone signal is present"
+    }
+  ]
+}

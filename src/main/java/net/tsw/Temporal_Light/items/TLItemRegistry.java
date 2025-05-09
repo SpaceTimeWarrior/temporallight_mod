@@ -1,16 +1,26 @@
 package net.tsw.Temporal_Light.items;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import net.tsw.Temporal_Light.Earth_arraylists;
 import net.tsw.Temporal_Light.Temporal_Light;
 import net.tsw.Temporal_Light.blocks.TLBlocksRegistry;
 import net.tsw.Temporal_Light.entity.TLEntityRegistry;
-import net.tsw.Temporal_Light.items.custom.TLArmorItem;
-import net.tsw.Temporal_Light.items.custom.TLFoodRegistry;
+import net.tsw.Temporal_Light.items.custom.*;
+import net.tsw.Temporal_Light.util.TLTagRegistry;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class TLItemRegistry {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Temporal_Light.MOD_ID);
@@ -48,18 +58,46 @@ public class TLItemRegistry {
     public static final RegistryObject<Item> MAGI_HANGING_SIGN = ITEMS.register("magiwood_item_hanging_sign",()->new HangingSignItem(TLBlocksRegistry.MAGIWOOD_HANGING_SIGN.get(),TLBlocksRegistry.MAGIWOOD_WALL_HANGING_SIGN.get(),new Item.Properties().stacksTo(16) ));
     public static final RegistryObject<Item> HEALING_POWDER = ITEMS.register("healing_powder",()->new Item(new Item.Properties().food(TLFoodRegistry.HEALING_POWDER)));
     public static final RegistryObject<Item> LIGHTSTEELINGOT = ITEMS.register("lightsteelingot",()->new Item(new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<Item>  LIGHTSTEELSWORD =  ITEMS.register("lightsteelsword", () -> new SwordItem(TLItemToolTiersRegistry.LIGHTSTEEL,8,4f,new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item>  LIGHTSTEELPICKAXE =ITEMS.register("lightsteelpickaxe",()-> new PickaxeItem(TLItemToolTiersRegistry.LIGHTSTEEL,6,2f,new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item>  LIGHTSTEELAXE = ITEMS.register("lightsteelaxe", () -> new AxeItem(TLItemToolTiersRegistry.LIGHTSTEEL,16,-2f,new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item>  LIGHTSTEELSHOVEL = ITEMS.register("lightsteelshovel", () -> new ShovelItem(TLItemToolTiersRegistry.LIGHTSTEEL, 2,2f ,new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item>  LIGHTSTEELHOE = ITEMS.register("lightsteelhoe", () -> new HoeItem(TLItemToolTiersRegistry.LIGHTSTEEL,1,0f,new Item.Properties().fireResistant()));
+
     public static final RegistryObject<Item> LIGHTSTEELHELMET = ITEMS.register("lightsteelhelmet",
-            () -> new TLArmorItem(TLArmorMaterials.LIGHTSTEEL, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new TLArmorItem(TLArmorMaterials.LIGHTSTEEL, ArmorItem.Type.HELMET, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> LIGHTSTEELCHESTPLATE = ITEMS.register("lightsteelchestplate",
-            () -> new TLArmorItem(TLArmorMaterials.LIGHTSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+            () -> new TLArmorItem(TLArmorMaterials.LIGHTSTEEL, ArmorItem.Type.CHESTPLATE, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> LIGHTSTEELLEGGINGS = ITEMS.register("lightsteelleggings",
-            () -> new TLArmorItem(TLArmorMaterials.LIGHTSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+            () -> new TLArmorItem(TLArmorMaterials.LIGHTSTEEL, ArmorItem.Type.LEGGINGS, new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> LIGHTSTEELBOOTS = ITEMS.register("lightsteelboots",
-            () -> new TLArmorItem(TLArmorMaterials.LIGHTSTEEL, ArmorItem.Type.BOOTS, new Item.Properties()));
+            () -> new TLArmorItem(TLArmorMaterials.LIGHTSTEEL, ArmorItem.Type.BOOTS, new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> KITSUNE_SPAWN_EGG = ITEMS.register("kitsune_spawn_egg",()->new ForgeSpawnEggItem(()-> TLEntityRegistry.KITSUNE.get(),0xffaf5344,0xffaf8844,new Item.Properties()));
+    public static final RegistryObject<Item> PHOENIX_F_SPAWN_EGG = ITEMS.register("phoenix_f_spawn_egg",()->new ForgeSpawnEggItem(()-> TLEntityRegistry.PHOENIX_F.get(),0xffff0000,0xfffbf236,new Item.Properties()));
     public static final RegistryObject<Item> HEALING_CROP_SEEDS = ITEMS.register("healing_crop_seeds", () -> new ItemNameBlockItem(TLBlocksRegistry.HEALINGCROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> RAW_HEALING_CROP = ITEMS.register("raw_healing_crop", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> MAGIC_ESSENCE_NULL = ITEMS.register("magic_essence_null",()->new TLNull_Magic_crystal(new Item.Properties()));
+    public static final RegistryObject<Item> MAGIC_ESSENCE_ELECTRICITY = ITEMS.register("magic_essence_electricity",()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MAGIC_ESSENCE_FIRE = ITEMS.register("magic_essence_fire",()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MAGIC_ESSENCE_FIRE_BURNABLE = ITEMS.register("magic_essence_fire_burnable",()->new TLFuelItem(new Item.Properties(),60,MAGIC_ESSENCE_NULL.get()));
+
+    public static final RegistryObject<Item> LIGHTNING_STAFF = ITEMS.register("lightning_staff",()->new TLLightning_weapon(new Item.Properties(),64, Ingredient.of(TLTagRegistry.Items.MAGIC_ESSENCE_ELECTRICITY)));
+
+    public static final RegistryObject<Item> LIGHTNING_CHARGE = ITEMS.register("lightning_charge",()->new TLLightningCharge(new Item.Properties()));
+    public static final RegistryObject<Item> FIRE_STAFF = ITEMS.register("fire_staff",()->new TLFireStaff(new Item.Properties(),64,Ingredient.of(TLTagRegistry.Items.MAGIC_ESSENCE_FIRE)));
+    public static final RegistryObject<Item> MAGIC_ESSENCE_EARTH = ITEMS.register("magic_essence_earth",()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> EARTH_STAFF = ITEMS.register("earth_staff",()->new TLEarth_staff(new Item.Properties(),128,Ingredient.of(TLTagRegistry.Items.MAGIC_ESSENCE_EARTH)));
+    public static final RegistryObject<Item> REDSTONE_STAFF = ITEMS.register("redstone_staff",()->new TLEarth_staff(new Item.Properties(),128,Ingredient.of(TLTagRegistry.Items.MAGIC_ESSENCE_EARTH),new Earth_arraylists().redb));
+    public static final RegistryObject<Item> MAGIC_ESSENCE_LIFE = ITEMS.register("magic_essence_life",()->new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LIFE_STAFF = ITEMS.register("life_staff",()->new TLLife_staff(new Item.Properties(),64,Ingredient.of(TLTagRegistry.Items.MAGIC_ESSENCE_LIFE)));
+    public static final RegistryObject<Item> HYPERSTEELBOW = ITEMS.register("hypersteelbow",()->new TLBowItem(new Item.Properties().durability(4096).fireResistant(),Ingredient.of(HYPERSTEELINGOT.get())));
+    public static final RegistryObject<Item> HYPERSTEELSHIELD = ITEMS.register("hypersteelshield",()->new TLShieldItem(new Item.Properties().durability(4096).fireResistant(),Ingredient.of(HYPERSTEELINGOT.get())));
+    public static final RegistryObject<Item> HYPERSTEELHORSEARMOR = ITEMS.register("hypersteelhorsearmor",()->new TLHorseArmorItem(15, ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID,"textures/entity/horse/armor/horse_armor_hypersteel.png"),new Item.Properties().fireResistant(),Ingredient.of(HYPERSTEELINGOT.get())));
+    public static final RegistryObject<Item> HYPERSTEELWIRE = ITEMS.register("hypersteelwire",()->new Item(new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> REDSTONE_HYPERCOIL = ITEMS.register("redstone_hypercoil",()->new Item(new Item.Properties()));
     public static void register(IEventBus eventbus){
         System.out.println("Registering Items");
         ITEMS.register(eventbus);

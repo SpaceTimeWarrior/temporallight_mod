@@ -1,4 +1,4 @@
-// 1.20.1	2025-04-25T19:53:42.8103168	Tags for minecraft:block mod id temporal_light
+// 1.20.1	2025-04-27T22:46:47.4850345	Tags for minecraft:block mod id temporal_light
 df1b90a16052d8a9a226d560bfeb873daa62bf9d data/forge/tags/blocks/needs_netherite_tool.json
 bc5f0e343644f2ae7e6e36f00102ef0a1b0d3f2d data/forge/tags/blocks/ores.json
 4ebdf3a9e29e15aa17edceab9394c840a36368dd data/minecraft/tags/blocks/fences.json
@@ -14,4 +14,5 @@ e50da82cfc0d926337d08806b1b5de0276c3e412 data/minecraft/tags/blocks/wooden_fence
 1f9f838d27661339f2ec7fce7f539eb70d9e0c52 data/minecraft/tags/blocks/wooden_stairs.json
 ec4efef004d52a69397abae7651d540d5dc760a3 data/temporal_light/tags/blocks/magiwoods.json
 ddec5bd5b56a89c8e22e85b2cb601c3247b36809 data/temporal_light/tags/blocks/needs_hypersteel_tool.json
+370faeffb4695879650f16bca51e08ebd8d8a379 data/temporal_light/tags/blocks/needs_lightsteel_tool.json
 370faeffb4695879650f16bca51e08ebd8d8a379 data/temporal_light/tags/blocks/needs_magiwood_tool.json

@@ -97,7 +97,7 @@ public class TLGENBlockTagProvider extends BlockTagsProvider {
                 .add(TLBlocksRegistry.LIGHTSTEELPRESSUREPLATE.get())
                 .add(TLBlocksRegistry.LIGHTSTEELSLAB.get());
         this.tag(TLTagRegistry.Blocks.NEEDS_MAGIWOOD_TOOL).addTag(TLTagRegistry.Blocks.NEEDS_HYPERSTEEL_TOOL);
-
+        this.tag(TLTagRegistry.Blocks.NEEDS_LIGHTSTEEL_TOOL).addTag(TLTagRegistry.Blocks.NEEDS_HYPERSTEEL_TOOL);
         this.tag(TLTagRegistry.Blocks.RAW_MAGIWOOD_BLOCKS)
                 .add(TLBlocksRegistry.MAGIWOODLOG.get())
                 .add(TLBlocksRegistry.MAGIWOOD.get())

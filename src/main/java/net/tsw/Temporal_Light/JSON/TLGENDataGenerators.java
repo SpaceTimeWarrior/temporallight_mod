@@ -8,6 +8,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.tsw.Temporal_Light.JSON.LOOT.TLGENGlobalLootModifierProvider;
 import net.tsw.Temporal_Light.Temporal_Light;
 
 import java.util.concurrent.CompletableFuture;
@@ -25,6 +26,7 @@ public class TLGENDataGenerators {
         generator.addProvider(event.includeClient(),new TLGENItemModelsProvider(packOutput,existingFileHelper));
         TLGENBlockTagProvider blockTagProvider = generator.addProvider(event.includeServer(),new TLGENBlockTagProvider(packOutput,lookupProvider,existingFileHelper));
         generator.addProvider(event.includeServer(),new TLGENItemTagGenerator(packOutput,lookupProvider,blockTagProvider.contentsGetter(),existingFileHelper));
+        generator.addProvider(event.includeServer(), new TLGENGlobalLootModifierProvider(packOutput));
         //generator.addProvider(event.includeServer(), new TLGENDatapackEntries(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new TLGENPOI_TagProvider(packOutput, lookupProvider,existingFileHelper));
         generator.addProvider(event.includeServer(), new TLWorldGenProvider(packOutput,lookupProvider));

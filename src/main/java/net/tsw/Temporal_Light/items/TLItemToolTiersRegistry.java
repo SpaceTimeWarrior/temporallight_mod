@@ -19,4 +19,7 @@ public class TLItemToolTiersRegistry {
     public static final Tier MAGIWOOD = TierSortingRegistry.registerTier(new ForgeTier(5, 8192,2F,8F,40,
                     TLTagRegistry.Blocks.NEEDS_MAGIWOOD_TOOL, () -> Ingredient.of(TLBlocksRegistry.MAGIWOODPLANKS.get())),
             ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "magiwood"), List.of(Tiers.NETHERITE), List.of());
+    public static final Tier LIGHTSTEEL = TierSortingRegistry.registerTier(new ForgeTier(6, 16384,4F,16F,40,
+                    TLTagRegistry.Blocks.NEEDS_LIGHTSTEEL_TOOL, () -> Ingredient.of(TLItemRegistry.LIGHTSTEELINGOT.get())),
+            ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "lightsteel"), List.of(Tiers.NETHERITE), List.of());
 }

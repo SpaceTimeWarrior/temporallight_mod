@@ -67,7 +67,7 @@ public class TLGENBlockStateProvider extends BlockStateProvider {
         blockwithItem(TLBlocksRegistry.HYPERSTEEL_ASSEMBLER);
 
         saplingBlock(TLBlocksRegistry.MAGIWOODSAPLING);
-        /*blockwithItem(TLBlocksRegistry.EATHERIAN_SLEEP_PORTAL);*/
+        blockwithItem(TLBlocksRegistry.EATHERIAN_SLEEP_PORTAL);
         blockwithItem(TLBlocksRegistry.LIGHTSTEELBLOCK);
 
         stairsBlock(((StairBlock) TLBlocksRegistry.LIGHTSTEELSTAIRS.get()),blockTexture(TLBlocksRegistry.LIGHTSTEELBLOCK.get()));

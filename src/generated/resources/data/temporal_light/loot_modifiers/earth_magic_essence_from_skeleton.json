@@ -1,0 +1,19 @@
+{
+  "type": "temporal_light:add_item",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/skeleton"
+    },
+    {
+      "chance": 0.25,
+      "condition": "minecraft:random_chance"
+    },
+    {
+      "chance": 0.25,
+      "condition": "minecraft:random_chance_with_looting",
+      "looting_multiplier": 2.5
+    }
+  ],
+  "item": "temporal_light:magic_essence_earth"
+}

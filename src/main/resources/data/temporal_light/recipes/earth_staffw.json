@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "YXY",
+    " X ",
+    "w#w"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "Y": {
+      "tag": "temporal_light:magic_essence_earth"
+    },
+    "w": {
+      "tag": "minecraft:wool"
+    },
+    "X": {
+      "item": "temporal_light:magiwooodplanks"
+    }
+  },
+  "result": {
+    "item": "temporal_light:earth_staff"
+  }
+}

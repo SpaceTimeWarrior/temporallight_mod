@@ -8,4 +8,5 @@ public class TLFoodRegistry {
     public static final FoodProperties HEALING_POWDER = new FoodProperties.Builder().alwaysEat().nutrition(2)
             .saturationMod(.4f)
             .effect(new MobEffectInstance(MobEffects.HEAL,200),1.0f).build();
+
 }

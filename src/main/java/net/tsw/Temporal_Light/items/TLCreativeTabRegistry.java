@@ -21,15 +21,22 @@ public class TLCreativeTabRegistry {
         pOutput.accept((TLItemRegistry.HEALING_CROP_SEEDS.get()));
         pOutput.accept((TLItemRegistry.RAW_HEALING_CROP.get()));
         pOutput.accept((TLItemRegistry.KITSUNE_SPAWN_EGG.get()));
+        pOutput.accept((TLItemRegistry.PHOENIX_F_SPAWN_EGG.get()));
     })).build());
     public static final RegistryObject<CreativeModeTab> TemporalLightMaterials = CTABS.register("temporallightmaterials",()-> CreativeModeTab.builder().icon(()->new ItemStack(TLItemRegistry.SYNTHTIMECRYSTALSHARD.get())).title(Component.translatable("creativetab.temporallightmaterials")).displayItems(((pParameters, pOutput) -> {
         pOutput.accept((TLItemRegistry.SYNTHTIMECRYSTALSHARD.get()));
         pOutput.accept((TLItemRegistry.TIMECRYSTALSHARD.get()));
         pOutput.accept((TLItemRegistry.HYPERSTEELINGOT.get()));
+        pOutput.accept((TLItemRegistry.HYPERSTEELWIRE.get()));
         pOutput.accept((TLBlocksRegistry.MAGIWOODPLANKS.get()));
         pOutput.accept((TLItemRegistry.LIGHTSTEELINGOT.get()));
         pOutput.accept((TLItemRegistry.HEALING_POWDER.get()));
-
+        pOutput.accept((TLItemRegistry.MAGIC_ESSENCE_NULL.get()));
+        pOutput.accept((TLItemRegistry.MAGIC_ESSENCE_ELECTRICITY.get()));
+        pOutput.accept((TLItemRegistry.MAGIC_ESSENCE_FIRE.get()));
+        pOutput.accept((TLItemRegistry.MAGIC_ESSENCE_EARTH.get()));
+        pOutput.accept((TLItemRegistry.MAGIC_ESSENCE_LIFE.get()));
+        pOutput.accept((TLItemRegistry.REDSTONE_HYPERCOIL.get()));
     })).build());
     public static final RegistryObject<CreativeModeTab> TemporalLightBlocks = CTABS.register("temporallightblocks",()-> CreativeModeTab.builder().icon(()->new ItemStack(TLBlocksRegistry.HYPERSTEEL_BLOCK.get())).title(Component.translatable("creativetab.temporallightblocks")).displayItems(((pParameters, pOutput) -> {
         pOutput.accept(TLBlocksRegistry.HYPERSTEEL_BLOCK.get());
@@ -63,7 +70,7 @@ public class TLCreativeTabRegistry {
         pOutput.accept(TLBlocksRegistry.LIGHTSTEELSLAB.get());
         pOutput.accept(TLBlocksRegistry.LIGHTSTEELSTAIRS.get());
         pOutput.accept(TLBlocksRegistry.MAGIWOODSAPLING.get());
-
+        pOutput.accept(TLBlocksRegistry.EATHERIAN_SLEEP_PORTAL.get());
         pOutput.accept(TLBlocksRegistry.ERESPAWNANCHOR.get());
         pOutput.accept(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_DEEPSLATE.get());
         pOutput.accept(TLBlocksRegistry.SYNTHETICTIMECRYSTALORE_NETHER.get());
@@ -80,6 +87,9 @@ public class TLCreativeTabRegistry {
         pOutput.accept((TLItemRegistry.HYPERSTEELCHESTPLATE.get()));
         pOutput.accept((TLItemRegistry.HYPERSTEELLEGGINGS.get()));
         pOutput.accept((TLItemRegistry.HYPERSTEELBOOTS.get()));
+        pOutput.accept((TLItemRegistry.HYPERSTEELBOW.get()));
+        pOutput.accept((TLItemRegistry.HYPERSTEELSHIELD.get()));
+        pOutput.accept((TLItemRegistry.HYPERSTEELHORSEARMOR.get()));
 
         pOutput.accept((TLItemRegistry.MAGIWOOD_HELMET.get()));
         pOutput.accept((TLItemRegistry.MAGIWOOD_CHESTPLATE.get()));
@@ -91,6 +101,20 @@ public class TLCreativeTabRegistry {
         pOutput.accept((TLItemRegistry.LIGHTSTEELCHESTPLATE.get()));
         pOutput.accept((TLItemRegistry.LIGHTSTEELLEGGINGS.get()));
         pOutput.accept((TLItemRegistry.LIGHTSTEELBOOTS.get()));
+
+        pOutput.accept((TLItemRegistry.LIGHTSTEELSWORD.get()));
+        pOutput.accept((TLItemRegistry.LIGHTSTEELAXE.get()));
+        pOutput.accept((TLItemRegistry.LIGHTSTEELPICKAXE.get()));
+        pOutput.accept((TLItemRegistry.LIGHTSTEELSHOVEL.get()));
+        pOutput.accept((TLItemRegistry.LIGHTSTEELHOE.get()));
+
+        pOutput.accept((TLItemRegistry.LIGHTNING_STAFF.get()));
+        pOutput.accept((TLItemRegistry.LIGHTNING_CHARGE.get()));
+        pOutput.accept((TLItemRegistry.FIRE_STAFF.get()));
+
+        pOutput.accept((TLItemRegistry.EARTH_STAFF.get()));
+        pOutput.accept((TLItemRegistry.REDSTONE_STAFF.get()));
+        pOutput.accept((TLItemRegistry.LIFE_STAFF.get()));
     })).build());
 
 

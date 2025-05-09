@@ -16,6 +16,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.tsw.Temporal_Light.Temporal_Light;
+import net.tsw.Temporal_Light.blocks.Custom.TLEatherianPortal;
 import net.tsw.Temporal_Light.blocks.Custom.TL_HS_Assembler_Block;
 import net.tsw.Temporal_Light.blocks.Custom.Wood.TLRotatedPillarBlock;
 import net.tsw.Temporal_Light.blocks.Custom.Wood.TLSaplingBlock;
@@ -96,10 +97,10 @@ public class TLBlocksRegistry {
     public static final RegistryObject<Block> MAGIWOOD_BUTTON = registerBlockIM("magiwoodbutton",()-> new ButtonBlock( BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON),BlockSetType.IRON,10,true));
     public static final RegistryObject<Block> MAGIWOOD_PRESSUREPLATE = registerBlockIM("magiwoodpressureplate",()-> new PressurePlateBlock(PressurePlateBlock.Sensitivity.EVERYTHING,BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK),BlockSetType.CHERRY));
     public static final RegistryObject<Block> MAGIWOODSAPLING = registerBlock("magiwooodsapling",()->new TLSaplingBlock(new MagiwoodTreeGrower(),BlockBehaviour.Properties.copy(Blocks.OAK_BUTTON)));
-    /*
 
-    public static final RegistryObject<Block> EATHERIAN_SLEEP_PORTAL = registerBlock("eatherian_sleep_portal",()->new TLEatherianPortal(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK).noCollission()));
-    */
+
+    public static final RegistryObject<Block> EATHERIAN_SLEEP_PORTAL = registerBlock("eatherian_sleep_portal",()->new TLEatherianPortal(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noCollission()));
+
 
 
 

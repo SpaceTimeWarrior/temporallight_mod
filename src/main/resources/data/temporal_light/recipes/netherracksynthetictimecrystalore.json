@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "NCN"
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:netherrack"
+    },
+    "C": {
+      "item": "temporal_light:synthetictimecrystalore"
+    }
+  },
+  "result": {
+    "count": 1,
+    "item": "temporal_light:synthetictimecrystalore_nether"
+  }
+}

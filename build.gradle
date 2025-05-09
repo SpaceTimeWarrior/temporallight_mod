@@ -143,6 +143,9 @@ repositories {
         name = "ModMaven"
         url = "https://modmaven.dev"
     }
+    mavenCentral()
+    maven { url = "https://maven.covers1624.net/" }
+    maven { url 'https://modmaven.dev/' }
     maven { url = "https://maven.createmod.net" } // Create, Ponder, Flywheel
     maven { url = "https://maven.tterrag.com" } // Registrate
     maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven/" } // ForgeConfigAPIPort
@@ -181,6 +184,17 @@ dependencies {
     // compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
     // implementation("io.github.llamalad7:mixinextras-forge:0.4.1")
      implementation(fg.deobf("vazkii.patchouli:Patchouli:1.20.1-84.1-FORGE"))
+    implementation fg.deobf("teamtwilight:twilightforest:${Twilight_forest_version}:universal")
+
+    //implementation(fg.deobf("com.brandon3055.draconicevolution:Draconic-Evolution:1.20.1-3.1.0.560:universal"))
+    // compileOnly "mekanism:Mekanism:${mekanism_version}:api"
+
+    // If you want to test/use Mekanism & its modules during `runClient` invocation, use the following
+    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}")// Mekanism
+    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:additions")// Mekanism: Additions
+    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:generators")// Mekanism: Generators
+    // runtimeOnly fg.deobf("mekanism:Mekanism:${mekanism_version}:tools")// Mekanism: Tools
+    // implementation(fg.deobf("org.appliedenergistics:appliedenergistics2:15.3.5"))
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
