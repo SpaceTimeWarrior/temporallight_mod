@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#minecraft:is_end",
-  "features": "temporal_light:synthetictimecrystalore_placed_end",
-  "step": "underground_ores"
-}

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/button_pressed",
-  "textures": {
-    "texture": "temporal_light:block/magiwooodplanks"
-  }
-}

@@ -1,6 +1,0 @@
-{
-    "parent": "temporal_light:item/hypersteelbow",
-    "textures": {
-        "layer0": "temporal_light:item/hypersteelbow_pulling_1"
-    }
-}

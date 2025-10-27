@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "temporal_light:block/magiwooodplanks",
-    "side": "temporal_light:block/magiwooodplanks",
-    "top": "temporal_light:block/magiwooodplanks"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "temporal_light:block/lightsteelblock",
-    "side": "temporal_light:block/lightsteelblock",
-    "top": "temporal_light:block/lightsteelblock"
-  }
-}
