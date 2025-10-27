@@ -1,6 +1,6 @@
 package com.TimeSpaceWarrior.TemporalLightMod;
 
-import com.TimeSpaceWarrior.KitsuneItem;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.KitsuneItem;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
 import com.TimeSpaceWarrior.TemporalLightMod.network.PacketSyncInventory;
 import com.TimeSpaceWarrior.TemporalLightMod.tile_entity.HyperSteel_Assembler_TileEntity;
