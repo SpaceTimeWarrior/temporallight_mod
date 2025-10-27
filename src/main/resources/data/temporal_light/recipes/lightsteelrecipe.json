@@ -12,7 +12,8 @@
     {"item": "temporal_light:hypersteelingot"},
     []
   ],
-  "output": {"id": "temporal_light:lightsteelingot"},
+  "output": {"item": "temporal_light:lightsteelingot"},
+  "redtype": 2,
   "min_redstone_strength": 1,
   "max_redstone_strength": 10
 }

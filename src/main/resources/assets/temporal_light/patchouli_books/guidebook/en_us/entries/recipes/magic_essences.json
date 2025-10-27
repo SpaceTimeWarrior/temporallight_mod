@@ -1,0 +1,87 @@
+{
+  "sortnum": 3,
+  "name": " Magic essence crystals",
+  "icon": "temporal_light:magic_essence_fire",
+  "category": "temporal_light:recipes",
+  "pages": [
+    {
+      "type": "spotlight",
+      "title": "Magic essence crystals",
+      "item": "temporal_light:magic_essence_null,temporal_light:magic_essence_fire,temporal_light:magic_essence_electricity",
+      "text": "these are crystals of magic that has a magic element inside it. these are obtained by killing mobs"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:burnable_to_fire_essence",
+      "recipe2": "temporal_light:fire_essence_to_burnable",
+      "text": "some essence crystals can be crafted into useable forms. a example of this is fire essence. it can be crafted into a burnable that can be placed as a fuel source for furnaces,and blast furnaces"
+    },
+    {
+      "type": "spotlight",
+      "item": "temporal_light:magic_essence_fire",
+      "text": "fire crystals are occasionally dropped by blazes"
+    },
+    {
+      "type": "spotlight",
+      "item": "temporal_light:magic_essence_electricity",
+      "text": "lightning crystals are occasionally dropped by creepers"
+    },
+    {
+      "type": "spotlight",
+      "item": "temporal_light:magic_essence_life",
+      "text": "life crystals are occasionally dropped by zombies"
+    },
+    {
+      "type": "spotlight",
+      "item": "temporal_light:magic_essence_earth",
+      "text": "earth crystals are occasionally dropped by skeletons"
+    },
+
+    {
+      "type": "spotlight",
+      "title": "Magic Elemental Staves",
+      "item": "temporal_light:lightning_staff,temporal_light:fire_staff,temporal_light:earth_staff,temporal_light:life_staff",
+      "text": "these are staves made from combining magiwood and the corresponding elemental crystals. do not drop these staves as the crystal will shatter and activate all of its uses at once"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:earth_staffw",
+      "recipe2": "temporal_light:earth_staffl",
+      "text": "this allows the user to summon blocks and can even throw a porjectile that summons blocks. drop effect:sufficate the user by summoning a mound of blocks at the user's location"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:fire_staffw",
+      "recipe2": "temporal_light:fire_staffl",
+      "text": "this allows the user to light fires if close or shoot a fireball if far away. drop effect: summon a dragon fire charge at the user's location"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:life_staffw",
+      "recipe2": "temporal_light:life_staffl",
+      "text": "this allows the user to bonemeal crops if close. if far away it throws a projectile. if it hits a mob it heals it and if it hits a block it summons a random natural object. drop effect: the only safe staff to drop"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:lightning_staffw",
+      "recipe2": "temporal_light:lightning_staffl",
+      "text": "right click summon lightning(that simple) drop effect:summon lighting"
+    },
+
+    {
+      "type": "spotlight",
+      "title": "Magic staff variations",
+      "item": "temporal_light:redstone_staff",
+      "text": "some magic staves can be made by combineing other parts to the stalf recipe"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:redstone_staffw",
+      "recipe2": "temporal_light:redstone_staffl"
+    },
+    {
+      "type": "text",
+      "text": "this is a varient of the earth staff that creates redstone components instead of natural objects. if closeby direction is preserved otherwise it uses the default direction. drop effect:surrounds the user in redstone blocks then place 2 tnt potentially exploding the user"
+    }
+  ]
+}

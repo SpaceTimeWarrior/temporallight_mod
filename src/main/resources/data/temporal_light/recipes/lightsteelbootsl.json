@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "L L"
+  ],
+  "key": {
+    "X": {
+      "item": "temporal_light:lightsteelingot"
+    },
+    "L":{
+       "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "temporal_light:lightsteelboots"
+  }
+}

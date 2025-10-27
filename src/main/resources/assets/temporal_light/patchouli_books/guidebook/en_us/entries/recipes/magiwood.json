@@ -1,0 +1,48 @@
+{
+  "sortnum": 2,
+  "name": " Magiwood ",
+  "icon": "temporal_light:magiwoood",
+  "category": "temporal_light:recipes",
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "temporal_light:magiwooodlog",
+      "text": "This is the other lowest material of the mod. the trees can spawn in the cherry grove and dripstone caves(if it is large enough) in the overworld, end barrens and end islands in the end. the tree can also be planted on netherrack but does not normally spawn on it"
+    },
+    {
+      "type": "image",
+      "images":["temporal_light:textures/guidebook/en_us/magiwood_trees.png","temporal_light:textures/guidebook/en_us/magiwood_logs.png"],
+      "text": "next is the tools"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:magiwoodclubw",
+      "recipe2": "temporal_light:magiwoodclubl",
+      "text": "the wool/leather is to prevent burning the skin as well as prevent splinters"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:magiwoodhelmetl",
+      "recipe2": "temporal_light:magiwoodhelmetw",
+      "text": "the wool/leather is to prevent burning the skin as well as prevent splinters"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:magiwoodchestplatel",
+      "recipe2": "temporal_light:magiwoodchestplatew",
+      "text": "the wool/leather is to prevent burning the skin as well as prevent splinters"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:magiwoodpantsl",
+      "recipe2": "temporal_light:magiwoodpantsw",
+      "text": "the wool/leather is to prevent burning the skin as well as prevent splinters"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:magiwoodbootsl",
+      "recipe2": "temporal_light:magiwoodbootsw",
+      "text": "the wool/leather is to prevent burning the skin as well as prevent splinters"
+    }
+  ]
+}

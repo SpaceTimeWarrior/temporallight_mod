@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "minecraft:cherry_grove",
+    "minecraft:dripstone_caves"
+  ],
+  "features": "temporal_light:magiwood_placed",
+  "step": "vegetal_decoration"
+}

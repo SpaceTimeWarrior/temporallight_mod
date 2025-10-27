@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "minecraft:end_barrens",
+    "minecraft:small_end_islands"
+  ],
+  "features": "temporal_light:magiwood_placed_end",
+  "step": "vegetal_decoration"
+}

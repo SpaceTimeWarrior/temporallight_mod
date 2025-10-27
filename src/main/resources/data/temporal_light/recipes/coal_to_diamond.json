@@ -13,7 +13,8 @@
     []
   ],
   "output": {
-    "id": "minecraft:diamond"
+    "item": "minecraft:diamond"
   },
+  "redtype": 1,
   "min_redstone_strength": 5
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "Y",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "Y": {
+      "item": "temporal_light:hypersteelingot"
+    }
+  },
+  "result": {
+    "item": "temporal_light:hypersteelwire"
+  }
+}

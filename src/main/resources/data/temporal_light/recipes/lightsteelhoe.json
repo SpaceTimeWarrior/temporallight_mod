@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    " #",
+    " #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "X": {
+      "item": "temporal_light:lightsteelingot"
+    }
+  },
+  "result": {
+    "item": "temporal_light:lightsteelhoe"
+  }
+}

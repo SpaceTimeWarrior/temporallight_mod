@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "temporal_light:block/lightsteelpressureplate"
+    },
+    "powered=true": {
+      "model": "temporal_light:block/lightsteelpressureplate_down"
+    }
+  }
+}

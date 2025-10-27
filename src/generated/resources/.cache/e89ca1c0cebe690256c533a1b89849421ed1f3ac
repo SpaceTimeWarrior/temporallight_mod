@@ -1,16 +1,18 @@
-// 1.20.6	2025-04-10T23:57:26.2759639	Tags for minecraft:block mod id temporal_light
+// 1.20.1	2025-04-27T22:46:47.4850345	Tags for minecraft:block mod id temporal_light
 df1b90a16052d8a9a226d560bfeb873daa62bf9d data/forge/tags/blocks/needs_netherite_tool.json
 bc5f0e343644f2ae7e6e36f00102ef0a1b0d3f2d data/forge/tags/blocks/ores.json
-2fb1389cc89f1b738993ecae5615ef3c3d91911f data/minecraft/tags/blocks/fences.json
+4ebdf3a9e29e15aa17edceab9394c840a36368dd data/minecraft/tags/blocks/fences.json
 5306a35fbb6b712eb2f8c7c15b76fabcbf83835c data/minecraft/tags/blocks/fence_gates.json
 cd1152b64092863fc2d1d0a92f38d911bcb65c6d data/minecraft/tags/blocks/logs.json
 810937951a7842c35da10fe29f0fad2a06f6b0a5 data/minecraft/tags/blocks/mineable/axe.json
 25c6cacc46605c0b59758bb1e800cd27c9dae566 data/minecraft/tags/blocks/mineable/hoe.json
 9c417fdd0f7cfd2b9594310c7098f4259bafa3ee data/minecraft/tags/blocks/mineable/pickaxe.json
 69dadfca4fbd831c8f8838369b714a89d0d47717 data/minecraft/tags/blocks/planks.json
-563f78fa0170c4390ccf3bfefed52c85f855c81e data/minecraft/tags/blocks/stairs.json
-51d3aed17bbc95a106c43fa0d98555d456b45023 data/temporal_light/tags/blocks/incorrect_for_hypersteel_tool.json
-fc3426f3b5c4887af4ed84111aaa0953f66bbe99 data/temporal_light/tags/blocks/incorrect_for_magiwood_tool.json
+059126ea64fd033fbb096c9146e1fc69d31f8c43 data/minecraft/tags/blocks/stairs.json
+e50da82cfc0d926337d08806b1b5de0276c3e412 data/minecraft/tags/blocks/wooden_fences.json
+8335ab4e763524e0cd9e26e8c76d82bf96be4579 data/minecraft/tags/blocks/wooden_slabs.json
+1f9f838d27661339f2ec7fce7f539eb70d9e0c52 data/minecraft/tags/blocks/wooden_stairs.json
 ec4efef004d52a69397abae7651d540d5dc760a3 data/temporal_light/tags/blocks/magiwoods.json
 ddec5bd5b56a89c8e22e85b2cb601c3247b36809 data/temporal_light/tags/blocks/needs_hypersteel_tool.json
+370faeffb4695879650f16bca51e08ebd8d8a379 data/temporal_light/tags/blocks/needs_lightsteel_tool.json
 370faeffb4695879650f16bca51e08ebd8d8a379 data/temporal_light/tags/blocks/needs_magiwood_tool.json

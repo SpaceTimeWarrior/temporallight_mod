@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "temporal_light:raw_healing_crop"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "temporal_light:healing_powder"
+  }
+}

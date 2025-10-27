@@ -7,6 +7,10 @@
     "temporal_light:magiwoodhelmet",
     "temporal_light:magiwoodboots",
     "temporal_light:magiwoodchestplate",
-    "temporal_light:magiwoodleggings"
+    "temporal_light:magiwoodleggings",
+    "temporal_light:lightsteelhelmet",
+    "temporal_light:lightsteelchestplate",
+    "temporal_light:lightsteelleggings",
+    "temporal_light:lightsteelboots"
   ]
 }

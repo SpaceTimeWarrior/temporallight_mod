@@ -13,8 +13,9 @@
     {"item": "minecraft:amethyst_shard"}
   ],
   "output": {
-    "id": "minecraft:nether_star"
+    "item": "minecraft:nether_star"
   },
+  "redtype": 2,
   "min_redstone_strength": 8,
   "max_redstone_strength": 10
 }
