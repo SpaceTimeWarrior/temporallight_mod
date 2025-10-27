@@ -1,0 +1,1369 @@
+package com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune;
+
+import com.TimeSpaceWarrior.TemporalLightMod.ItemRegistry;
+import com.TimeSpaceWarrior.TemporalLightMod.TemporalLightMod;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.TLEntityAIBeg;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.ai.*;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class EntityKitsune extends EntityTameable {
+    Random rand = new Random(worldObj.getWorldTime());
+    public int Varient;
+    boolean has_updated = false;
+    private boolean loadedfromNBT;
+    public static Item RandomPreferencefood;
+    public ArrayList<Item>RandomaltPreferenceFoods = new ArrayList<Item>(0);
+
+    private ItemStack[] storedEquipment = new ItemStack[5];
+    private ItemStack[] tamedInventory = new ItemStack[27];
+    public EntityKitsune(World world) {
+        super(world);
+        this.setCanPickUpLoot(true);
+        this.tasks.addTask(0,new EntityAISwimming(this));
+        this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
+        this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 1.0D, true));
+        this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
+        this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
+        this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
+        this.tasks.addTask(8, new TLEntityAIBeg(this, 8.0F));
+        this.tasks.addTask(9, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(9, new EntityAILookIdle(this));
+        this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
+        this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
+        this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, EntitySheep.class, 200, false));
+        this.targetTasks.addTask(5, new EntityAITargetNonTamed(this, EntityOcelot.class,200,false));
+        //loadedfromNBT = false;
+    }
+    @Override
+    public boolean isTamed() {
+        return this.dataWatcher.getWatchableObjectByte(16) == 1;
+    }
+
+    @Override
+    public void setTamed(boolean tamed) {
+        this.dataWatcher.updateObject(16, Byte.valueOf((byte)(tamed ? 1 : 0)));
+    }
+
+    @Override
+    public EntityAgeable createChild(EntityAgeable p_90011_1_) {
+        return null;
+    }
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound) {
+        super.writeEntityToNBT(compound);
+        compound.setInteger("Variants",this.getVariant());
+        for (int i = 0; i < storedEquipment.length; i++) {
+            NBTTagCompound itemTag = new NBTTagCompound();
+            if (storedEquipment[i] != null) {
+                storedEquipment[i].writeToNBT(itemTag);
+            }
+            compound.setTag("StoredGear" + i, itemTag);
+        }
+        for (int i = 0; i < tamedInventory.length; i++) {
+            NBTTagCompound itemTag = new NBTTagCompound();
+            if (tamedInventory[i] != null) {
+                tamedInventory[i].writeToNBT(itemTag);
+            }
+            compound.setTag("TamedInventory" + i, itemTag);
+        }
+        NBTTagCompound itemTagRP = new NBTTagCompound();
+        new ItemStack(RandomPreferencefood).writeToNBT(itemTagRP);
+        compound.setTag("randompreference",itemTagRP);
+
+    }
+
+    @Override
+    public void onItemPickup(Entity p_71001_1_, int p_71001_2_) {
+        super.onItemPickup(p_71001_1_, p_71001_2_);
+    }
+
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound) {
+        super.readEntityFromNBT(compound);
+        setVariant(compound.getInteger("Variants"));
+        for (int i = 0; i < storedEquipment.length; i++) {
+            NBTTagCompound itemTag = compound.getCompoundTag("StoredGear" + i);
+            storedEquipment[i] = ItemStack.loadItemStackFromNBT(itemTag);
+
+        }
+        NBTTagCompound itemTag = compound.getCompoundTag("randompreference");
+        for (int i = 0; i < tamedInventory.length; i++) {
+            NBTTagCompound itemTags = compound.getCompoundTag("TamedInventory" + i);
+            tamedInventory[i] = ItemStack.loadItemStackFromNBT(itemTag);
+
+        }
+        RandomPreferencefood = ItemStack.loadItemStackFromNBT(itemTag).getItem();
+        if(RandomPreferencefood!=null){
+            RandomaltPreferenceFoods=TemporalLightMod.getListOfAltFoods(TemporalLightMod.getKitsuneRandomTamebyItem(RandomPreferencefood));
+        }
+        this.loadedfromNBT = true;
+
+    }
+    public boolean isItemFavoriteRPF(ItemStack stack){
+        if(stack == null){
+            return false;
+        }
+        if (stack.getItem()==null){
+            return false;
+        }
+        if(stack.getItem().equals(RandomPreferencefood)){
+            return true;
+        }
+        return false;
+    }//random raw
+    public boolean isItemFavoriteRAPF(ItemStack stack){
+        if(stack == null){
+            return false;
+        }
+        if (stack.getItem()==null){
+            return false;
+        }
+        for(int i=0;i<RandomaltPreferenceFoods.size();i++){
+            if(stack.getItem().equals(RandomaltPreferenceFoods.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }//random cooked
+    public boolean isItemFavoriteBG(ItemStack stack){
+        if(stack == null){
+            return false;
+        }
+        if (stack.getItem()==null){
+            return false;
+        }
+        for(int i=0;i<TemporalLightMod.KitsuneBadGut.size();i++){
+            if(stack.getItem().equals(TemporalLightMod.KitsuneBadGut.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }//guarenteed raw
+    public boolean isItemFavoriteG(ItemStack stack){
+        if(stack == null){
+            return false;
+        }
+        if (stack.getItem()==null){
+            return false;
+        }
+        for(int i=0;i<TemporalLightMod.KitsuneGut.size();i++){
+            if(stack.getItem().equals(TemporalLightMod.KitsuneGut.get(i))){
+                return true;
+            }
+        }
+        return false;
+    }//guarenteed cooked
+
+    @Override
+    public boolean interact(EntityPlayer player) {
+        ItemStack stack = player.getHeldItem();
+        if(this.isTamed()){
+            System.out.println("this kitsune is already tamed");
+            if(!worldObj.isRemote){
+                player.openGui(TemporalLightMod.instance,TemporalLightMod.KITSUNE_GUIID,worldObj,(int) posX,(int)posY,(int)posZ);
+            }
+            return false;
+        }else {
+            if (stack == null) {
+                return false;
+            }else{
+                if(isItemFavorite(stack)){
+                    this.setTamed(true);
+                    this.func_152115_b(player.getUniqueID().toString());
+                    this.worldObj.setEntityState(this,(byte)7);
+                    if(isItemFavoriteRPF(stack)){
+                        Random rand = this.getRNG();
+                        if(rand.nextInt(100)<30) {
+                            this.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 0));
+                            this.generateRandomParticles("slime");
+                        }
+                    }
+                    if(isItemFavoriteBG(stack)){
+                        Random rand = this.getRNG();
+                        switch (rand.nextInt(3)){
+                            case 0:
+                                this.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 0));
+                                this.addPotionEffect(new PotionEffect(Potion.confusion.id, 100,0));
+                                this.addPotionEffect(new PotionEffect(Potion.weakness.id, 100,0));
+                                this.generateRandomParticles("slime");
+                                break;
+                            case 1:
+                                this.addPotionEffect(new PotionEffect(Potion.poison.id, 200, 1));
+                                this.addPotionEffect(new PotionEffect(Potion.confusion.id, 100,0));
+                                this.generateRandomParticles("witchMagic");
+                                break;
+                            case 2:
+                                this.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 0));
+                                this.addPotionEffect(new PotionEffect(Potion.confusion.id, 100,0));
+                                this.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 100,0));
+                                this.generateRandomParticles("slime");
+                                break;
+                        }
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    public boolean isItemFavorite(ItemStack stack){
+        if(stack == null){
+            return false;
+        }
+        if (stack.getItem()==null){
+            return false;
+        }
+        if(isItemFavoriteRPF(stack)){return true;}
+        if(isItemFavoriteRAPF(stack)){return true;}
+        if(isItemFavoriteBG(stack)){return true;}
+        if(isItemFavoriteG(stack)){return true;}
+        return false;
+    }
+    @SideOnly(Side.CLIENT)
+    private void generateRandomParticles(String p_70942_1_) {
+        for (int i = 0; i < 5; ++i)
+        {
+            double d0 = this.rand.nextGaussian() * 0.02D;
+            double d1 = this.rand.nextGaussian() * 0.02D;
+            double d2 = this.rand.nextGaussian() * 0.02D;
+            this.worldObj.spawnParticle(p_70942_1_, this.posX + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, this.posY + 1.0D + (double)(this.rand.nextFloat() * this.height), this.posZ + (double)(this.rand.nextFloat() * this.width * 2.0F) - (double)this.width, d0, d1, d2);
+        }
+    }
+
+    @Override
+    public void onUpdate() {
+        super.onUpdate();
+        if (this.isNightForm()) {
+            this.setSize(0.4F, 1.0F); // smaller hitbox
+        } else {
+            this.setSize(0.6F, 1.8F); // full size
+        }
+        if(this.isTransition()){
+            Random random = this.getRNG();
+            if(random.nextInt(3)==0) {
+                generateRandomParticles("flame");
+            }else if(random.nextInt(3)==1){
+                generateRandomParticles("mobSpellAmbient");
+            }else{
+                generateRandomParticles("magicCrit");
+            }
+        }
+        if(this.isDayForm()){
+            for (int i = 0; i < storedEquipment.length; i++) {
+                if (this.getEquipmentInSlot(i) == null && storedEquipment[i] != null) {
+                    this.setCurrentItemOrArmor(i, storedEquipment[i]);
+                }else if(this.getEquipmentInSlot(i)!=null){
+                    storedEquipment[i]=this.getEquipmentInSlot(i);
+                }
+            }
+            has_updated = false;
+        }else{
+            if(has_updated==false) {
+                for (int i = 0; i < storedEquipment.length; i++) {
+                    storedEquipment[i] = this.getEquipmentInSlot(i);
+                    this.setCurrentItemOrArmor(i, null);
+                }
+                has_updated = true;
+            }
+        }
+
+    }
+
+    @Override
+    protected void entityInit() {
+        super.entityInit();
+        this.dataWatcher.addObject(20, Integer.valueOf(0));
+        if (!loadedfromNBT) {
+            rand = new Random(worldObj.getWorldTime());
+            Varient = rand.nextInt(100) + 1;
+            int tmp = rand.nextInt(TemporalLightMod.KitsuneRandomTame.size());
+            RandomPreferencefood = TemporalLightMod.KitsuneRandomTame.get(tmp);
+            RandomaltPreferenceFoods=TemporalLightMod.getListOfAltFoods(tmp);
+            if (Varient > 60) {
+                setVariant(0);
+            } else if (Varient > 40) {
+                setVariant(1);
+            } else if (Varient > 20) {
+                setVariant(2);
+            } else if (Varient > 3) {
+                setVariant(3);
+            } else {
+                setVariant(4);
+            }
+
+
+        }
+    }
+
+    @Override
+    protected Item getDropItem() {
+        int rng = rand.nextInt(10);
+        switch (rng){
+            case 0:
+            case 1:
+            case 2:
+                return ItemRegistry.KITSUNE_TAIL;
+            case 3:
+            case 4:
+                return Items.book;
+            case 5:
+            case 6:
+                return Items.leather;
+            default:
+        }
+        return super.getDropItem();
+    }
+
+    public boolean isNightForm() {return this.worldObj.getWorldTime() % 24000 >= 13000;}
+    public boolean isDayForm() {
+        return this.worldObj.getWorldTime() % 24000 <= 12980&&this.worldObj.getWorldTime() % 24000 >=20;
+    }
+    public boolean isTransition(){
+        return !(isDayForm()||isNightForm());
+    }
+    public void setVariant(int variant) {
+        this.dataWatcher.updateObject(20, Integer.valueOf(variant));
+        this.Varient = variant;
+    }
+    public int getVariant() { return this.dataWatcher.getWatchableObjectInt(20);}
+}
+
+
+
+
+package com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune;// Made with Blockbench 4.12.4
+// Exported for Minecraft version 1.7 - 1.12
+// Paste this class into your mod and generate all required imports
+
+
+import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
+
+public class KitsuneModel extends ModelBiped {
+	public ModelRenderer tail1;
+	public ModelRenderer tail2;
+	public ModelRenderer earL;
+	public ModelRenderer earR;
+
+	public KitsuneModel() {
+		super();
+		textureWidth = 64;
+		textureHeight = 64;
+
+		bipedBody = new ModelRenderer(this, 0, 16);
+		bipedBody.addBox(-4F, 0F, -2F, 8, 12, 4);
+		bipedBody.setRotationPoint(0F, 0F, 0F);
+
+		bipedHead = new ModelRenderer(this, 0, 0);
+		bipedHead.addBox(-4F, -8F, -4F, 8, 8, 8);
+		bipedHead.setRotationPoint(0F, 0F, 0F);
+
+		ModelRenderer snout = new ModelRenderer(this, 32, 32);
+		snout.addBox(-2F, -2F, -8F, 4, 2, 4); // snout box
+		snout.setRotationPoint(0F, 0F, 0F);
+		bipedHead.addChild(snout);
+		this.bipedHeadwear = new ModelRenderer(this, 0, 48);
+		this.bipedHeadwear.addBox(-4.0F, -8.0F, -4.0F, 8, 8, 8, 1.0f + 0.5F);
+		this.bipedHeadwear.setRotationPoint(0.0F, 0.0F + 0.0F, 0.0F);
+
+		tail1 = new ModelRenderer(this, 32, 38);
+		tail1.addBox(-1F, -2F, -3F, 2, 2, 4);
+		tail1.setRotationPoint(0F, 14F, 3F);
+		tail1.rotateAngleX = 2.3562F;
+
+		tail2 = new ModelRenderer(this, 40, 16);
+		tail2.addBox(-1F, -2F, -3F, 2, 5, 2);
+		tail2.setRotationPoint(0F, 20F, 5F);
+		tail2.rotateAngleX = -2.3562F;
+
+		earL = new ModelRenderer(this, 40, 23);
+		earL.addBox(-1F, -2F, -1F, 3, 3, 2);
+		earL.setRotationPoint(-4F, -8F, 2F);
+		bipedHead.addChild(earL);
+		earL.rotateAngleZ = -0.7854F;
+
+		earR = new ModelRenderer(this, 32, 44);
+		earR.addBox(-1F, -2F, -1F, 3, 3, 2);
+		earR.setRotationPoint(3F, -8F, 2F);
+		bipedHead.addChild(earR);
+		earR.rotateAngleZ = 0.7854F;
+
+		bipedLeftArm = new ModelRenderer(this, 24, 16);
+		bipedLeftArm.addBox(-1F, -2F, -2F, 4, 12, 4);
+		bipedLeftArm.setRotationPoint(0F, 2F, 0F);
+
+		bipedRightArm = new ModelRenderer(this, 0, 32);
+		bipedRightArm.addBox(-3F, -2F, -2F, 4, 12, 4);
+		bipedRightArm.setRotationPoint(-0F, 2F, 0F);
+
+		bipedLeftLeg = new ModelRenderer(this, 32, 0);
+		bipedLeftLeg.addBox(-2F, 0F, -2F, 4, 12, 4);
+		bipedLeftLeg.setRotationPoint(1.0F, 12F, 0F);
+
+		bipedRightLeg = new ModelRenderer(this, 16, 32);
+		bipedRightLeg.addBox(-2F, 0F, -2F, 4, 12, 4);
+		bipedRightLeg.setRotationPoint(-1.0F, 12F, 0F);
+	}
+	@Override
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		super.render(entity,f,f1,f2,f3,f4,f5);
+		//bipedBody.render(f5);
+		//bipedHead.render(f5);
+		tail1.render(f5);
+		tail2.render(f5);
+		//earL.render(f5);
+		//earR.render(f5);
+		//bipedLeftArm.render(f5);
+		//bipedRightArm.render(f5);
+		//bipedLeftLeg.render(f5);
+		//bipedRightLeg.render(f5);
+	}
+	@Override
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		super.setRotationAngles(limbSwing,limbSwingAmount,ageInTicks,netHeadYaw,headPitch,scaleFactor,entity);
+		this.tail1.rotateAngleY = MathHelper.sin(ageInTicks * 0.1F) * 0.2F;
+		this.tail2.rotateAngleY = MathHelper.sin(ageInTicks * 0.1F + 1F) * 0.2F;
+	}
+
+}
+
+
+
+
+package com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune;// Made with Blockbench 4.12.4
+// Exported for Minecraft version 1.7 - 1.12
+// Paste this class into your mod and generate all required imports
+
+
+import net.minecraft.client.model.ModelQuadruped;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
+
+public class KitsuneModelquad extends ModelQuadruped {
+	//public ModelRenderer body;
+	//public ModelRenderer head;
+	public ModelRenderer tail1;
+	public ModelRenderer tail2;
+	public ModelRenderer earL;
+	public ModelRenderer earR;
+	//public ModelRenderer leg1;
+	//public ModelRenderer leg2;
+	//public ModelRenderer leg3;
+	//public ModelRenderer leg4;
+
+	public KitsuneModelquad() {
+		super(0,0);
+		textureWidth = 64;
+		textureHeight = 64;
+
+		body = new ModelRenderer(this, 0, 16);
+		body.addBox(-4F, 0F, -2F, 8, 12, 4);
+		body.setRotationPoint(0F, 10F, -6F);
+
+		head = new ModelRenderer(this, 0, 0);
+		head.addBox(-4F, -8F, -4F, 8, 8, 8);
+		head.setRotationPoint(0F, 11F, -6F);
+
+		ModelRenderer snout = new ModelRenderer(this, 32, 32);
+		snout.addBox(-2F, -2F, -8F, 4, 2, 4); // snout box
+		snout.setRotationPoint(0F, 0F, 0F);
+		head.addChild(snout);
+
+		earL = new ModelRenderer(this, 40, 23);
+		earL.addBox(-1F, -2F, -1F, 3, 3, 2);
+		earL.setRotationPoint(-4F, -8F, 2F);
+		head.addChild(earL);
+		earL.rotateAngleZ = -0.7854F;
+
+		earR = new ModelRenderer(this, 32, 44);
+		earR.addBox(-1F, -2F, -1F, 3, 3, 2);
+		earR.setRotationPoint(3F, -8F, 2F);
+		head.addChild(earR);
+		earR.rotateAngleZ = 0.7854F;
+
+		tail1 = new ModelRenderer(this, 32, 38);
+		tail1.addBox(-1F, -2F, -3F, 2, 2, 4);
+		tail1.setRotationPoint(0F, 14F, 3F);
+		tail1.rotateAngleX = 2.3562F;
+
+		tail2 = new ModelRenderer(this, 40, 16);
+		tail2.addBox(-1F, -2F, -3F, 2, 5, 2);
+		tail2.setRotationPoint(0F, 20F, 5F);
+		tail2.rotateAngleX = -2.3562F;
+
+		leg1 = new ModelRenderer(this, 0, 32);
+		leg1.addBox(-2F, 0F, -2F, 4, 12, 4);
+		leg1.setRotationPoint(-3F, 12F, -4F);
+
+		leg2 = new ModelRenderer(this, 0, 32);
+		leg2.addBox(-2F, 0F, -2F, 4, 12, 4);
+		leg2.setRotationPoint(3F, 12F, -4F);
+
+		leg3 = new ModelRenderer(this, 0, 32);
+		leg3.addBox(-2F, 0F, -2F, 4, 12, 4);
+		leg3.setRotationPoint(-3F, 12F, 4F);
+
+		leg4 = new ModelRenderer(this, 0, 32);
+		leg4.addBox(-2F, 0F, -2F, 4, 12, 4);
+		leg4.setRotationPoint(3F, 12F, 4F);
+	}
+
+	@Override
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		super.render(entity,f,f1,f2,f3,f4,f5);
+		//body.render(f5);
+		//head.render(f5);
+		//earL.render(f5);
+		//earR.render(f5);
+		tail1.render(f5);
+		tail2.render(f5);
+		//leg1.render(f5);
+		//leg2.render(f5);
+		//leg3.render(f5);
+		//leg4.render(f5);
+	}
+
+	@Override
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		super.setRotationAngles(limbSwing,limbSwingAmount,ageInTicks,netHeadYaw,headPitch,scaleFactor,entity);
+
+		this.tail1.rotateAngleY = MathHelper.sin(ageInTicks * 0.1F) * 0.2F;
+		this.tail2.rotateAngleY = MathHelper.sin(ageInTicks * 0.1F + 1F) * 0.2F;
+	}
+
+}
+
+
+
+
+package com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune;// Made with Blockbench 4.12.4
+// Exported for Minecraft version 1.7 - 1.12
+// Paste this class into your mod and generate all required imports
+
+
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
+
+public class KitsuneModeltransition extends ModelBase {
+	public ModelRenderer body;
+	public ModelRenderer head;
+	public ModelRenderer tail1;
+	public ModelRenderer tail2;
+	public ModelRenderer earL;
+	public ModelRenderer earR;
+	public ModelRenderer armL;
+	public ModelRenderer armR;
+	public ModelRenderer legL;
+	public ModelRenderer legR;
+
+	public KitsuneModeltransition() {
+		textureWidth = 64;
+		textureHeight = 64;
+
+		body = new ModelRenderer(this, 0, 16);
+		body.addBox(-4F, 0F, -2F, 8, 12, 4);
+		body.setRotationPoint(0F, 10F, 0F);
+		body.rotateAngleX = 0.2F; // slight lean
+
+		head = new ModelRenderer(this, 0, 0);
+		head.addBox(-4F, -8F, -4F, 8, 8, 8);
+		head.setRotationPoint(0F, 10F, -4F);
+		ModelRenderer snout = new ModelRenderer(this, 32, 32);
+		snout.addBox(-2F, -2F, -8F, 4, 2, 4);
+		snout.setRotationPoint(0F, 0F, 0F);
+		head.addChild(snout);
+
+		earL = new ModelRenderer(this, 40, 23);
+		earL.addBox(-1F, -2F, -1F, 3, 3, 2);
+		earL.setRotationPoint(-4F, 2F, 0F);
+		earL.rotateAngleZ = -0.5F;
+
+		earR = new ModelRenderer(this, 32, 44);
+		earR.addBox(-1F, -2F, -1F, 3, 3, 2);
+		earR.setRotationPoint(3F, 2F, 0F);
+		earR.rotateAngleZ = 0.5F;
+
+		tail1 = new ModelRenderer(this, 32, 38);
+		tail1.addBox(-1F, -2F, -3F, 2, 2, 4);
+		tail1.setRotationPoint(0F, 14F, 3F);
+		tail1.rotateAngleX = 1.5F;
+
+		tail2 = new ModelRenderer(this, 40, 16);
+		tail2.addBox(-1F, -2F, -3F, 2, 5, 2);
+		tail2.setRotationPoint(0F, 18F, 5F);
+		tail2.rotateAngleX = -1.5F;
+
+		armL = new ModelRenderer(this, 24, 16);
+		armL.addBox(-3F, -2F, -2F, 4, 12, 4);
+		armL.setRotationPoint(-5F, 12F, 0F);
+		armL.rotateAngleX = 0.4F;
+
+		armR = new ModelRenderer(this, 0, 32);
+		armR.addBox(-1F, -2F, -2F, 4, 12, 4);
+		armR.setRotationPoint(5F, 12F, 0F);
+		armR.rotateAngleX = 0.4F;
+
+		legL = new ModelRenderer(this, 32, 0);
+		legL.addBox(-2F, 0F, -2F, 4, 12, 4);
+		legL.setRotationPoint(-2F, 12F, 2F);
+		legL.rotateAngleX = -0.3F;
+
+		legR = new ModelRenderer(this, 16, 32);
+		legR.addBox(-2F, 0F, -2F, 4, 12, 4);
+		legR.setRotationPoint(2F, 12F, 2F);
+		legR.rotateAngleX = -0.3F;
+	}
+
+	@Override
+	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+		body.render(f5);
+		head.render(f5);
+		earL.render(f5);
+		earR.render(f5);
+		tail1.render(f5);
+		tail2.render(f5);
+		armL.render(f5);
+		armR.render(f5);
+		legL.render(f5);
+		legR.render(f5);
+	}
+
+	@Override
+	public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entity) {
+		this.head.rotateAngleY = netHeadYaw / (180F / (float)Math.PI);
+		this.head.rotateAngleX = headPitch / (180F / (float)Math.PI);
+
+		this.armL.rotateAngleX += MathHelper.cos(limbSwing * 0.6662F) * limbSwingAmount * 0.5F;
+		this.armR.rotateAngleX += MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * limbSwingAmount * 0.5F;
+
+		this.legL.rotateAngleX += MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * limbSwingAmount * 0.5F;
+		this.legR.rotateAngleX += MathHelper.cos(limbSwing * 0.6662F) * limbSwingAmount * 0.5F;
+
+		this.tail1.rotateAngleY = MathHelper.sin(ageInTicks * 0.1F) * 0.2F;
+		this.tail2.rotateAngleY = MathHelper.sin(ageInTicks * 0.1F + 1F) * 0.2F;
+	}
+}
+
+
+
+
+package com.TimeSpaceWarrior.TemporalLightMod.render;
+
+import com.TimeSpaceWarrior.TemporalLightMod.TemporalLightMod;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.KitsuneModel;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.KitsuneModelquad;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.KitsuneModeltransition;
+import com.google.common.collect.Maps;
+import com.mojang.authlib.GameProfile;
+import net.minecraft.block.Block;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.entity.RenderLiving;
+import net.minecraft.client.renderer.tileentity.TileEntitySkullRenderer;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTUtil;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StringUtils;
+import net.minecraftforge.client.IItemRenderer;
+import net.minecraftforge.client.MinecraftForgeClient;
+import org.lwjgl.opengl.GL11;
+
+import java.util.Map;
+import java.util.UUID;
+
+public class RenderKitsune extends RenderLiving {
+    public RenderKitsune(ModelBase base, float shadowrad) {
+        super(base, shadowrad);
+        this.field_82423_g = new ModelBiped();
+        this.field_82425_h = new ModelBiped(0.5F);
+    }
+    protected ModelBiped field_82423_g;
+    protected ModelBiped field_82425_h;
+    public static String[] bipedArmorFilenamePrefix = new String[] {"leather", "chainmail", "iron", "diamond", "gold"};
+    private final KitsuneModel modelDay = new KitsuneModel();
+    private static final Map field_110859_k = Maps.newHashMap();
+    private final KitsuneModelquad modelNight = new KitsuneModelquad();
+    private final KitsuneModeltransition modeltransition = new KitsuneModeltransition();
+    public EntityKitsune kitsune;
+
+
+    @Override
+    protected void preRenderCallback(EntityLivingBase entity, float partialTickTime) {
+        super.preRenderCallback(entity,partialTickTime);
+        kitsune = (EntityKitsune) entity;
+        if (kitsune.isNightForm()) {
+            GL11.glScalef(0.6F, 0.6F, 0.6F); // Smaller at night
+        } else {
+            GL11.glScalef(1.0F, 1.0F, 1.0F); // Full size during day
+        }
+    }
+    @Override
+    public void doRender(EntityLivingBase entity, double x, double y, double z, float yaw, float partialTicks) {
+        super.doRender(entity, x, y, z, yaw, partialTicks);
+
+        EntityKitsune kitsune = (EntityKitsune) entity;
+        System.out.println("do render:"+kitsune.toString());
+
+    }
+    @Override
+    protected int shouldRenderPass(EntityLivingBase entity, int pass, float partialTicks) {
+        EntityKitsune kitsune = (EntityKitsune) entity;
+        if (kitsune.isDayForm()) {
+            return shouldRenderPas((EntityLiving)entity, pass, partialTicks); // allow armor rendering
+        }
+        return -1; // suppress armor in night/transition forms
+    }
+    public static ResourceLocation getArmorResource(Entity entity, ItemStack stack, int slot, String type)
+    {
+        ItemArmor item = (ItemArmor)stack.getItem();
+        String s1 = String.format("textures/models/armor/%s_layer_%d%s.png",
+                bipedArmorFilenamePrefix[item.renderIndex], (slot == 2 ? 2 : 1), type == null ? "" : String.format("_%s", type));
+
+        s1 = net.minecraftforge.client.ForgeHooksClient.getArmorTexture(entity, stack, s1, slot, type);
+        ResourceLocation resourcelocation = (ResourceLocation)field_110859_k.get(s1);
+
+        if (resourcelocation == null)
+        {
+            resourcelocation = new ResourceLocation(s1);
+            field_110859_k.put(s1, resourcelocation);
+        }
+
+        return resourcelocation;
+    }
+    protected int shouldRenderPas(EntityLiving p_77032_1_, int p_77032_2_, float p_77032_3_)
+    {
+        ItemStack itemstack = p_77032_1_.func_130225_q(3 - p_77032_2_);
+
+        if (itemstack != null)
+        {
+            Item item = itemstack.getItem();
+
+            if (item instanceof ItemArmor)
+            {
+                ItemArmor itemarmor = (ItemArmor)item;
+                this.bindTexture(getArmorResource(p_77032_1_, itemstack, p_77032_2_, null));
+                ModelBiped modelbiped = p_77032_2_ == 2 ? this.field_82425_h : this.field_82423_g;
+                modelbiped.bipedHead.showModel = p_77032_2_ == 0;
+                modelbiped.bipedHeadwear.showModel = p_77032_2_ == 0;
+                modelbiped.bipedBody.showModel = p_77032_2_ == 1 || p_77032_2_ == 2;
+                modelbiped.bipedRightArm.showModel = p_77032_2_ == 1;
+                modelbiped.bipedLeftArm.showModel = p_77032_2_ == 1;
+                modelbiped.bipedRightLeg.showModel = p_77032_2_ == 2 || p_77032_2_ == 3;
+                modelbiped.bipedLeftLeg.showModel = p_77032_2_ == 2 || p_77032_2_ == 3;
+                modelbiped = net.minecraftforge.client.ForgeHooksClient.getArmorModel(p_77032_1_, itemstack, p_77032_2_, modelbiped);
+                this.setRenderPassModel(modelbiped);
+                modelbiped.onGround = this.mainModel.onGround;
+                modelbiped.isRiding = this.mainModel.isRiding;
+                modelbiped.isChild = this.mainModel.isChild;
+
+                //Move out of if to allow for more then just CLOTH to have color
+                int j = itemarmor.getColor(itemstack);
+                if (j != -1)
+                {
+                    float f1 = (float)(j >> 16 & 255) / 255.0F;
+                    float f2 = (float)(j >> 8 & 255) / 255.0F;
+                    float f3 = (float)(j & 255) / 255.0F;
+                    GL11.glColor3f(f1, f2, f3);
+
+                    if (itemstack.isItemEnchanted())
+                    {
+                        return 31;
+                    }
+
+                    return 16;
+                }
+
+                GL11.glColor3f(1.0F, 1.0F, 1.0F);
+
+                if (itemstack.isItemEnchanted())
+                {
+                    return 15;
+                }
+
+                return 1;
+            }
+        }
+
+        return -1;
+    }
+
+
+    public void renderEquippedItems(EntityLiving entity, float partialTicks) {
+        //System.out.println("renderEquippedItems called");
+
+        if (!(entity instanceof EntityKitsune)) {
+            //System.out.println("Entity is not a Kitsune: " + entity.getClass().getSimpleName());
+            return;
+        }
+
+        EntityKitsune kitsune = (EntityKitsune) entity;
+
+        if (!kitsune.isDayForm()) {
+            //System.out.println("Kitsune is not in day form — skipping gear render");
+            return;
+        }
+
+        //System.out.println("Kitsune is in day form — proceeding with gear render");
+
+        ItemStack heldItem = entity.getHeldItem();
+        ItemStack helmet = entity.func_130225_q(3); // slot 3 = helmet
+
+        //System.out.println("Held item: " + (heldItem != null ? heldItem.getDisplayName() : "null"));
+        //System.out.println("Helmet item: " + (helmet != null ? helmet.getDisplayName() : "null"));
+
+        GL11.glColor3f(1.0F, 1.0F, 1.0F);
+        super.renderEquippedItems(entity, partialTicks);
+
+        if (heldItem != null) {
+            //System.out.println(" Rendering held item: " + heldItem.getItem().getUnlocalizedName());
+            GL11.glPushMatrix();
+            this.modelDay.bipedRightArm.postRender(0.0625F);
+            GL11.glTranslatef(-0.0625F, 0.4375F, 0.0625F);
+
+            Item item = heldItem.getItem();
+            boolean is3D = MinecraftForgeClient.getItemRenderer(heldItem, IItemRenderer.ItemRenderType.EQUIPPED) != null;
+
+            if (item instanceof ItemBlock) {
+                GL11.glTranslatef(0.0F, 0.1875F, -0.3125F);
+                GL11.glRotatef(20.0F, 1.0F, 0.0F, 0.0F);
+                GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
+                GL11.glScalef(-0.375F, -0.375F, 0.375F);
+            } else if (item == Items.bow) {
+                GL11.glTranslatef(0.0F, 0.125F, 0.3125F);
+                GL11.glRotatef(-20.0F, 0.0F, 1.0F, 0.0F);
+                GL11.glScalef(0.625F, -0.625F, 0.625F);
+                GL11.glRotatef(-100.0F, 1.0F, 0.0F, 0.0F);
+                GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
+            } else if (item.isFull3D()) {
+                GL11.glScalef(0.625F, -0.625F, 0.625F);
+                GL11.glRotatef(-100.0F, 1.0F, 0.0F, 0.0F);
+                GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
+            } else {
+                GL11.glTranslatef(0.25F, 0.1875F, -0.1875F);
+                GL11.glScalef(0.375F, 0.375F, 0.375F);
+                GL11.glRotatef(60.0F, 0.0F, 0.0F, 1.0F);
+                GL11.glRotatef(-90.0F, 1.0F, 0.0F, 0.0F);
+                GL11.glRotatef(20.0F, 0.0F, 0.0F, 1.0F);
+            }
+
+            this.renderManager.itemRenderer.renderItem(entity, heldItem, 0);
+            GL11.glPopMatrix();
+        }
+    }
+
+    protected void func_82422_c() {
+            GL11.glTranslatef(0.0F, 0.1875F, 0.0F);
+        }
+
+
+    @Override
+        protected void renderModel (EntityLivingBase entity,float limbSwing, float limbSwingAmount, float ageInTicks,
+        float netHeadYaw, float headPitch, float scale){
+            EntityKitsune kitsune = (EntityKitsune) entity;
+            if (kitsune.isTransition()) {
+                this.mainModel = modeltransition;
+            } else if (kitsune.isNightForm()) {
+                this.mainModel = modelNight;
+            } else {
+                this.mainModel = modelDay;
+                this.setRenderPassModel(modelDay);
+            }
+            //System.out.println("render model:"+kitsune.toString());
+            this.bindEntityTexture(entity);
+            if (kitsune.isDayForm()) {
+                this.mainModel = modelDay;
+                this.renderEquippedItems((EntityLiving) kitsune, 1.0f);
+            }
+            super.renderModel(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+        }
+
+
+    @Override
+    protected ResourceLocation getEntityTexture(Entity entity) {
+        if(entity instanceof EntityKitsune){
+            EntityKitsune kitsune = (EntityKitsune)entity;
+            //if(kitsune.initialized) {
+                switch (kitsune.getVariant()) {
+                    case 0:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_brown.png");
+                    case 1:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_blonde.png");
+                    case 2:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_dk_gray.png");
+                    case 3:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_orange.png");
+                    case 4:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_white.png");
+                    default:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_brown.png");
+                }
+            //}else{
+            //    return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_brown.png");
+            //}
+        }
+        return null;
+    }
+}
+
+
+package com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune;
+
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
+import net.minecraft.entity.ai.EntityAIBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+
+public class TLEntityAIBeg extends EntityAIBase
+{
+    private EntityKitsune theKitsune;
+    private EntityPlayer thePlayer;
+    private World worldObject;
+    private float minPlayerDistance;
+    private int field_75384_e;
+    private static final String __OBFID = "CL_00001576";
+
+    public TLEntityAIBeg(EntityKitsune p_i1617_1_, float p_i1617_2_)
+    {
+        this.theKitsune = p_i1617_1_;
+        this.worldObject = p_i1617_1_.worldObj;
+        this.minPlayerDistance = p_i1617_2_;
+        this.setMutexBits(2);
+    }
+
+    /**
+     * Returns whether the EntityAIBase should begin execution.
+     */
+    public boolean shouldExecute()
+    {
+        this.thePlayer = this.worldObject.getClosestPlayerToEntity(this.theKitsune, (double)this.minPlayerDistance);
+        return this.thePlayer == null ? false : this.hasPlayerFavoriteItemInHand(this.thePlayer);
+    }
+
+    /**
+     * Returns whether an in-progress EntityAIBase should continue executing
+     */
+    public boolean continueExecuting()
+    {
+        return !this.thePlayer.isEntityAlive() ? false : (this.theKitsune.getDistanceSqToEntity(this.thePlayer) > (double)(this.minPlayerDistance * this.minPlayerDistance) ? false : this.field_75384_e > 0 && this.hasPlayerFavoriteItemInHand(this.thePlayer));
+    }
+
+    /**
+     * Execute a one shot task or start executing a continuous task
+     */
+    public void startExecuting()
+    {
+        //this.theKitsune.func_70918_i(true);
+        this.field_75384_e = 40 + this.theKitsune.getRNG().nextInt(40);
+    }
+
+    /**
+     * Resets the task
+     */
+    public void resetTask()
+    {
+        //this.theKitsune.func_70918_i(false);
+        this.thePlayer = null;
+    }
+
+    /**
+     * Updates the task
+     */
+    public void updateTask()
+    {
+        this.theKitsune.getLookHelper().setLookPosition(this.thePlayer.posX, this.thePlayer.posY + (double)this.thePlayer.getEyeHeight(), this.thePlayer.posZ, 10.0F, (float)this.theKitsune.getVerticalFaceSpeed());
+        --this.field_75384_e;
+    }
+
+    /**
+     * Gets if the Player has the tamable Item in the hand.
+     */
+    private boolean hasPlayerFavoriteItemInHand(EntityPlayer p_75382_1_)
+    {
+        ItemStack itemstack = p_75382_1_.inventory.getCurrentItem();
+        return itemstack == null ? false : (!this.theKitsune.isTamed() && theKitsune.isItemFavorite(itemstack) ? true : this.theKitsune.isBreedingItem(itemstack));
+    }
+}
+
+package com.TimeSpaceWarrior;
+
+import net.minecraft.item.Item;
+
+public class KitsuneItem {
+    public Item item;
+    public int num;
+    public KitsuneItem(Item itm,int nm){
+        item=itm;
+        num = nm;
+    }
+    public boolean equals(Item itm){
+        return item.equals(itm);
+    }
+    public boolean equals(KitsuneItem ktm){
+        return item.equals(ktm.getItem()) && num==ktm.num;
+    }
+    public Item getItem(){
+        return item;
+    }
+    public int getNum(){
+        return num;
+    }
+    public void setItem(Item itm){
+        item = itm;
+    }
+    public void setNum(int nm){
+        num = nm;
+    }
+}
+
+
+package com.TimeSpaceWarrior.TemporalLightMod.gui;
+
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.InventoryKitsune;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
+
+public class ContainerKitsune extends Container {
+    public EntityKitsune kitsune;
+    public IInventory tamedInventory;
+    public IInventory armorInventory;
+    public ContainerKitsune(InventoryPlayer inventory, EntityKitsune entity) {
+        kitsune = entity;
+        System.out.println(kitsune);
+        this.tamedInventory = new InventoryKitsune(kitsune,false);
+        System.out.println(tamedInventory);
+        this.add_kitsune_Inventory(8,36,kitsune);
+        System.out.println("added kitsune container");
+        this.add_Inventory(8,96+18+32,inventory);
+        System.out.println("added player inventory container");
+        this.add_Inventory_Hotbar(8,160+34+32,inventory);
+        System.out.println("added player hotbar container");
+    }
+
+    private void add_kitsune_Inventory(int x,int y,EntityKitsune kit){
+        int x_offset = 18;
+        int y_offset = 24;
+        int cntr = 0;
+        int rows = 3;
+        int cols = 9;
+        for(int i = 0; i<rows;i++) {
+            for (int j = 0; j < cols; j++) {
+                this.addSlotToContainer(new Slot(this.tamedInventory,cntr,x+j*x_offset,y+i*y_offset));
+                cntr++;
+            }
+        }
+    }
+    private void add_Inventory(int x,int y,InventoryPlayer inventory){
+        int x_offset = 18;
+        int y_offset = 24;
+        int cntr = 9;
+        int rows = 3;
+        int cols = 9;
+        for(int i = 0; i<rows;i++) {
+            for (int j = 0; j < cols; j++) {
+                this.addSlotToContainer(new Slot(inventory,cntr,x+j*x_offset,y+i*y_offset));
+                cntr++;
+            }
+        }
+    }
+    private void add_Inventory_Hotbar(int x,int y,InventoryPlayer inventory){
+        int x_offset = 18;
+        int cntr = 0;
+        int cols = 9;
+        for (int j = 0; j < cols; j++) {
+            this.addSlotToContainer(new Slot(inventory,cntr,x+j*x_offset,y));
+            cntr++;
+        }
+    }
+    @Override
+    public boolean canInteractWith(EntityPlayer p_75145_1_) {
+        return true;
+    }
+}
+
+
+package com.TimeSpaceWarrior.TemporalLightMod.gui;
+
+import com.TimeSpaceWarrior.TemporalLightMod.TemporalLightMod;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
+
+public class GUIKitsune extends GuiContainer {
+    public EntityKitsune kitsune;
+    public static final ResourceLocation background = new ResourceLocation(TemporalLightMod.MODID+":"+"textures/gui/kitsune_inventory.png");
+
+    public GUIKitsune(InventoryPlayer inventory, EntityKitsune entity) {
+        super(new ContainerKitsune(inventory,entity));
+        kitsune = entity;
+        System.out.println(kitsune);
+        this.xSize = 176;
+        this.ySize = 256;
+    }
+
+    @Override
+    protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
+        GL11.glColor4f(1f,1f,1f,1f);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(background);
+        drawTexturedModalRect(guiLeft,guiTop,0,0,xSize,ySize);
+    }
+
+    @Override
+    protected void drawGuiContainerForegroundLayer(int par1, int par2) {
+        String name = this.kitsune.hasCustomNameTag()? this.kitsune.getCustomNameTag() : I18n.format(this.kitsune.getCustomNameTag(),new Object[0]);
+        this.fontRendererObj.drawString(name,this.xSize/2 - this.fontRendererObj.getStringWidth(name)/2,6,4450072);
+        this.fontRendererObj.drawString(I18n.format("kitsune.inventory"),6,8,4458872);
+        this.fontRendererObj.drawString(name,this.xSize/2 - this.fontRendererObj.getStringWidth(name)/2,6,4450072);
+        this.fontRendererObj.drawString(I18n.format("pkitsune.inventory"),6,96+32,4458872);
+        super.drawGuiContainerForegroundLayer(par1, par2);
+
+    }
+}
+
+
+package com.TimeSpaceWarrior.TemporalLightMod;
+
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
+import com.TimeSpaceWarrior.TemporalLightMod.gui.ContainerHyperSteelAssembler;
+import com.TimeSpaceWarrior.TemporalLightMod.gui.ContainerKitsune;
+import com.TimeSpaceWarrior.TemporalLightMod.gui.GUIHyperSteelAssembler;
+import com.TimeSpaceWarrior.TemporalLightMod.gui.GUIKitsune;
+import com.TimeSpaceWarrior.TemporalLightMod.tile_entity.HyperSteel_Assembler_TileEntity;
+import cpw.mods.fml.common.network.IGuiHandler;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+
+import java.util.List;
+
+public class GUIRegistry implements IGuiHandler {
+    @Override
+    public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        TileEntity entity = world.getTileEntity(x,y,z);
+        if(entity !=null){
+            switch (ID){
+                case TemporalLightMod.HYPERSTEEL_ASSEMBLER_GUIID:
+                    if(entity instanceof HyperSteel_Assembler_TileEntity){
+                        return new ContainerHyperSteelAssembler(player.inventory,(HyperSteel_Assembler_TileEntity)entity);
+                    }else{
+                        return null;
+                    }
+            }
+        }else{
+            List<Entity> entityList = world.getLoadedEntityList();
+            for(int i=0;i<entityList.size();i++){
+                if(!(entityList.get(i) instanceof EntityLiving)){
+                    continue;
+                }
+                EntityLiving entitys = (EntityLiving) entityList.get(i);
+                if((int)entitys.posX == x && (int)entitys.posY==y && (int)entitys.posZ == z){
+                    switch (ID){
+                        case TemporalLightMod.KITSUNE_GUIID:
+                            if (entitys != null) {
+                                if (entitys instanceof EntityKitsune) {
+                                    System.out.println("found kitsune"+(EntityKitsune) entitys);
+                                    return new ContainerKitsune(player.inventory, (EntityKitsune) entitys);
+                                }
+                            }
+                        default:
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    @Override
+    public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        TileEntity entity = world.getTileEntity(x,y,z);
+        if(entity !=null){
+            switch (ID){
+                case TemporalLightMod.HYPERSTEEL_ASSEMBLER_GUIID:
+                    if(entity instanceof HyperSteel_Assembler_TileEntity){
+                        return new GUIHyperSteelAssembler(player.inventory,(HyperSteel_Assembler_TileEntity)entity);
+                    }else{
+                        return null;
+                    }
+            }
+        }else{
+            List<Entity> entityList = world.getLoadedEntityList();
+            for(int i=0;i<entityList.size();i++){
+                if(!(entityList.get(i) instanceof EntityLiving)){
+                    continue;
+                }
+                EntityLiving entitys = (EntityLiving) entityList.get(i);
+                if((int)entitys.posX == x && (int)entitys.posY==y && (int)entitys.posZ == z){
+                    switch (ID){
+                        case TemporalLightMod.KITSUNE_GUIID:
+                            if (entitys != null) {
+                                if (entitys instanceof EntityKitsune) {
+                                    return new GUIKitsune(player.inventory, (EntityKitsune) entitys);
+                                }
+                            }
+                        default:
+                    }
+                }
+            }
+        }
+        return null;
+    }
+}
+
+package com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+
+public class InventoryKitsune implements IInventory {
+    public EntityKitsune kitsune;
+    public boolean inventoryChanged;
+    public boolean isArmor;
+
+    public InventoryKitsune(EntityKitsune kit,boolean armor){
+        kitsune = kit;
+        isArmor = armor;
+    }
+
+    @Override
+    public int getSizeInventory() {
+        if(isArmor){
+            return 5;
+        }else{
+            return 27;
+        }
+    }
+
+    @Override
+    public ItemStack getStackInSlot(int slot) {
+        if(isArmor){
+            return kitsune.storedEquipment[slot];
+        }else{
+            return kitsune.tamedInventory[slot];
+        }
+    }
+
+    @Override
+    public ItemStack decrStackSize(int slot, int quantity) {
+        if(isArmor){
+            kitsune.storedEquipment[slot].stackSize -=1;
+            if(kitsune.storedEquipment[slot].stackSize<=0) {
+                return null;
+            }else{
+                return kitsune.storedEquipment[slot];
+            }
+        }else{
+            kitsune.tamedInventory[slot].stackSize -=1;
+            if(kitsune.tamedInventory[slot].stackSize<=0) {
+                return null;
+            }else{
+                return kitsune.tamedInventory[slot];
+            }
+        }
+
+
+    }
+
+    @Override
+    public ItemStack getStackInSlotOnClosing(int slot) {
+        if(isArmor){
+            return kitsune.storedEquipment[slot];
+        }else{
+            return kitsune.tamedInventory[slot];
+        }
+    }
+
+    @Override
+    public void setInventorySlotContents(int slot, ItemStack newContents) {
+        if(isArmor){
+            kitsune.storedEquipment[slot]=newContents;
+        }else{
+            kitsune.tamedInventory[slot]=newContents;
+        }
+    }
+
+    @Override
+    public String getInventoryName() {
+        return kitsune.getCustomNameTag();
+    }
+
+    @Override
+    public boolean hasCustomInventoryName() {
+        return kitsune.hasCustomNameTag();
+    }
+
+    @Override
+    public int getInventoryStackLimit() {
+        return 999;
+    }
+
+    public void markDirty()
+    {
+        this.inventoryChanged = true;
+    }
+
+    @Override
+    public boolean isUseableByPlayer(EntityPlayer p_70300_1_) {
+        return true;
+    }
+
+    public void openInventory() {}
+
+    public void closeInventory() {}
+
+    public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_)
+    {
+        return true;
+    }
+}
