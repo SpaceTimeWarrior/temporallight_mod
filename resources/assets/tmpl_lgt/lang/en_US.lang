@@ -1,0 +1,98 @@
+item.timecrystalshard.name=Time Crystal Shard
+item.synthetictimecrystalshard.name=Synthetic Time Crystal Shard
+item.hypersteelingot.name=Hypersteel Ingot
+
+item.hypersteelsword.name=Hypersteel Sword
+item.hypersteelpickaxe.name=Hypersteel Pickaxe
+item.hypersteelaxe.name=Hypersteel Axe
+item.hypersteelshovel.name=Hypersteel Shovel
+item.hypersteelhoe.name=Hypersteel Hoe
+item.hypersteelhelmet.name=Hypersteel Helmet
+item.hypersteelchestplate.name=Hypersteel Chestplate
+item.hypersteelleggings.name=Hypersteel Leggings
+item.hypersteelboots.name=Hypersteel Boots
+
+item.lightsteelingot.name=LightSteel Ingot
+
+item.lightsteelsword.name=LightSteel Sword
+item.lightsteelpickaxe.name=LightSteel Pickaxe
+item.lightsteelaxe.name=LightSteel Axe
+item.lightsteelshovel.name=LightSteel Shovel
+item.lightsteelhoe.name=LightSteel Hoe
+
+item.lightsteelhelmet.name=Lightsteel Helmet
+item.lightsteelchestplate.name=Lightsteel Chestplate
+item.lightsteelleggings.name=Lightsteel Leggings
+item.lightsteelboots.name=Lightsteel Boots
+
+item.magiwoodclubaxe.name=Magiwood Axe
+item.magiwoodpickaxe.name=Magiwood Pickaxe
+item.magiwoodhoe.name=Magiwood Hoe
+item.magiwoodshovel.name=Magiwood Shovel
+item.magiwoodclub.name=Magiwood Club
+item.magiwoodhelmet.name=Magiwood Helmet
+item.magiwoodchestplate.name=Magiwood Chestplate
+item.magiwoodleggings.name=Magiwood Pants
+item.magiwoodboots.name=Magiwood Boots
+item.healing_powder.name=Healing Powder
+
+item.hypersteelwire.name=Hypersteel Wire
+item.redstone_hypercoil.name=Redstone Hypercoil
+
+item.deathmetal.name=Death Metal
+
+item.lightning_charge.name=Lightning Charge
+item.lightning_staff.name=Lightning Staff
+item.fire_staff.name=Fire Staff
+
+item.lightsteelwire.name=Lightsteel Wire
+
+item.kitsune_tail.name=Roll of Kitsune Tails
+
+tile.synthetictimecrystalore.name=Synthetic Time Crystal Ore
+tile.synthetictimecrystalore_deepslate.name=Synthetic Time Crystal Ore
+tile.synthetictimecrystalore_nether.name=Synthetic Time Crystal Ore
+tile.synthetictimecrystalore_end.name=Synthetic Time Crystal Ore
+
+tile.unfired_deathmetal.name=Unfired Deathmetal
+
+tile.hypersteelblock.name=Hypersteel Block
+tile.hypersteelstairs.name=Hypersteel Stairs
+tile.hypersteelslab.name=Hypersteel Slab
+tile.hypersteelslab_double.name=Double Hypersteel Slab
+tile.hypersteelslab.hypersteel.name=Hypersteel Slab
+tile.hypersteelslab_double.hypersteel.name=Double Hypersteel Slab
+
+tile.hypersteel_assembler_unpowered.name=Hypersteel Purification Assembler
+tile.hypersteel_assembler_powered.name=Powered Hypersteel Purification Assembler
+
+tile.lightsteelblock.name=LightSteel Block
+tile.lightsteelstairs.name=Lightsteel Stairs
+tile.lightsteelslab.name=Lightsteel Slab
+tile.lightsteelslab.lightsteel.name=Lightsteel Slab
+tile.double_lightsteelslab.name=Double Lightsteel Slab
+tile.double_lightsteelslab.lightsteel.name=Double Lightsteel Slab
+
+tile.magiwooodlog.name=Magiwood Log
+tile.magiwooodleaves.name=Magiwood Leaves
+tile.magiwooodsapling.name=Magiwood Sapling
+tile.magiwooodplanks.name=Magiwood Planks
+tile.magiwoodslab.name=Magiwood Slab
+tile.double_magiwoodslab.name=Double Magiwood Slab
+tile.magiwoodslab.magiwood.name=Magiwood Slab
+tile.double_magiwoodslab.magiwood.name=Double Magiwood Slab
+tile.magiwoodstairs.name=Magiwood Stairs
+tile.hypersteelfence.name=Hypersteel Fence
+tile.lightsteelfence.name=Lightsteel Fence
+tile.magiwoodfence.name=Magiwood Fence
+
+itemGroup.temporallightmaterials=Temporal Light Materials
+itemGroup.temporallighttools=Temporal Light common tools
+itemGroup.temporallightblocks=Temporal Light common Blocks
+
+container.hypersteel_assembler=Hypersteel Purification Assembler
+
+entity.tmpl_lgt.kitsune.name=Kitsune
+
+kitsune.inventory=Kitsune Inventory
+pkitsune.inventory=Inventory
