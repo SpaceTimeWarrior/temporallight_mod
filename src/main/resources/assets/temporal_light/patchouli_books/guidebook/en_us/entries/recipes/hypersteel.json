@@ -6,6 +6,7 @@
   "pages": [
     {
       "type": "spotlight",
+      "title": "Hypersteel",
       "item": "temporal_light:hypersteelingot",
       "text": "This is one of the lowest tiers of this mod."
     },
@@ -60,6 +61,11 @@
       "recipe": "temporal_light:hypersteelbootsl",
       "recipe": "temporal_light:hypersteelbootsw",
       "text": "the wool or leather is used to prevent skin irritation. next up is crafting station(s) using hypersteel"
+    },
+    {
+      "type": "crafting",
+      "recipe": "temporal_light:hypersteel_shield",
+      "recipe": "temporal_light:hypersteel_horse_armor"
     },
     {
       "type": "crafting",

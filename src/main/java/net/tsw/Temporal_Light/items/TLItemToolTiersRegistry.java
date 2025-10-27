@@ -21,5 +21,9 @@ public class TLItemToolTiersRegistry {
             ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "magiwood"), List.of(Tiers.NETHERITE), List.of());
     public static final Tier LIGHTSTEEL = TierSortingRegistry.registerTier(new ForgeTier(6, 16384,4F,16F,40,
                     TLTagRegistry.Blocks.NEEDS_LIGHTSTEEL_TOOL, () -> Ingredient.of(TLItemRegistry.LIGHTSTEELINGOT.get())),
-            ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "lightsteel"), List.of(Tiers.NETHERITE), List.of());
+            ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "lightsteel"), List.of(HYPERSTEEL), List.of());
+
+    public static final Tier TIMECRYSTAL = TierSortingRegistry.registerTier(new ForgeTier(999,-1,10F,6498F,1,
+            TLTagRegistry.Blocks.NEEDS_TIME_CRYSTAL_TOOL,()->Ingredient.of(TLItemRegistry.TIMECRYSTALSHARD.get())),
+            ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "timecrystal"),List.of(LIGHTSTEEL),List.of());
 }

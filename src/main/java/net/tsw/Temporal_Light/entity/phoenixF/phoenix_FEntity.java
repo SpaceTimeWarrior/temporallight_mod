@@ -35,6 +35,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.phys.Vec3;
 import net.tsw.Temporal_Light.Temporal_Light;
 import net.tsw.Temporal_Light.entity.TLEntityRegistry;
 import net.tsw.Temporal_Light.entity.kitsune.AI.KitsuneAttackGoal;
@@ -147,6 +148,13 @@ public class phoenix_FEntity extends Villager implements ReputationEventHandler,
         return SoundEvents.PARROT_EAT;
     }
 
+    public void aiStep() {
+        super.aiStep();
+        Vec3 vec3 = this.getDeltaMovement();
+        if (!this.onGround() && vec3.y < 0.0D) {
+            this.setDeltaMovement(vec3.multiply(1.0D, 0.6D, 1.0D));
+        }
+    }
     @Override
     public SoundEvent getEatingSound(ItemStack pStack) {
         return SoundEvents.PARROT_EAT;

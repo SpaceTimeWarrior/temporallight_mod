@@ -8,7 +8,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.tsw.Temporal_Light.Temporal_Light;
-import net.tsw.Temporal_Light.entity.kitsune.KitsuneEntity;
 import net.tsw.Temporal_Light.entity.phoenixF.phoenix_FEntity;
 import net.tsw.Temporal_Light.entity.phoenixF.phoenix_fVarients;
 

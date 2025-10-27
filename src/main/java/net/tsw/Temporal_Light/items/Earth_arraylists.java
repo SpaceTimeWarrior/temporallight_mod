@@ -1,4 +1,4 @@
-package net.tsw.Temporal_Light;
+package net.tsw.Temporal_Light.items;
 
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;

@@ -3,9 +3,10 @@ package net.tsw.Temporal_Light.entity.phoenixM.client;// Made with Blockbench 4.
 // Paste this class into your mod and generate all required imports
 
 
+import com.google.common.collect.ImmutableClassToInstanceMap;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.model.EntityModel;
+import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -14,42 +15,21 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.tsw.Temporal_Light.Temporal_Light;
 
-public class pheonix_m<T extends Entity> extends EntityModel<T> {
+public class pheonix_mModel<T extends Entity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "pheonix_m"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID, "pheonix_mmodel"), "main");
 	private final ModelPart phoenix;
 	private final ModelPart head;
-	private final ModelPart cube_r1;
-	private final ModelPart cube_r2;
-	private final ModelPart cube_r3;
-	private final ModelPart nose;
 	private final ModelPart body;
 	private final ModelPart tail;
-	private final ModelPart cube_r4;
-	private final ModelPart tail_r1;
-	private final ModelPart bodywear;
-	private final ModelPart mirrored;
-	private final ModelPart arms;
-	private final ModelPart right_leg;
-	private final ModelPart left_leg;
 
-	public pheonix_m(ModelPart root) {
+
+	public pheonix_mModel(ModelPart root) {
 		this.phoenix = root.getChild("phoenix");
 		this.head = this.phoenix.getChild("head");
-		this.cube_r1 = this.head.getChild("cube_r1");
-		this.cube_r2 = this.head.getChild("cube_r2");
-		this.cube_r3 = this.head.getChild("cube_r3");
-		this.nose = this.head.getChild("nose");
+
 		this.body = this.phoenix.getChild("body");
-		this.tail = this.body.getChild("tail");
-		this.cube_r4 = this.tail.getChild("cube_r4");
-		this.tail_r1 = this.tail.getChild("tail_r1");
-		this.bodywear = this.body.getChild("bodywear");
-		this.mirrored = this.body.getChild("mirrored");
-		this.arms = this.body.getChild("arms");
-		this.right_leg = this.body.getChild("right_leg");
-		this.left_leg = this.body.getChild("left_leg");
-	}
+		this.tail = this.body.getChild("tail");	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
@@ -90,6 +70,8 @@ public class pheonix_m<T extends Entity> extends EntityModel<T> {
 		return LayerDefinition.create(meshdefinition, 128, 64);
 	}
 
+
+
 	@Override
 	public void setupAnim(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 
@@ -98,5 +80,10 @@ public class pheonix_m<T extends Entity> extends EntityModel<T> {
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
 		phoenix.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	}
+
+	@Override
+	public ModelPart root() {
+		return this.phoenix;
 	}
 }

@@ -1,4 +1,5 @@
 {
+  "item.temporal_light.deathmetalhorsearmor": "Netherite Horse Armor",
   "item.temporal_light.timecrystalshard": "Time Crystal Shard",
   "item.temporal_light.synthetictimecrystalshard": "Synthetic time crystal shard",
   "item.temporal_light.hypersteelingot": "Hypersteel Ingot",
@@ -21,11 +22,13 @@
   "item.temporal_light.healing_powder": "Healing Powder",
   "item.temporal_light.healing_crop_seeds": "Healing Crop Seeds",
   "item.temporal_light.hypersteelhorsearmor": "Hypersteel Horse Armor",
+  "item.temporal_light.lightsteelhorsearmor": "Lightsteel Horse Armor",
   "item.temporal_light.hypersteelwire": "Hypersteel Wire",
   "item.temporal_light.redstone_hypercoil": "Redstone Hypercoil",
   "item.temporal_light.raw_healing_crop": "Inedible Raw Healing Crop",
   "item.temporal_light.kitsune_spawn_egg": "Kitsune Spawn Egg",
   "item.temporal_light.phoenix_f_spawn_egg": "Female Phoenix Spawn Egg",
+  "item.temporal_light.phoenix_m_spawn_egg": "Male Phoenix Spawn Egg",
 
   "item.temporal_light.lightsteelingot": "Lightsteel Ingot",
   "item.temporal_light.lightsteelboots": "Lightsteel Boots",
@@ -37,6 +40,8 @@
   "item.temporal_light.lightsteelpickaxe": "Lightsteel Pickaxe",
   "item.temporal_light.lightsteelshovel": "Lightsteel Shovel",
   "item.temporal_light.lightsteelhoe": "Lightsteel Hoe",
+  "item.temporal_light.lightsteelwire": "Lightsteel Wire",
+  "item.temporal_light.lightsteelbow": "Lightsteel Bow",
 
   "item.temporal_light.magic_essence_null": "Depleted Magic Essence",
   "item.temporal_light.magic_essence_electricity": "Electrical Magic Essence ",
@@ -50,6 +55,13 @@
   "item.temporal_light.magic_essence_earth": "Earth Magic Essence",
   "item.temporal_light.magic_essence_life": "Life Magic Essence",
   "item.temporal_light.life_staff": "Life Staff",
+
+  "item.temporal_light.kitsune_tail": "Kitsune Tail",
+
+  "item.temporal_light.temporal_handle": "Temporal Handle",
+  "item.temporal_light.temporal_guard": "Temporal Guard",
+  "item.temporal_light.temporal_steel": "Temporal Steel",
+  "item.temporal_light.temporal_blade": "Temporal Blade",
 
   "block.temporal_light.synthetictimecrystalore": "Synthetic Time Crystal Ore",
   "block.temporal_light.synthetictimecrystalore_deepslate": "Synthetic Time Crystal Ore",
@@ -89,6 +101,7 @@
   "block.temporal_light.eatherian_sleep_portal": "Eatherian Dreams 64 Portal",
 
   "entity.temporal_light.kitsune": "Kitsune",
+  "entity.temporal_light.phoenix_m": "Male Phoenix",
   "entity.temporal_light.phoenix_f": "Female Phoenix",
   "entity.temporal_light.phoenix_f.temporal_light.end_trader": "Phoenix End Trader",
   "entity.temporal_light.phoenix_f.armorer": "Phoenix Armorer",
@@ -124,5 +137,12 @@
   "creativetab.temporallightblocks": "Temporal Light common Blocks",
   "creativetab.temporallighttools": "Temporal Light common tools",
   "tooltip.temporal_light.earth_staff.toggle": "(break a block with this tool to cycle)Block to Add:",
-  "tooltip.temporal_light.earth_staff.explosion_warning": "EXPLOSION WARNING: Dropping this Item is likely FATAL"
+  "tooltip.temporal_light.earth_staff.explosion_warning": "EXPLOSION WARNING: Dropping this Item is likely FATAL",
+
+  "painting.temporal_light.eather_image.title": "Map of Eather",
+  "painting.temporal_light.eather_image.author": "TimeSpaceWarrior",
+  "painting.temporal_light.jem_armor_bw.title": "Jem's power armor prototype (black and white)",
+  "painting.temporal_light.jem_armor_bw.author": "TimeSpaceWarrior",
+  "painting.temporal_light.jem_armor_color.title": "Jem's power armor prototype (color)",
+  "painting.temporal_light.jem_armor_color.author": "TimeSpaceWarrior"
 }

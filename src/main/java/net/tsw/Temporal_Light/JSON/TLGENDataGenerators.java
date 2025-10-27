@@ -27,8 +27,9 @@ public class TLGENDataGenerators {
         TLGENBlockTagProvider blockTagProvider = generator.addProvider(event.includeServer(),new TLGENBlockTagProvider(packOutput,lookupProvider,existingFileHelper));
         generator.addProvider(event.includeServer(),new TLGENItemTagGenerator(packOutput,lookupProvider,blockTagProvider.contentsGetter(),existingFileHelper));
         generator.addProvider(event.includeServer(), new TLGENGlobalLootModifierProvider(packOutput));
+        generator.addProvider(event.includeClient(), new TLGENPaintingVarientTagProvider(packOutput, lookupProvider, existingFileHelper));
         //generator.addProvider(event.includeServer(), new TLGENDatapackEntries(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new TLGENPOI_TagProvider(packOutput, lookupProvider,existingFileHelper));
-        generator.addProvider(event.includeServer(), new TLWorldGenProvider(packOutput,lookupProvider));
+        generator.addProvider(event.includeServer(), new TLGENWorldGenProvider(packOutput,lookupProvider));
     }
 }

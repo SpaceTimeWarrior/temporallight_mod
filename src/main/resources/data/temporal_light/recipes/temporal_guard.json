@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    " R "
+  ],
+  "key": {
+    "C": {
+      "item": "temporal_light:timecrystalshard"
+    },
+    "R": {
+      "item": "temporal_light:redstone_hypercoil"
+    }
+  },
+  "result": {
+    "item": "temporal_light:temporal_guard"
+  }
+}

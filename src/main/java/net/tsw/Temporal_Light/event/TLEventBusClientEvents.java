@@ -15,6 +15,8 @@ import net.tsw.Temporal_Light.entity.kitsune.client.KitsuneModel;
 import net.tsw.Temporal_Light.entity.kitsune.KitsuneEntity;
 import net.tsw.Temporal_Light.entity.phoenixF.phoenix_FEntity;
 import net.tsw.Temporal_Light.entity.phoenixF.client.pheonix_FModel;
+import net.tsw.Temporal_Light.entity.phoenixM.client.pheonix_mModel;
+import net.tsw.Temporal_Light.entity.phoenixM.phoenix_mEntity;
 import net.tsw.Temporal_Light.items.TLItemProperties;
 
 @Mod.EventBusSubscriber(modid = Temporal_Light.MOD_ID,bus = Mod.EventBusSubscriber.Bus.MOD,value = Dist.CLIENT)
@@ -26,12 +28,14 @@ public class TLEventBusClientEvents {
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event){
         event.registerLayerDefinition(KitsuneModel.LAYER_LOCATION,KitsuneModel::createBodyLayer);
         event.registerLayerDefinition(pheonix_FModel.LAYER_LOCATION,pheonix_FModel::createBodyLayer);
+        event.registerLayerDefinition(pheonix_mModel.LAYER_LOCATION,pheonix_mModel::createBodyLayer);
     }
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event){
         event.put(TLEntityRegistry.KITSUNE.get(), KitsuneEntity.createAttributes().build());
         event.put(TLEntityRegistry.PHOENIX_F.get(), phoenix_FEntity.createAttributes().build());
+        event.put(TLEntityRegistry.PHOENIX_M.get(), phoenix_mEntity.createAttributes().build());
     }
 
     @SubscribeEvent

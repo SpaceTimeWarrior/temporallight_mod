@@ -17,7 +17,7 @@
     {
       "type": "crafting",
       "recipe": "temporal_light:magiwoodclubw",
-      "recipe": "temporal_light:magiwoodclubl",
+      "recipe2": "temporal_light:magiwoodclubl",
       "text": "the wool/leather is to prevent burning the skin as well as prevent splinters"
     },
     {

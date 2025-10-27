@@ -16,6 +16,7 @@ public class TLTagRegistry {
         //public static final TagKey<Block> INCORRECT_FOR_MAGIWOOD_TOOL = tag("incorrect_for_magiwood_tool");
         public static final TagKey<Block> RAW_MAGIWOOD_BLOCKS = tag("magiwoods");
         public static final TagKey<Block> NEEDS_LIGHTSTEEL_TOOL = tag("needs_lightsteel_tool");
+        public static final TagKey<Block> NEEDS_TIME_CRYSTAL_TOOL = tag("needs_time_crystal_tool");
 
         private static TagKey<Block> tag(String name){
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Temporal_Light.MOD_ID,name));

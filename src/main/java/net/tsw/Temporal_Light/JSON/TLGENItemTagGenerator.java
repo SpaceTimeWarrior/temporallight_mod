@@ -41,13 +41,16 @@ public class TLGENItemTagGenerator extends ItemTagsProvider {
                         TLItemRegistry.HYPERSTEELSWORD.get(),
                         TLItemRegistry.HYPERSTEELSHOVEL.get(),
                         TLItemRegistry.HYPERSTEELPICKAXE.get(),
-                        TLItemRegistry.HYPERSTEELHOE.get())
+                        TLItemRegistry.HYPERSTEELHOE.get(),
+                        TLItemRegistry.HYPERSTEELBOW.get())
                 .add(TLItemRegistry.MAGIWOODCLUB.get())
                 .add(TLItemRegistry.LIGHTSTEELPICKAXE.get(),
                         TLItemRegistry.LIGHTSTEELSHOVEL.get(),
                         TLItemRegistry.LIGHTSTEELSWORD.get(),
                         TLItemRegistry.LIGHTSTEELHOE.get(),
-                        TLItemRegistry.LIGHTSTEELAXE.get());
+                        TLItemRegistry.LIGHTSTEELAXE.get(),
+                        TLItemRegistry.LIGHTSTEELBOW.get())
+                .add(TLItemRegistry.TEMPORALBLADE.get());
         this.tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(
                         TLItemRegistry.HYPERSTEELHELMET.get(),
@@ -88,7 +91,5 @@ public class TLGENItemTagGenerator extends ItemTagsProvider {
                 .addTag(TLTagRegistry.Items.MAGIC_ESSENCE_FIRE)
                 .addTag(TLTagRegistry.Items.MAGIC_ESSENCE_EARTH)
                 .addTag(TLTagRegistry.Items.MAGIC_ESSENCE_LIFE);
-
-
     }
 }

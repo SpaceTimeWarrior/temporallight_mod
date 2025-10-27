@@ -22,9 +22,11 @@ import net.tsw.Temporal_Light.blocks.entity.TLBlockEntityRegistry;
 import net.tsw.Temporal_Light.entity.TLEntityRegistry;
 import net.tsw.Temporal_Light.entity.kitsune.client.KitsuneRenderer;
 import net.tsw.Temporal_Light.entity.phoenixF.client.phoenixFRenderer;
+import net.tsw.Temporal_Light.entity.phoenixM.client.phoenixMRenderer;
 import net.tsw.Temporal_Light.items.TLCreativeTabRegistry;
 import net.tsw.Temporal_Light.items.TLItemRegistry;
 import net.tsw.Temporal_Light.menu.TLMenuTypesRegistry;
+import net.tsw.Temporal_Light.painting.TLPaintingRegistry;
 import net.tsw.Temporal_Light.screen.TL_HS_Assembler_screen;
 import net.tsw.Temporal_Light.util.TLWoodTypeRegistry;
 import net.tsw.Temporal_Light.villager.TLVillagerRegistry;
@@ -56,6 +58,7 @@ public class Temporal_Light
         TLVillagerRegistry.register(modEventBus);
         TLEntityRegistry.register(modEventBus);
         TLLootModifiers.register(modEventBus);
+        TLPaintingRegistry.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -71,6 +74,7 @@ public class Temporal_Light
             });
             EntityRenderers.register(TLEntityRegistry.KITSUNE.get(), KitsuneRenderer::new);
             EntityRenderers.register(TLEntityRegistry.PHOENIX_F.get(), phoenixFRenderer::new);
+            EntityRenderers.register(TLEntityRegistry.PHOENIX_M.get(), phoenixMRenderer::new);
             EntityRenderers.register(TLEntityRegistry.LIGHTNING_PROJECTILE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(TLEntityRegistry.FIREBALL.get(), ThrownItemRenderer::new);
             EntityRenderers.register(TLEntityRegistry.EARTHBALL.get(),ThrownItemRenderer::new);

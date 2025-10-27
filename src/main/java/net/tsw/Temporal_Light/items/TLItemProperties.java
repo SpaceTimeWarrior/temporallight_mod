@@ -7,7 +7,7 @@ import net.tsw.Temporal_Light.Temporal_Light;
 
 public class TLItemProperties {
     public static void addCustomItemProperties() {
-
+        makeBow(TLItemRegistry.LIGHTSTEELBOW.get());
         makeBow(TLItemRegistry.HYPERSTEELBOW.get());
     }
     private static void makeBow(Item item) {

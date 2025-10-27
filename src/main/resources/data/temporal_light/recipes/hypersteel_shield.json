@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "YXY",
+    "YYY",
+    " Y "
+  ],
+  "key": {
+    "Y": {
+      "tag": "temporal_light:magiwooodplanks"
+    },
+    "X": {
+      "item": "temporal_light:hypersteelingot"
+    }
+  },
+  "result": {
+    "item": "temporal_light:hypersteelshield"
+  }
+}

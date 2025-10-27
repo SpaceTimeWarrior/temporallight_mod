@@ -1,4 +1,4 @@
-// 1.20.1	2025-05-06T21:45:04.3670279	Global Loot Modifiers : temporal_light
+// 1.20.1	2025-05-16T14:29:20.2974347	Global Loot Modifiers : temporal_light
 8b14a476aeee62b417ef67cba8b375ff432e6826 data/forge/loot_modifiers/global_loot_modifiers.json
 9396af9ba5889cced4284552c4bd8f1b32228edb data/temporal_light/loot_modifiers/earth_magic_essence_from_skeleton.json
 346d8d0e0c6b1a24b9b27f1916fa59edbee04252 data/temporal_light/loot_modifiers/electrical_magic_essence_from_creepers.json

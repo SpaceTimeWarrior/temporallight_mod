@@ -1,0 +1,19 @@
+{
+  "type": "temporal_light:hypersteel_assemble",
+  "ingredients": [
+    {"item": "minecraft:blaze_rod"},
+    [],
+    {"item": "temporal_light:lightsteelingot"},
+    {"item": "temporal_light:lightsteelwire"},
+    {"item": "temporal_light:lightsteelingot"},
+    [],
+    {"item": "temporal_light:lightsteelwire"},
+    [],
+    {"item": "temporal_light:lightsteelingot"},
+    {"item": "temporal_light:lightsteelwire"}
+  ],
+  "output": {"item": "temporal_light:lightsteelbow"},
+  "redtype": 2,
+  "min_redstone_strength": 1,
+  "max_redstone_strength": 10
+}

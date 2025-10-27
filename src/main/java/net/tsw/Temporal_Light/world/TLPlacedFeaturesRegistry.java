@@ -14,7 +14,7 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.tsw.Temporal_Light.Temporal_Light;
 import net.tsw.Temporal_Light.blocks.TLBlocksRegistry;
-import net.tsw.Temporal_Light.util.OrePlacements;
+import net.tsw.Temporal_Light.util.TLOrePlacements;
 
 import java.util.List;
 
@@ -37,13 +37,13 @@ public class TLPlacedFeaturesRegistry {
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         register(context, TC_PLACED_ORE_OVERWORLD, configuredFeatures.getOrThrow(TLConfigiredFeaturesRegistry.OVERWORLD_SYNTHETIC_TC_ORE_KEY),
-                OrePlacements.commonOrePlacement(tc_veins_per_chunk_ovr,
+                TLOrePlacements.commonOrePlacement(tc_veins_per_chunk_ovr,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(tc_ylow_ovr), VerticalAnchor.absolute(tc_yhigh_ovr))));
         register(context, TC_PLACED_ORE_NETHER, configuredFeatures.getOrThrow(TLConfigiredFeaturesRegistry.NETHER_SYNTHETIC_TC_ORE_KEY),
-                OrePlacements.commonOrePlacement(tc_veins_per_chunk_ntr,
+                TLOrePlacements.commonOrePlacement(tc_veins_per_chunk_ntr,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(tc_ylow_ntr), VerticalAnchor.absolute(tc_yhigh_ntr))));
         register(context, TC_PLACED_ORE_END, configuredFeatures.getOrThrow(TLConfigiredFeaturesRegistry.END_SYNTHETIC_TC_ORE_KEY),
-                OrePlacements.commonOrePlacement(tc_veins_per_chunk_end,
+                TLOrePlacements.commonOrePlacement(tc_veins_per_chunk_end,
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(tc_ylow_end), VerticalAnchor.absolute(tc_yhigh_end))));
         register(context,MAGIWOOD_PLACED_KEY,configuredFeatures.getOrThrow(TLConfigiredFeaturesRegistry.MAGIWOOD_KEY),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1,0.1f,2), TLBlocksRegistry.MAGIWOODSAPLING.get()));

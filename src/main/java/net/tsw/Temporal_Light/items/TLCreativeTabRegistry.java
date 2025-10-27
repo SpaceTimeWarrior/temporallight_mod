@@ -22,6 +22,12 @@ public class TLCreativeTabRegistry {
         pOutput.accept((TLItemRegistry.RAW_HEALING_CROP.get()));
         pOutput.accept((TLItemRegistry.KITSUNE_SPAWN_EGG.get()));
         pOutput.accept((TLItemRegistry.PHOENIX_F_SPAWN_EGG.get()));
+        pOutput.accept((TLItemRegistry.PHOENIX_M_SPAWN_EGG.get()));
+
+        pOutput.accept((TLItemRegistry.TEMPORAL_HANDLE.get()));
+        pOutput.accept((TLItemRegistry.TEMPORAL_GUARD.get()));
+        pOutput.accept((TLItemRegistry.TEMPORAL_STEEL.get()));
+        pOutput.accept((TLItemRegistry.TEMPORALBLADE.get()));
     })).build());
     public static final RegistryObject<CreativeModeTab> TemporalLightMaterials = CTABS.register("temporallightmaterials",()-> CreativeModeTab.builder().icon(()->new ItemStack(TLItemRegistry.SYNTHTIMECRYSTALSHARD.get())).title(Component.translatable("creativetab.temporallightmaterials")).displayItems(((pParameters, pOutput) -> {
         pOutput.accept((TLItemRegistry.SYNTHTIMECRYSTALSHARD.get()));
@@ -37,6 +43,8 @@ public class TLCreativeTabRegistry {
         pOutput.accept((TLItemRegistry.MAGIC_ESSENCE_EARTH.get()));
         pOutput.accept((TLItemRegistry.MAGIC_ESSENCE_LIFE.get()));
         pOutput.accept((TLItemRegistry.REDSTONE_HYPERCOIL.get()));
+        pOutput.accept((TLItemRegistry.LIGHTSTEELWIRE.get()));
+        pOutput.accept((TLItemRegistry.KITSUNE_TAIL.get()));
     })).build());
     public static final RegistryObject<CreativeModeTab> TemporalLightBlocks = CTABS.register("temporallightblocks",()-> CreativeModeTab.builder().icon(()->new ItemStack(TLBlocksRegistry.HYPERSTEEL_BLOCK.get())).title(Component.translatable("creativetab.temporallightblocks")).displayItems(((pParameters, pOutput) -> {
         pOutput.accept(TLBlocksRegistry.HYPERSTEEL_BLOCK.get());
@@ -78,6 +86,7 @@ public class TLCreativeTabRegistry {
 
     })).build());
     public static final RegistryObject<CreativeModeTab> TemporalLightTOOLS = CTABS.register("temporallighttools",()-> CreativeModeTab.builder().icon(()->new ItemStack(TLItemRegistry.HYPERSTEELSWORD.get())).title(Component.translatable("creativetab.temporallighttools")).displayItems(((pParameters, pOutput) -> {
+        pOutput.accept((TLItemRegistry.DEATHMETALHORSEARMOR.get()));
         pOutput.accept((TLItemRegistry.HYPERSTEELSWORD.get()));
         pOutput.accept((TLItemRegistry.HYPERSTEELAXE.get()));
         pOutput.accept((TLItemRegistry.HYPERSTEELPICKAXE.get()));
@@ -107,6 +116,9 @@ public class TLCreativeTabRegistry {
         pOutput.accept((TLItemRegistry.LIGHTSTEELPICKAXE.get()));
         pOutput.accept((TLItemRegistry.LIGHTSTEELSHOVEL.get()));
         pOutput.accept((TLItemRegistry.LIGHTSTEELHOE.get()));
+        pOutput.accept((TLItemRegistry.LIGHTSTEELBOW.get()));
+
+        pOutput.accept((TLItemRegistry.LIGHTSTEELHORSEARMOR.get()));
 
         pOutput.accept((TLItemRegistry.LIGHTNING_STAFF.get()));
         pOutput.accept((TLItemRegistry.LIGHTNING_CHARGE.get()));

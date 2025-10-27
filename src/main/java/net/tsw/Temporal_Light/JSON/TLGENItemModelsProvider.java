@@ -108,8 +108,20 @@ public class TLGENItemModelsProvider extends ItemModelProvider {
         simpleItem(TLItemRegistry.HYPERSTEELHORSEARMOR);
         simpleItem(TLItemRegistry.HYPERSTEELWIRE);
         simpleItem(TLItemRegistry.REDSTONE_HYPERCOIL);
+        simpleItem(TLItemRegistry.KITSUNE_TAIL);
+        simpleItem(TLItemRegistry.LIGHTSTEELWIRE);
+        simpleItem(TLItemRegistry.LIGHTSTEELHORSEARMOR);
+        simpleItem(TLItemRegistry.DEATHMETALHORSEARMOR);
+
+        simpleItem(TLItemRegistry.TEMPORAL_HANDLE);
+        simpleItem(TLItemRegistry.TEMPORAL_GUARD);
+        simpleItem(TLItemRegistry.TEMPORAL_STEEL);
+        handheldItem(TLItemRegistry.TEMPORALBLADE);
+
         withExistingParent(TLItemRegistry.KITSUNE_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
         withExistingParent(TLItemRegistry.PHOENIX_F_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
+        withExistingParent(TLItemRegistry.PHOENIX_M_SPAWN_EGG.getId().getPath(),mcLoc("item/template_spawn_egg"));
+
     }
     private void trimmedArmorItem(RegistryObject<Item> itemRegistryObject) {
         final String MOD_ID = Temporal_Light.MOD_ID; // Change this to your mod id
