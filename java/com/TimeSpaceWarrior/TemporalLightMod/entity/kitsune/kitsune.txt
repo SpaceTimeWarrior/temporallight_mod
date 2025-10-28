@@ -2,7 +2,7 @@ package com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune;
 
 import com.TimeSpaceWarrior.TemporalLightMod.ItemRegistry;
 import com.TimeSpaceWarrior.TemporalLightMod.TemporalLightMod;
-import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.TLEntityAIBeg;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.AI.TLEntityAIBeg;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.entity.Render;

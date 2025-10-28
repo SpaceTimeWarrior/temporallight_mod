@@ -31,6 +31,7 @@ public class BlockRegistry {
     public static Block HYPERSTEELFENCE;
     public static Block LIGHTSTEELFENCE;
     public static Block MAGIWOODFENCE;
+    public static Block KITSUNEPORTAL;
 
     public static void setupforRegistry(){
         String modid = TemporalLightMod.MODID+":";
@@ -71,7 +72,8 @@ public class BlockRegistry {
         MAGIWOODSLAB_D = new Magiwood_Slab(woodmat,true).setBlockName("double_magiwoodslab").setBlockTextureName(modid+"magiwoodplanks");
         MAGIWOODSTAIRS = new Magiwood_Stairs(MAGIWOODPLANK).setBlockName("magiwoodstairs").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
         MAGIWOODFENCE = new TL_Fence(modid+"magiwoodplanks",woodmat,TLConfig.harvest_lv_floor-1,1).setBlockName("magiwoodfence").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
-        //
+        KITSUNEPORTAL = new KitsunePortalBlock(portalmat).setBlockName("kitsune_portal").setBlockTextureName("eatherian_sleep_portal").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
+
     }
     public static void GmRegistry(){
         GameRegistry.registerBlock(HYPERSTEEL_BLOCK,HYPERSTEEL_BLOCK.getUnlocalizedName());
@@ -99,6 +101,7 @@ public class BlockRegistry {
         GameRegistry.registerBlock(HYPERSTEELFENCE,HYPERSTEELFENCE.getUnlocalizedName());
         GameRegistry.registerBlock(LIGHTSTEELFENCE,LIGHTSTEELFENCE.getUnlocalizedName());
         GameRegistry.registerBlock(MAGIWOODFENCE, MAGIWOODFENCE.getLocalizedName());
+        GameRegistry.registerBlock(KITSUNEPORTAL, KITSUNEPORTAL.getLocalizedName());
     }
     public static void preinitRegistry() {
         setupforRegistry();

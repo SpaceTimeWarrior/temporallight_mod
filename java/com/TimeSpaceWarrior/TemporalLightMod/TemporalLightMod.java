@@ -4,7 +4,8 @@ import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.KitsuneItem;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
 import com.TimeSpaceWarrior.TemporalLightMod.network.PacketSyncInventory;
 import com.TimeSpaceWarrior.TemporalLightMod.tile_entity.HyperSteel_Assembler_TileEntity;
-import com.TimeSpaceWarrior.TemporalLightMod.world.TemporalLightOreGenerator;
+import com.TimeSpaceWarrior.TemporalLightMod.world.DimensionRegistry;
+import com.TimeSpaceWarrior.TemporalLightMod.world.TemporalLightWorldGenerator;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -123,8 +124,9 @@ public class TemporalLightMod
         RenderingRegistrys.Register();
         EntityRegistrys.Register();
         registerEntityEgg(EntityKitsune.class,0xffaf5344,0xffaf8844);
-
-        GameRegistry.registerWorldGenerator(new TemporalLightOreGenerator(),0);
+        BiomeRegistry.register();
+        GameRegistry.registerWorldGenerator(new TemporalLightWorldGenerator(),0);
+        DimensionRegistry.register();
 
     }
 

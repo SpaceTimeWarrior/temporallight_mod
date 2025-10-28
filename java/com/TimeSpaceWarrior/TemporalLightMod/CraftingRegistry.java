@@ -105,5 +105,7 @@ public class CraftingRegistry {
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.LIGHTSTEELBOOTS),"S S","W W",'S',ItemRegistry.LIGHTSTEELINGOT,'W',Blocks.wool);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.MAGIWOODBOOTS),"S S","W W",'S',BlockRegistry.MAGIWOODPLANK,'W',Blocks.wool);
 
+        GameRegistry.addRecipe(new ItemStack(BlockRegistry.KITSUNEPORTAL,8)," P ","WPW","WWW",'P',BlockRegistry.MAGIWOODPLANK,'W',Blocks.log);
+
     }
 }

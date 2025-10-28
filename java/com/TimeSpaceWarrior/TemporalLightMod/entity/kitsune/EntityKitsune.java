@@ -2,18 +2,21 @@ package com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune;
 
 import com.TimeSpaceWarrior.TemporalLightMod.ItemRegistry;
 import com.TimeSpaceWarrior.TemporalLightMod.TemporalLightMod;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.AI.EntityAIRangedAttack;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.AI.TLEntityAIBeg;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.FireballProjectileEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.passive.EntityOcelot;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,13 +24,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeModContainer;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class EntityKitsune extends EntityTameable {
+public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
     Random rand = new Random(worldObj.getWorldTime());
     public int Varient;
     boolean has_updated = false;
@@ -44,8 +47,9 @@ public class EntityKitsune extends EntityTameable {
         super(world);
         this.setCanPickUpLoot(true);
         this.tasks.addTask(0,new EntityAISwimming(this));
-        this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
+        this.tasks.addTask(2, new EntityAILeapAtTarget(this, 0.4F));
         this.tasks.addTask(4, new EntityAIAttackOnCollide(this, 1.0D, true));
+        this.tasks.addTask(3, new EntityAIRangedAttack(this,5.0D));
         this.tasks.addTask(5, new EntityAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(6, new EntityAIMate(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
@@ -54,8 +58,7 @@ public class EntityKitsune extends EntityTameable {
         this.tasks.addTask(9, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
         this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
-        this.targetTasks.addTask(4, new EntityAITargetNonTamed(this, EntitySheep.class, 200, false));
+        this.targetTasks.addTask(4, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(5, new EntityAITargetNonTamed(this, EntityOcelot.class,200,false));
         //loadedfromNBT = false;
     }
@@ -76,7 +79,6 @@ public class EntityKitsune extends EntityTameable {
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(20D);
         this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(40.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
-        //this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(4.0D);
     }
     @Override
     public void setTamed(boolean tamed) {
@@ -416,5 +418,14 @@ public class EntityKitsune extends EntityTameable {
                 tamedInv.setInventorySlotContents(i, null); // Clear the slot
             }
         }
+    }
+    @SuppressWarnings("EntityConstructor")
+    @Override
+    public void attackEntityWithRangedAttack(EntityLivingBase p_82196_1_, float p_82196_2_) {
+        FireballProjectileEntity entityarrow = new FireballProjectileEntity(worldObj,this);
+
+
+        this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.worldObj.spawnEntityInWorld(entityarrow);
     }
 }

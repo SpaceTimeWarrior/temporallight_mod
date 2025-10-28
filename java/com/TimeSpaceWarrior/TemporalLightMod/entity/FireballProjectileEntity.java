@@ -30,7 +30,7 @@ public class FireballProjectileEntity extends EntityThrowable {
     }
     @Override
     protected float getGravityVelocity() {
-        return 0.07F;
+        return 0.05F;
     }
 
     @Override

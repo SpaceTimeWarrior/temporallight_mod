@@ -12,6 +12,8 @@ public class TLConfig {
     public static boolean Water_Dragon_Seas_DIM_Override = false;
     public static int Bunny_Hop_Mountains_DIM = 14;
     public static boolean Bunny_Hop_Mountains_DIM_Override = false;
+    public static int BiomeMagiwood_forest_Overworld_ID=201;
+    public static int BiomeMagiwood_forest_ID=202;
 
     public static void Load_Config(FMLPreInitializationEvent event){
         Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -23,6 +25,9 @@ public class TLConfig {
         Water_Dragon_Seas_DIM_Override = config.get(Configuration.CATEGORY_GENERAL,"Water Dragon Seas Dimension ID Manual Override",false).getBoolean();
         Bunny_Hop_Mountains_DIM = config.get(Configuration.CATEGORY_GENERAL,"bunny hop mountains Dimension ID",14).getInt();
         Bunny_Hop_Mountains_DIM_Override = config.get(Configuration.CATEGORY_GENERAL,"bunny hop mountains Dimension ID Manual Override",false).getBoolean();
+        BiomeMagiwood_forest_Overworld_ID = config.get(Configuration.CATEGORY_GENERAL,"biomeMagiwoodOVForestID",201).getInt();
+        BiomeMagiwood_forest_ID = config.get(Configuration.CATEGORY_GENERAL,"biomeMagiwoodForestID",202).getInt();
+
         if(!Kitsune_Forests_DIM_Override) {
             if (isDimIDUsed(Kitsune_Forests_DIM)) {
                 Kitsune_Forests_DIM = findUnusedDimID(Kitsune_Forests_DIM);
@@ -53,6 +58,7 @@ public class TLConfig {
         if(harvest_lv_floor<0){
             harvest_lv_floor = 0;
         }
+
     }
     public static boolean isDimIDUsed(int dim){
         Integer[] dim_array = DimensionManager.getStaticDimensionIDs();

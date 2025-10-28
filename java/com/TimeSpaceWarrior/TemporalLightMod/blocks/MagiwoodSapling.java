@@ -1,7 +1,6 @@
 package com.TimeSpaceWarrior.TemporalLightMod.blocks;
 
-import com.TimeSpaceWarrior.TemporalLightMod.world.TemporalLightWorldGenMagiwoodTrees;
-import net.minecraft.block.Block;
+import com.TimeSpaceWarrior.TemporalLightMod.world.structure.TemporalLightWorldGenMagiwoodTrees;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
 import net.minecraft.world.World;
