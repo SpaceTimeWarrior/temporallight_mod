@@ -85,6 +85,7 @@ tile.magiwoodstairs.name=Magiwood Stairs
 tile.hypersteelfence.name=Hypersteel Fence
 tile.lightsteelfence.name=Lightsteel Fence
 tile.magiwoodfence.name=Magiwood Fence
+tile.kitsune_portal.name=Kitsune Forest Portal
 
 itemGroup.temporallightmaterials=Temporal Light Materials
 itemGroup.temporallighttools=Temporal Light common tools
