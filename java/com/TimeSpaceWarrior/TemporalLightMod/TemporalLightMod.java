@@ -1,11 +1,14 @@
 package com.TimeSpaceWarrior.TemporalLightMod;
 
+
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.KitsuneItem;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
 import com.TimeSpaceWarrior.TemporalLightMod.network.PacketSyncInventory;
 import com.TimeSpaceWarrior.TemporalLightMod.tile_entity.HyperSteel_Assembler_TileEntity;
 import com.TimeSpaceWarrior.TemporalLightMod.world.DimensionRegistry;
 import com.TimeSpaceWarrior.TemporalLightMod.world.TemporalLightWorldGenerator;
+import com.TimeSpaceWarrior.TemporalLightMod.world.biome.BiomeGenMagiwoodForestDIM;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -21,6 +24,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
@@ -127,7 +132,12 @@ public class TemporalLightMod
         BiomeRegistry.register();
         GameRegistry.registerWorldGenerator(new TemporalLightWorldGenerator(),0);
         DimensionRegistry.register();
-
+        if(Loader.isModLoaded("Baubles")&&TLConfig.addBBCompatability){
+            com.TimeSpaceWarrior.TemporalLightMod.Compatability.baubles.BBItemRegistry.Register();
+        }
+        if(Loader.isModLoaded("TwilightForest")&&TLConfig.addTFCompatability){
+            com.TimeSpaceWarrior.TemporalLightMod.Compatability.twilightforest.TwilConfig.preinit();
+        }
     }
 
     @EventHandler
@@ -135,12 +145,17 @@ public class TemporalLightMod
     {
         GameRegistry.registerTileEntity(HyperSteel_Assembler_TileEntity.class,"hypersteelassembler");
         CraftingRegistry.register();
-
+        MinecraftForge.EVENT_BUS.register(new MobDropHandler());
         //MinecraftForge.EVENT_BUS.register(new HorseArmorHandler());
+        if(Loader.isModLoaded("Baubles")){
+            com.TimeSpaceWarrior.TemporalLightMod.Compatability.baubles.CraftingRegistry.register();
+        }
+        if (Loader.isModLoaded("NotEnoughItems")) {
+            com.TimeSpaceWarrior.TemporalLightMod.Compatability.NEI.NEICompat.loadConfig();
+        }
     }
     @EventHandler
     public void postinit(FMLPostInitializationEvent event){
-
     }
     public static CreativeTabs TemporalLightMaterials = new CreativeTabs("temporallightmaterials") {
         @Override

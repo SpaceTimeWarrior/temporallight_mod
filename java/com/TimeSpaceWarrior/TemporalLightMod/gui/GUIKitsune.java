@@ -16,7 +16,7 @@ public class GUIKitsune extends GuiContainer {
     public GUIKitsune(InventoryPlayer inventory, EntityKitsune entity) {
         super(new ContainerKitsune(inventory,entity));
         kitsune = entity;
-        System.out.println(kitsune);
+        //System.out.println(kitsune);
         this.xSize = 176;
         this.ySize = 256;
     }

@@ -1,6 +1,7 @@
 package com.TimeSpaceWarrior.TemporalLightMod;
 
 import com.TimeSpaceWarrior.TemporalLightMod.Items.*;
+import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.*;
 import net.minecraft.potion.PotionHealth;
@@ -53,6 +54,15 @@ public class ItemRegistry {
     public static Item MAGIWOODLEGGINGS;
     public static Item MAGIWOODBOOTS;
     public static Item LIGHTSTEELWIRE;
+    public static Item NULL_CRYSTAL_ESSENCE;
+    public static Item FIRE_CRYSTAL_ESSENCE;
+    public static Item FIRE_CRYSTAL_ESSENCE_FUEL;
+    public static Item ELECTRIC_CRYSTAL_ESSENCE;
+    public static Item EARTH_CRYSTAL_ESSENCE;
+    public static Item LIFE_CRYSTAL_ESSENCE;
+    public static Item EARTH_STAFF;
+    public static Item REDSTONE_STAFF;
+
 
     public static final Item.ToolMaterial MAGIWOODTOOL = EnumHelper.addToolMaterial("magiwood",TLConfig.harvest_lv_floor, 8192,2F,8F,40).setRepairItem(new ItemStack(BlockRegistry.MAGIWOODPLANK));
     public static final ItemArmor.ArmorMaterial MAGIWOODARMOR = EnumHelper.addArmorMaterial("magiwood",8192,new int[]{4,10,14,4},40);
@@ -100,7 +110,8 @@ public class ItemRegistry {
         MAGIWOODSHOVEL = new MagiwoodShovel(MAGIWOODTOOL).setUnlocalizedName("magiwoodshovel").setCreativeTab(TemporalLightMod.TemporalLightTools).setTextureName(modid+"magiwoodshovel");
         LIGHTNING_STAFF = new LightningStaff(MAGIWOODTOOL).setUnlocalizedName("lightning_staff").setTextureName(modid+"lightning_staff").setCreativeTab(TemporalLightMod.TemporalLightTools);
         FIRE_STAFF = new FireStaff(MAGIWOODTOOL).setUnlocalizedName("fire_staff").setTextureName(modid+"fire_staff").setCreativeTab(TemporalLightMod.TemporalLightTools);
-
+        EARTH_STAFF = new EarthStaff(MAGIWOODTOOL).setUnlocalizedName("Earth_Staff").setTextureName(modid+"earth_staff").setCreativeTab(TemporalLightMod.TemporalLightTools);
+        REDSTONE_STAFF = new RedstoneStaff(MAGIWOODTOOL).setUnlocalizedName("redstone_staff").setTextureName(modid+"redstone_staff").setCreativeTab(TemporalLightMod.TemporalLightTools);
 
         HYPERSTEELWIRE = new ItemWire().setUnlocalizedName("hypersteelwire").setCreativeTab(TemporalLightMod.TemporalLightMaterials).setTextureName(modid+"hypersteelwire");
         REDSTONE_HYPERCOIL = new ItemWire().setUnlocalizedName("redstone_hypercoil").setCreativeTab(TemporalLightMod.TemporalLightMaterials).setTextureName(modid+"redstone_hypercoil");
@@ -109,6 +120,17 @@ public class ItemRegistry {
         LIGHTNING_CHARGE = new ItemLightningCharge().setUnlocalizedName("lightning_charge").setTextureName(modid+"lightning_charge").setCreativeTab(TemporalLightMod.TemporalLightTools);
         KITSUNE_TAIL = new KitsuneTail().setUnlocalizedName("kitsune_tail").setTextureName(modid+"kitsune_tail").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
         LIGHTSTEELWIRE = new ItemWire().setUnlocalizedName("lightsteelwire").setTextureName(modid+"lightsteelwire").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
+        NULL_CRYSTAL_ESSENCE = new ItemCrystal("null").setUnlocalizedName("null_crystal").setTextureName(modid+"magic_essence_null").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
+        FIRE_CRYSTAL_ESSENCE = new ItemCrystal("fire").setUnlocalizedName("fire_crystal").setTextureName(modid+"magic_essence_fire").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
+        FIRE_CRYSTAL_ESSENCE_FUEL = new ItemCrystalFuel("fire").setUnlocalizedName("fire_crystal_burnable").setTextureName(modid+"magic_essence_fire_burnable").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
+        ELECTRIC_CRYSTAL_ESSENCE = new ItemCrystal("electric").setUnlocalizedName("electric_crystal").setTextureName(modid+"magic_essence_electricity").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
+        EARTH_CRYSTAL_ESSENCE = new ItemCrystal("earth").setUnlocalizedName("earth_crystal").setTextureName(modid+"magic_essence_earth").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
+        LIFE_CRYSTAL_ESSENCE = new ItemCrystal("life").setUnlocalizedName("life_crystal").setTextureName(modid+"magic_essence_life").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
+
+
+
+
+
     }
     public static void GmRegistry(){
         GameRegistry.registerItem(TIMECRYSTALSHARD,TIMECRYSTALSHARD.getUnlocalizedName());
@@ -152,6 +174,27 @@ public class ItemRegistry {
         GameRegistry.registerItem(MAGIWOODHOE,MAGIWOODHOE.getUnlocalizedName());
         GameRegistry.registerItem(MAGIWOODSHOVEL,MAGIWOODSHOVEL.getUnlocalizedName());
         GameRegistry.registerItem(LIGHTSTEELWIRE, LIGHTSTEELWIRE.getUnlocalizedName());
+        GameRegistry.registerItem(NULL_CRYSTAL_ESSENCE,NULL_CRYSTAL_ESSENCE.getUnlocalizedName());
+        GameRegistry.registerItem(FIRE_CRYSTAL_ESSENCE,FIRE_CRYSTAL_ESSENCE.getUnlocalizedName());
+        GameRegistry.registerItem(FIRE_CRYSTAL_ESSENCE_FUEL, FIRE_CRYSTAL_ESSENCE_FUEL.getUnlocalizedName());
+        GameRegistry.registerItem(ELECTRIC_CRYSTAL_ESSENCE,ELECTRIC_CRYSTAL_ESSENCE.getUnlocalizedName());
+        GameRegistry.registerItem(EARTH_STAFF,EARTH_STAFF.getUnlocalizedName());
+        GameRegistry.registerItem(REDSTONE_STAFF,REDSTONE_STAFF.getUnlocalizedName());
+        GameRegistry.registerItem(EARTH_CRYSTAL_ESSENCE,EARTH_CRYSTAL_ESSENCE.getUnlocalizedName());
+        GameRegistry.registerItem(LIFE_CRYSTAL_ESSENCE,LIFE_CRYSTAL_ESSENCE.getUnlocalizedName());
+
+        GameRegistry.registerFuelHandler(new IFuelHandler() {
+            @Override
+            public int getBurnTime(ItemStack fuel) {
+                if (fuel.getItem() == ItemRegistry.FIRE_CRYSTAL_ESSENCE_FUEL) {
+                    return 1600; // burn time in ticks (e.g. 1600 = 8 seconds)
+                }
+                return 0;
+            }
+
+        });
+
+
     }
     public static void preinitRegistry() {
         setupforRegistry();

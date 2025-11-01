@@ -15,22 +15,22 @@ public class ContainerKitsune extends Container {
     public IInventory armorInventory;
     public ContainerKitsune(InventoryPlayer inventory, EntityKitsune entity) {
         kitsune = entity;
-        System.out.println(kitsune);
+        //System.out.println(kitsune);
         this.tamedInventory = new InventoryKitsune(kitsune,false);
-        System.out.println(tamedInventory);
+        //System.out.println(tamedInventory);
         this.armorInventory = new InventoryKitsune(kitsune,true);
-        System.out.println(armorInventory);
+        //System.out.println(armorInventory);
         this.addSlotToContainer(new Slot(armorInventory,0,8+8*18,36-8));//weapon
         this.addSlotToContainer(new Slot(armorInventory,1,8+6*18,36-8));//boots
         this.addSlotToContainer(new Slot(armorInventory,2,8+4*18,36-8));//leggings
         this.addSlotToContainer(new Slot(armorInventory,3,8+2*18,36-8));//chestplate
         this.addSlotToContainer(new Slot(armorInventory,4,8+0*18,36-8));//helmet
         this.add_kitsune_Inventory(8,36+16,kitsune);
-        System.out.println("added kitsune container");
+        //System.out.println("added kitsune container");
         this.add_Inventory(8,96+18+32,inventory);
-        System.out.println("added player inventory container");
+        //System.out.println("added player inventory container");
         this.add_Inventory_Hotbar(8,160+34+32,inventory);
-        System.out.println("added player hotbar container");
+        //System.out.println("added player hotbar container");
     }
 
     @Override

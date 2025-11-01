@@ -1,5 +1,6 @@
 package com.TimeSpaceWarrior.TemporalLightMod;
 
+import com.TimeSpaceWarrior.TemporalLightMod.entity.EarthProjectileEntity;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.FireballProjectileEntity;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.LightningProjectileEntity;
@@ -10,5 +11,6 @@ public class EntityRegistrys {
         EntityRegistry.registerModEntity(LightningProjectileEntity.class,"lightningProjectile",0,TemporalLightMod.instance,800,3,true);
         EntityRegistry.registerModEntity(FireballProjectileEntity.class,"fireballprojectile",1,TemporalLightMod.instance,800,1,true);
         EntityRegistry.registerModEntity(EntityKitsune.class,"kitsune",2,TemporalLightMod.instance,80,3,true);
+        EntityRegistry.registerModEntity(EarthProjectileEntity.class,"earthprojectile",3,TemporalLightMod.instance,800,1,true);
     }
 }

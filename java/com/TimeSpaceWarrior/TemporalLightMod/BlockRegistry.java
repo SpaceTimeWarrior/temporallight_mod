@@ -1,6 +1,7 @@
 package com.TimeSpaceWarrior.TemporalLightMod;
 
 import com.TimeSpaceWarrior.TemporalLightMod.blocks.*;
+import com.TimeSpaceWarrior.TemporalLightMod.world.dimension.KitsunePBlock;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -72,7 +73,7 @@ public class BlockRegistry {
         MAGIWOODSLAB_D = new Magiwood_Slab(woodmat,true).setBlockName("double_magiwoodslab").setBlockTextureName(modid+"magiwoodplanks");
         MAGIWOODSTAIRS = new Magiwood_Stairs(MAGIWOODPLANK).setBlockName("magiwoodstairs").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
         MAGIWOODFENCE = new TL_Fence(modid+"magiwoodplanks",woodmat,TLConfig.harvest_lv_floor-1,1).setBlockName("magiwoodfence").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
-        KITSUNEPORTAL = new KitsunePortalBlock(portalmat).setBlockName("kitsune_portal").setBlockTextureName("eatherian_sleep_portal").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
+        KITSUNEPORTAL = new KitsunePBlock(portalmat).setBlockName("kitsune_portal").setBlockTextureName("eatherian_sleep_portal").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
 
     }
     public static void GmRegistry(){

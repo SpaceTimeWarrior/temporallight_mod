@@ -13,6 +13,7 @@ public class RenderingRegistrys {
     public static void Register(){
         RenderingRegistry.registerEntityRenderingHandler(LightningProjectileEntity.class,new RenderSnowball(ItemRegistry.LIGHTNING_CHARGE));
         RenderingRegistry.registerEntityRenderingHandler(FireballProjectileEntity.class,new RenderSnowball(Items.fire_charge));
+        RenderingRegistry.registerEntityRenderingHandler(LightningProjectileEntity.class,new RenderSnowball(ItemRegistry.EARTH_CRYSTAL_ESSENCE));
         RenderingRegistry.registerEntityRenderingHandler(EntityKitsune.class,new RenderKitsune(new KitsuneModel(),0.5F));
         //RenderingRegistry.registerEntityRenderingHandler(EntityHorse.class, new RenderHyperSteelHorse());
     }

@@ -75,6 +75,28 @@ public class CraftingRegistry {
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.MAGIWOODSHOVEL)," X"," #","W#",'X',BlockRegistry.MAGIWOODPLANK,'#',Items.iron_ingot,'W',Blocks.wool);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.MAGIWOODCLUB)," X"," X","W#",'X',BlockRegistry.MAGIWOODPLANK,'#',Items.iron_ingot,'W',Blocks.wool);
 
+        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.FIRE_CRYSTAL_ESSENCE_FUEL),ItemRegistry.FIRE_CRYSTAL_ESSENCE);
+        GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.FIRE_CRYSTAL_ESSENCE),ItemRegistry.FIRE_CRYSTAL_ESSENCE_FUEL);
+
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.FIRE_STAFF),"  C","LWL","W  ",'C',ItemRegistry.FIRE_CRYSTAL_ESSENCE,'L',Items.leather,'W',BlockRegistry.MAGIWOODPLANK);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.FIRE_STAFF),"  C","LWL","W  ",'C',ItemRegistry.FIRE_CRYSTAL_ESSENCE_FUEL,'L',Items.leather,'W',BlockRegistry.MAGIWOODPLANK);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.FIRE_STAFF),"  C","LWL","W  ",'C',ItemRegistry.FIRE_CRYSTAL_ESSENCE,'L',Blocks.wool,'W',BlockRegistry.MAGIWOODPLANK);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.FIRE_STAFF),"  C","LWL","W  ",'C',ItemRegistry.FIRE_CRYSTAL_ESSENCE_FUEL,'L',Blocks.wool,'W',BlockRegistry.MAGIWOODPLANK);
+
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.LIGHTNING_STAFF),"  C","LWL","W  ",'C',ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE,'L',Items.leather,'W',BlockRegistry.MAGIWOODPLANK);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.LIGHTNING_STAFF),"  C","LWL","W  ",'C',ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE,'L',Blocks.wool,'W',BlockRegistry.MAGIWOODPLANK);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.REDSTONE_STAFF),"RER",'R',ItemRegistry.REDSTONE_HYPERCOIL,'E',ItemRegistry.EARTH_STAFF);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.EARTH_STAFF),"  C","LWL","W  ",'C',ItemRegistry.EARTH_CRYSTAL_ESSENCE,'L',Items.leather,'W',BlockRegistry.MAGIWOODPLANK);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.EARTH_STAFF),"  C","LWL","W  ",'C',ItemRegistry.EARTH_CRYSTAL_ESSENCE,'L',Blocks.wool,'W',BlockRegistry.MAGIWOODPLANK);
+
+
+
+        GameRegistry.addSmelting(ItemRegistry.NULL_CRYSTAL_ESSENCE,new ItemStack(ItemRegistry.FIRE_CRYSTAL_ESSENCE),1);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE)," R ","RNR"," R ",'R',ItemRegistry.REDSTONE_HYPERCOIL,'N',ItemRegistry.NULL_CRYSTAL_ESSENCE);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.EARTH_STAFF),"SSS","DND","SSS",'S',Blocks.stone,'D',Items.diamond,'N',ItemRegistry.NULL_CRYSTAL_ESSENCE);
+
+
+
 
         //armor and some tools use leather or wool in their crafting
         //leather

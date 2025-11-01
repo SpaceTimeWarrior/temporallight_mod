@@ -14,6 +14,8 @@ public class TLConfig {
     public static boolean Bunny_Hop_Mountains_DIM_Override = false;
     public static int BiomeMagiwood_forest_Overworld_ID=201;
     public static int BiomeMagiwood_forest_ID=202;
+    public static boolean addBBCompatability=true;
+    public static boolean addTFCompatability=true;
 
     public static void Load_Config(FMLPreInitializationEvent event){
         Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -27,7 +29,8 @@ public class TLConfig {
         Bunny_Hop_Mountains_DIM_Override = config.get(Configuration.CATEGORY_GENERAL,"bunny hop mountains Dimension ID Manual Override",false).getBoolean();
         BiomeMagiwood_forest_Overworld_ID = config.get(Configuration.CATEGORY_GENERAL,"biomeMagiwoodOVForestID",201).getInt();
         BiomeMagiwood_forest_ID = config.get(Configuration.CATEGORY_GENERAL,"biomeMagiwoodForestID",202).getInt();
-
+        addBBCompatability = config.get(Configuration.CATEGORY_GENERAL,"Add Baubles Compatability",true).getBoolean();
+        addTFCompatability = config.get(Configuration.CATEGORY_GENERAL,"Add Twilight Forest Compatability",true).getBoolean();
         if(!Kitsune_Forests_DIM_Override) {
             if (isDimIDUsed(Kitsune_Forests_DIM)) {
                 Kitsune_Forests_DIM = findUnusedDimID(Kitsune_Forests_DIM);

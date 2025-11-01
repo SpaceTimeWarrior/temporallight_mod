@@ -18,6 +18,10 @@ public class Assembler_Recipe  {
         MinPower = new ArrayList<Integer>(0);
         MaxPower = new ArrayList<Integer>(0);
     }
+    public List<ItemStack[]> getRecipeList() {
+        return RecipeList;
+    }
+
     public ItemStack[] addRecipe(ItemStack[] stacks){
         if(stacks.length!=11){
             System.out.println("ERROR Recipe out of bounds"+ stacks.toString());
@@ -385,6 +389,14 @@ public class Assembler_Recipe  {
             System.out.println("inserting into a non-empty slot");
             return RecipeList.get(i)[10];
         }else{System.out.println("unknown Match");return null;}
+    }
+
+    public List<Integer> getMinPower() {
+        return MinPower;
+    }
+
+    public List<Integer> getMaxPower() {
+        return MaxPower;
     }
 
 }

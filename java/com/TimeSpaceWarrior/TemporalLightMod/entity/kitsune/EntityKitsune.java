@@ -19,6 +19,7 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
@@ -121,6 +122,7 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
         super.readEntityFromNBT(compound);
+        posY++;
         setVariant(compound.getInteger("Variants"));
         for (int i = 0; i < storedEquipment.length; i++) {
             NBTTagCompound itemTag = compound.getCompoundTag("StoredGear" + i);
@@ -136,6 +138,11 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
         RandomPreferencefood = ItemStack.loadItemStackFromNBT(itemTag).getItem();
         if(RandomPreferencefood!=null){
             RandomaltPreferenceFoods=TemporalLightMod.getListOfAltFoods(TemporalLightMod.getKitsuneRandomTamebyItem(RandomPreferencefood));
+        }
+        if(RandomaltPreferenceFoods == null){
+            int tmp = rand.nextInt(TemporalLightMod.KitsuneRandomTame.size());
+            RandomPreferencefood = TemporalLightMod.KitsuneRandomTame.get(tmp);
+            RandomaltPreferenceFoods=TemporalLightMod.getListOfAltFoods(tmp);
         }
         this.loadedfromNBT = true;
 
@@ -197,10 +204,24 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
 
     @Override
     public boolean interact(EntityPlayer player) {
+        ItemStack stacks = player.getHeldItem();
+        if(stacks!=null){
+            if(stacks.getItem()==Items.milk_bucket){
+                this.clearActivePotions();
+                player.inventory.setInventorySlotContents(player.inventory.currentItem,new ItemStack(Items.bucket));
 
-        if(this.isTamed()){
+            }
+        }
+
+        if(this.isTamed()&&!player.isSneaking()){
             //open menu when tamed for future releases
-            System.out.println("this kitsune is already tamed");
+            //System.out.println("this kitsune is already tamed");
+            if(stacks!=null) {
+                if (stacks.getItem() instanceof ItemFood) {
+                    this.heal(3.0f);
+                    player.inventory.decrStackSize(player.inventory.currentItem, 1);
+                }
+            }
             if(!worldObj.isRemote){
                 player.openGui(TemporalLightMod.instance,TemporalLightMod.KITSUNE_GUIID,worldObj,(int) posX,(int)posY,(int)posZ);
             }
@@ -242,8 +263,10 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
                                 this.generateRandomParticles("slime");
                                 break;
                         }
+                        player.inventory.decrStackSize(player.inventory.currentItem,1);
                         return true;
                     }
+                    player.inventory.decrStackSize(player.inventory.currentItem,1);
                 }
             }
         }
