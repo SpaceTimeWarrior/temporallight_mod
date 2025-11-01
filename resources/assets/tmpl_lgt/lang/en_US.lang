@@ -44,10 +44,19 @@ item.deathmetal.name=Death Metal
 item.lightning_charge.name=Lightning Charge
 item.lightning_staff.name=Lightning Staff
 item.fire_staff.name=Fire Staff
+item.Earth_Staff.name=Earth Staff
+item.redstone_staff.name=Redstone Staff
+item.null_crystal.name=Empty Crystal Essence
+item.fire_crystal.name=Fire Crystal Essence
+item.fire_crystal_burnable.name=Fire Crystal Essence Fuel
+item.electric_crystal.name=Electric Crystal Essence
+item.earth_crystal.name=Earth Crystal Essence
+item.life_crystal.name=Life Crystal Essence
 
 item.lightsteelwire.name=Lightsteel Wire
 
 item.kitsune_tail.name=Roll of Kitsune Tails
+item.kitsunering.name=Kitsune Ring
 
 tile.synthetictimecrystalore.name=Synthetic Time Crystal Ore
 tile.synthetictimecrystalore_deepslate.name=Synthetic Time Crystal Ore
