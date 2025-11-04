@@ -81,7 +81,7 @@ public class NEIHypersteelAssemblerHandler extends TemplateRecipeHandler {
                 minSignal = new PositionedStack(new ItemStack(Items.redstone, minPower), 142, 6+14);
             }
 
-            if (maxPower < 15) {
+            if (maxPower < 16) {
                 maxSignal = new PositionedStack(new ItemStack(Items.redstone, maxPower), 142, 6+14+18);
             }
 

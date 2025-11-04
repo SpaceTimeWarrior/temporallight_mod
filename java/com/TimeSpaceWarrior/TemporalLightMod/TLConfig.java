@@ -16,6 +16,9 @@ public class TLConfig {
     public static int BiomeMagiwood_forest_ID=202;
     public static boolean addBBCompatability=true;
     public static boolean addTFCompatability=true;
+    public static boolean addChococraftcompatability=true;
+    public static boolean addPinkChocoboSpawntoMagiwoodForest=true;
+    public static boolean addFoodExpansionCompatability=true;
 
     public static void Load_Config(FMLPreInitializationEvent event){
         Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -31,6 +34,11 @@ public class TLConfig {
         BiomeMagiwood_forest_ID = config.get(Configuration.CATEGORY_GENERAL,"biomeMagiwoodForestID",202).getInt();
         addBBCompatability = config.get(Configuration.CATEGORY_GENERAL,"Add Baubles Compatability",true).getBoolean();
         addTFCompatability = config.get(Configuration.CATEGORY_GENERAL,"Add Twilight Forest Compatability",true).getBoolean();
+        addChococraftcompatability = config.get(Configuration.CATEGORY_GENERAL,"Add Chococraft Compatability",true).getBoolean();
+        addPinkChocoboSpawntoMagiwoodForest = config.get(Configuration.CATEGORY_GENERAL,"Add pink chocobo spawn to Magiwood Forest",true).getBoolean();
+
+        addFoodExpansionCompatability = config.get(Configuration.CATEGORY_GENERAL,"Add Food Expansion Compatability",true).getBoolean();
+
         if(!Kitsune_Forests_DIM_Override) {
             if (isDimIDUsed(Kitsune_Forests_DIM)) {
                 Kitsune_Forests_DIM = findUnusedDimID(Kitsune_Forests_DIM);

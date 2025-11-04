@@ -1,5 +1,6 @@
 package com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune;
 
+import com.TimeSpaceWarrior.TemporalLightMod.TemporalLightMod;
 import net.minecraft.item.Item;
 
 public class KitsuneItem {
@@ -26,5 +27,13 @@ public class KitsuneItem {
     }
     public void setNum(int nm){
         num = nm;
+    }
+
+    public String toString() {
+        if(num<0||num>=TemporalLightMod.KitsuneRandomTame.size()){
+            return "invalid kitsune Item";
+        }
+        Item itm = TemporalLightMod.KitsuneRandomTame.get(num);
+        return "Name:"+item.getUnlocalizedName()+" tied to "+itm.getUnlocalizedName();
     }
 }

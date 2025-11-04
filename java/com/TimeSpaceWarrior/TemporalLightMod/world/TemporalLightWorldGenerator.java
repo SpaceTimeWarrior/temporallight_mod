@@ -92,7 +92,7 @@ public class TemporalLightWorldGenerator implements IWorldGenerator {
                     int z = chunkZ * 16 + rand.nextInt(16);
                     int y = world.getHeightValue(x, z);
                     new TemporalLightWorldGenMagiwoodTrees().generate(world, rand, x, y, z);
-                    System.out.println("tree added at ("+x+","+y+", "+z+")");
+                    //System.out.println("tree added at ("+x+","+y+", "+z+")");
                     numperchunk++;
                 }
             }

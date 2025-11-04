@@ -56,15 +56,14 @@ class RingDamageHandler {
     public void onLivingHurt(LivingHurtEvent event) {
         if (event.entityLiving instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) event.entityLiving;
-            if (event.source.isProjectile()||event.source.isMagicDamage()) { // Fireball damage
+            if (event.source.isProjectile()||event.source.isMagicDamage()) {
                 IInventory baubles = BaublesApi.getBaubles(player);
-                // Check both ring slots (0 and 1)
                 for (int i = 0; i < 2; i++) {
                     ItemStack stack = baubles.getStackInSlot(i);
                     if (stack != null && stack.getItem() instanceof KitsuneRing) {
-                        event.ammount *= 0.5f; // 50% reduction
+                        event.ammount *= 0.5f;
                         player.addPotionEffect(new PotionEffect(Potion.resistance.id, 60, 1));
-                        return; // Only trigger once
+                        return;
                     }
                 }
             }

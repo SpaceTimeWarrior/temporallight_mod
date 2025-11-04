@@ -4,6 +4,7 @@ import com.TimeSpaceWarrior.TemporalLightMod.TLConfig;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
 import com.TimeSpaceWarrior.TemporalLightMod.world.structure.TemporalLightWorldGenMagiwoodTrees;
 import com.TimeSpaceWarrior.TemporalLightMod.world.structure.cedric_base;
+import cpw.mods.fml.common.Loader;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityChicken;
@@ -25,6 +26,9 @@ public class BiomeGenMagiwoodForestDIM extends BiomeGenBase {
         this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityPig.class, 3, 1, 3));
         this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntitySheep.class, 3, 1, 4));
         this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityChicken.class, 4, 1, 4));
+        if(Loader.isModLoaded("chococraft")&&TLConfig.addPinkChocoboSpawntoMagiwoodForest&&TLConfig.addChococraftcompatability){
+            this.spawnableCreatureList.add(com.TimeSpaceWarrior.TemporalLightMod.Compatability.chococraft.chocoBiome.addChocobosMFD());
+        }
 
         this.fillerBlock = Blocks.stone;
         this.topBlock = Blocks.grass;

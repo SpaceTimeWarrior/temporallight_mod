@@ -1,5 +1,7 @@
 package com.TimeSpaceWarrior.TemporalLightMod.world.biome;
 
+import com.TimeSpaceWarrior.TemporalLightMod.TLConfig;
+import cpw.mods.fml.common.Loader;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.passive.EntityChicken;
@@ -19,6 +21,9 @@ public class BiomeGenMagiwoodForest extends BiomeGenBase {
         this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityPig.class, 3, 1, 3));
         this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntitySheep.class, 3, 1, 4));
         this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityChicken.class, 4, 1, 4));
+        if(Loader.isModLoaded("chococraft")&& TLConfig.addPinkChocoboSpawntoMagiwoodForest&&TLConfig.addChococraftcompatability){
+            this.spawnableCreatureList.add(com.TimeSpaceWarrior.TemporalLightMod.Compatability.chococraft.chocoBiome.addChocobosMF());
+        }
         this.fillerBlock = Blocks.stone;
         this.topBlock = Blocks.grass;
         this.theBiomeDecorator.treesPerChunk = 2;

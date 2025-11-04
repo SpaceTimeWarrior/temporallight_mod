@@ -57,8 +57,13 @@ public class TemporalLightMod
             return -1;
         }
         for(int i=0;i<KitsuneRandomTame.size();i++){
-            if(KitsuneRandomTame.get(i).equals(item)){
-                return i;
+            if(KitsuneRandomTame.get(i)!=null) {
+                if (KitsuneRandomTame.get(i).equals(item)) {
+                    return i;
+                }
+            }else{
+                //KitsuneRandomTame.remove(i);
+                //i--;
             }
         }
         return -2;
@@ -135,9 +140,7 @@ public class TemporalLightMod
         if(Loader.isModLoaded("Baubles")&&TLConfig.addBBCompatability){
             com.TimeSpaceWarrior.TemporalLightMod.Compatability.baubles.BBItemRegistry.Register();
         }
-        if(Loader.isModLoaded("TwilightForest")&&TLConfig.addTFCompatability){
-            com.TimeSpaceWarrior.TemporalLightMod.Compatability.twilightforest.TwilConfig.preinit();
-        }
+
     }
 
     @EventHandler
@@ -150,12 +153,32 @@ public class TemporalLightMod
         if(Loader.isModLoaded("Baubles")){
             com.TimeSpaceWarrior.TemporalLightMod.Compatability.baubles.CraftingRegistry.register();
         }
+        if(Loader.isModLoaded("TwilightForest")&&TLConfig.addTFCompatability){
+            com.TimeSpaceWarrior.TemporalLightMod.Compatability.twilightforest.TwilConfig.preinit();
+        }
+        if(Loader.isModLoaded("FoodExpansion")&&TLConfig.addFoodExpansionCompatability){
+            com.TimeSpaceWarrior.TemporalLightMod.Compatability.FoodExpansion.FoodEXCompat.preinit();
+        }
+        if(Loader.isModLoaded("chococraft")&&TLConfig.addChococraftcompatability){
+
+            com.TimeSpaceWarrior.TemporalLightMod.Compatability.chococraft.ChocoPlusSelector.sendtopreinit();
+        }
         if (Loader.isModLoaded("NotEnoughItems")) {
             com.TimeSpaceWarrior.TemporalLightMod.Compatability.NEI.NEICompat.loadConfig();
         }
     }
     @EventHandler
     public void postinit(FMLPostInitializationEvent event){
+        System.out.println("===KITSUNE SYSTEM===");
+        System.out.println("Random Preference Items Raw");
+        System.out.println(KitsuneRandomTame);
+        System.out.println("Random Preference Items Cooked");
+        System.out.println(KitsuneAltRandomTame);
+        System.out.println("Guaranteed tame but causes negitive effects");
+        System.out.println(KitsuneBadGut);
+        System.out.println("Guaranteed tame");
+        System.out.println(KitsuneGut);
+        System.out.println("===KITSUNE SYSTEM===");
     }
     public static CreativeTabs TemporalLightMaterials = new CreativeTabs("temporallightmaterials") {
         @Override

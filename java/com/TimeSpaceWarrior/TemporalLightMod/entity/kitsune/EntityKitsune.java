@@ -209,7 +209,6 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
             if(stacks.getItem()==Items.milk_bucket){
                 this.clearActivePotions();
                 player.inventory.setInventorySlotContents(player.inventory.currentItem,new ItemStack(Items.bucket));
-
             }
         }
 
@@ -219,6 +218,13 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
             if(stacks!=null) {
                 if (stacks.getItem() instanceof ItemFood) {
                     this.heal(3.0f);
+                    if(stacks.getItem()==Items.cookie){
+                        if(!this.isPotionActive(Potion.poison.id)) {
+                            this.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 0));
+                        }else{
+                            this.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 2));
+                        }
+                    }
                     player.inventory.decrStackSize(player.inventory.currentItem, 1);
                 }
             }
