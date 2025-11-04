@@ -22,7 +22,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "00.04"
+version = "0.0.5"
 group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Temporal Light"
 
@@ -46,6 +46,7 @@ dependencies {
     compileOnly  files('appliedenergistics2-rv3-beta-6.jar')
     compileOnly  files('TwilightForest-2.4.3.jar')
     compileOnly  files('ChocoCraft-4.1.5.jar')
+    compileOnly  files('ChocoCraftPlus-1.7.10-4.5.0.jar');
     compileOnly  files('CodeChickenCore-1.7.10-1.0.7.48-universal.jar')
     compileOnly  files('FoodExpansion1.1.1-mc1.7.10.jar')
     compileOnly  files('NotEnoughItems-1.7.10-1.0.5.120-universal.jar')
