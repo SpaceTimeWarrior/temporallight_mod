@@ -54,6 +54,10 @@ item.earth_crystal.name=Earth Crystal Essence
 item.life_crystal.name=Life Crystal Essence
 
 item.lightsteelwire.name=Lightsteel Wire
+item.energygun.name=Energy Gun
+item.goldenergygun.name=Golden Energy Gun
+item.electricinfuseddiamond.name=Electric crystal Infused Diamond
+item.diamondenergygun.name=Diamond Energy Gum
 
 item.kitsune_tail.name=Roll of Kitsune Tails
 item.kitsunering.name=Kitsune Ring
@@ -95,6 +99,7 @@ tile.hypersteelfence.name=Hypersteel Fence
 tile.lightsteelfence.name=Lightsteel Fence
 tile.magiwoodfence.name=Magiwood Fence
 tile.kitsune_portal.name=Kitsune Forest Portal
+tile.PhoenixEgg.name=Phoenix Egg
 
 itemGroup.temporallightmaterials=Temporal Light Materials
 itemGroup.temporallighttools=Temporal Light common tools
@@ -103,6 +108,7 @@ itemGroup.temporallightblocks=Temporal Light common Blocks
 container.hypersteel_assembler=Hypersteel Purification Assembler
 
 entity.tmpl_lgt.kitsune.name=Kitsune
+entity.tmpl_lgt.phoenixf.name=Female Phoenix
 
 kitsune.inventory=Kitsune Inventory
 pkitsune.inventory=Inventory
