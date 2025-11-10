@@ -11,9 +11,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.passive.EntityOcelot;
-import net.minecraft.entity.passive.EntitySheep;
-import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFireball;
@@ -36,7 +34,8 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
     public int Varient;
     boolean has_updated = false;
     private boolean loadedfromNBT;
-    public static Item RandomPreferencefood;
+    public Item RandomPreferencefood;
+
     public ArrayList<Item>RandomaltPreferenceFoods = new ArrayList<Item>(0);
 
     public ItemStack[] storedEquipment = new ItemStack[5];
@@ -86,9 +85,150 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
         this.dataWatcher.updateObject(16, Byte.valueOf((byte)(tamed ? 1 : 0)));
     }
 
+
+
     @Override
-    public EntityAgeable createChild(EntityAgeable p_90011_1_) {
+    public EntityAgeable createChild(EntityAgeable entity) {
+        if(entity instanceof EntityKitsune||entity instanceof EntityWolf){
+            EntityKitsune child = new EntityKitsune(worldObj);
+            int parentVarient;
+            int thisvarient = this.getVariant();
+            if(entity instanceof EntityKitsune){
+                parentVarient = ((EntityKitsune)entity).getVariant();
+            }else{
+                parentVarient = 4;
+            }
+            child.setVariant(getChildColor(parentVarient,thisvarient));
+            child.setTamed(true);
+            int roll = rand.nextInt(100);
+            if(roll<3){
+                int tmp = rand.nextInt(TemporalLightMod.KitsuneRandomTame.size());
+                child.RandomPreferencefood = TemporalLightMod.KitsuneRandomTame.get(tmp);
+            }else if(roll<50){
+                child.RandomPreferencefood = this.RandomPreferencefood;
+            }else{
+                if(entity instanceof EntityKitsune){child.RandomPreferencefood=((EntityKitsune)entity).RandomPreferencefood;}else{
+                    int tmp = rand.nextInt(TemporalLightMod.KitsuneRandomTame.size());
+                    child.RandomPreferencefood = TemporalLightMod.KitsuneRandomTame.get(tmp);
+                }
+            }
+            //child.setOwner(this.getOwnerName());
+            return child;
+        }
         return null;
+    }
+    public static int getChildColor(int parent1, int parent2) {
+        Random random = new Random();
+
+        if (random.nextInt(100) < 3) {
+            return 4;
+        }
+
+        if (parent1 == parent2) {
+            if (parent1 == 4) return 4;
+            return parent1;
+        }
+        int a = Math.min(parent1, parent2);
+        int b = Math.max(parent1, parent2);
+        int roll = random.nextInt(100);
+
+        if (a == 0 && b == 1) {
+            if (roll < 70) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+        if (a == 0 && b == 2) {
+            if (roll < 25){
+                return 0;
+            }else if (roll < 50) {
+                return 2;
+            }else {
+                return 1;
+            }
+        }
+        if (a == 0 && b == 3) {
+            if(roll < 70){
+                return 0;
+            }else{
+                return 3;
+            }
+        }
+        if (a == 0 && b == 4) {
+            return 3;
+        }
+        if (a == 1 && b == 1) {
+            return 1;
+        }
+        if (a == 1 && b == 2) {
+            if(roll<60){
+                return 2;
+            }else{
+                return 1;
+            }
+        }
+        if (a == 1 && b == 3) {
+            if (roll < 47) {
+                return 1;
+            }
+            else if (roll < 67) {
+                return 3;
+            }
+            else if (roll < 82) {
+                return 0;
+            }
+            else {
+                return 2;
+            }
+        }
+        if (a == 1 && b == 4) {
+            if(roll<70){
+                return 1;
+            }else{
+                return 3;
+            }
+        }
+        if (a == 2 && b == 2) {
+            return 2;
+        }
+        if (a == 2 && b == 3) {
+            if(roll <60){
+                return 2;
+            }else{
+                return 3;
+            }
+        }
+        if (a == 2 && b == 4) {
+            return 3;
+        }
+        if (a == 3 && b == 3) {
+            return 3;
+        }
+        if (a == 3 && b == 4) {
+            if(roll <70){
+                return 3;
+            }else{
+                return 1;
+            }
+        }
+        if(roll<48){
+            return parent1;
+        }else{
+            return parent2;
+        }
+    }
+
+
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        if (stack == null || !(stack.getItem() instanceof ItemFood)) return false;
+
+        Item food = stack.getItem();
+
+        return isItemFavoriteRPF(new ItemStack(food)) ||
+                isItemFavoriteRAPF(new ItemStack(food)) ||
+                isItemFavoriteG(new ItemStack(food))||food==Items.bone;
     }
     @Override
     public void writeEntityToNBT(NBTTagCompound compound) {
@@ -208,28 +348,36 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
         if(stacks!=null){
             if(stacks.getItem()==Items.milk_bucket){
                 this.clearActivePotions();
-                player.inventory.setInventorySlotContents(player.inventory.currentItem,new ItemStack(Items.bucket));
+                if(!player.capabilities.isCreativeMode) {
+                    player.inventory.setInventorySlotContents(player.inventory.currentItem, new ItemStack(Items.bucket));
+                }
             }
         }
 
-        if(this.isTamed()&&!player.isSneaking()){
+        if(this.isTamed()){
             //open menu when tamed for future releases
             //System.out.println("this kitsune is already tamed");
             if(stacks!=null) {
                 if (stacks.getItem() instanceof ItemFood) {
                     this.heal(3.0f);
-                    if(stacks.getItem()==Items.cookie){
+                    if(isItemFavoriteBG(stacks)||isItemFavoriteRPF(stacks)){
                         if(!this.isPotionActive(Potion.poison.id)) {
                             this.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 0));
                         }else{
                             this.addPotionEffect(new PotionEffect(Potion.poison.id, 100, 2));
                         }
                     }
-                    player.inventory.decrStackSize(player.inventory.currentItem, 1);
+                    if(!player.capabilities.isCreativeMode) {
+                        player.inventory.decrStackSize(player.inventory.currentItem, 1);
+                    }
                 }
+                boolean sup = super.interact(player);
+                if(sup){return true;}
             }
             if(!worldObj.isRemote){
-                player.openGui(TemporalLightMod.instance,TemporalLightMod.KITSUNE_GUIID,worldObj,(int) posX,(int)posY,(int)posZ);
+                if(!player.isSneaking()&&!this.isInLove()){
+                    player.openGui(TemporalLightMod.instance,TemporalLightMod.KITSUNE_GUIID,worldObj,(int) posX,(int)posY,(int)posZ);
+                }
             }
             return false;
         }else {
@@ -269,10 +417,14 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
                                 this.generateRandomParticles("slime");
                                 break;
                         }
-                        player.inventory.decrStackSize(player.inventory.currentItem,1);
+                        if(!player.capabilities.isCreativeMode) {
+                            player.inventory.decrStackSize(player.inventory.currentItem, 1);
+                        }
                         return true;
                     }
-                    player.inventory.decrStackSize(player.inventory.currentItem,1);
+                    if(!player.capabilities.isCreativeMode) {
+                        player.inventory.decrStackSize(player.inventory.currentItem, 1);
+                    }
                 }
             }
         }
@@ -290,6 +442,17 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
         if(isItemFavoriteRAPF(stack)){return true;}
         if(isItemFavoriteBG(stack)){return true;}
         if(isItemFavoriteG(stack)){return true;}
+        return false;
+    }
+    @Override
+    public boolean canMateWith(EntityAnimal otherAnimal) {
+        if (otherAnimal == this) {return false;}
+        if (!this.isTamed()) {return false;}
+        if(otherAnimal instanceof EntityTameable) {
+            if (!((EntityTameable)otherAnimal).isTamed()) {return false;}
+        }
+        if (otherAnimal instanceof EntityKitsune) {return true;}
+        if (otherAnimal instanceof EntityWolf) {return true;}
         return false;
     }
     @SideOnly(Side.CLIENT)
@@ -317,6 +480,12 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
     @Override
     public void onUpdate() {
         super.onUpdate();
+        EntityPlayer player = worldObj.getClosestPlayerToEntity(this,32D);
+        if(player!=null) {
+            if (isItemFavorite(player.getHeldItem())) {
+                generateRandomParticles("spell");
+            }
+        }
         if (this.isNightForm()) {
             this.setSize(0.4F, 1.0F); // smaller hitbox
         } else {

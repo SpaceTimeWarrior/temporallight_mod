@@ -1,10 +1,8 @@
 package com.TimeSpaceWarrior.TemporalLightMod;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.BlockCactus;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class CraftingRegistry {
@@ -94,8 +92,10 @@ public class CraftingRegistry {
         GameRegistry.addSmelting(ItemRegistry.NULL_CRYSTAL_ESSENCE,new ItemStack(ItemRegistry.FIRE_CRYSTAL_ESSENCE),1);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE)," R ","RNR"," R ",'R',ItemRegistry.REDSTONE_HYPERCOIL,'N',ItemRegistry.NULL_CRYSTAL_ESSENCE);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.EARTH_STAFF),"SSS","DND","SSS",'S',Blocks.stone,'D',Items.diamond,'N',ItemRegistry.NULL_CRYSTAL_ESSENCE);
-
-
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.ENERGYGUN),"III","RCC","I  ",'I',Items.iron_ingot,'R',ItemRegistry.REDSTONE_HYPERCOIL,'C',ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.ENERGYGUN),"GGG","RCC","G  ",'G',Items.gold_ingot,'R',ItemRegistry.REDSTONE_HYPERCOIL,'C',ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.ELEINFUSEDDIAMOND),"CCC","CDC","CCC",'C',ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE,'D',Items.diamond);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.DIAMONDENERGYGUN),"DDD","RCC","D  ",'D',Items.diamond,'R',ItemRegistry.REDSTONE_HYPERCOIL,'C',ItemRegistry.ELEINFUSEDDIAMOND);
 
 
         //armor and some tools use leather or wool in their crafting

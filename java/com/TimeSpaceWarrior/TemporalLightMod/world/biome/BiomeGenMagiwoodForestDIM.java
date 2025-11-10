@@ -1,5 +1,6 @@
 package com.TimeSpaceWarrior.TemporalLightMod.world.biome;
 
+import com.TimeSpaceWarrior.TemporalLightMod.BlockRegistry;
 import com.TimeSpaceWarrior.TemporalLightMod.TLConfig;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
 import com.TimeSpaceWarrior.TemporalLightMod.world.structure.TemporalLightWorldGenMagiwoodTrees;
@@ -40,6 +41,7 @@ public class BiomeGenMagiwoodForestDIM extends BiomeGenBase {
     @Override
     public void decorate(World world, Random rand, int chunkx, int chunkz) {
         super.decorate(world, rand, chunkx, chunkz);
+
         int numperchunk = 0;
         int maxparchunk = 10;
         int attempts = 4;
@@ -48,7 +50,7 @@ public class BiomeGenMagiwoodForestDIM extends BiomeGenBase {
             int z = chunkz * 16 + rand.nextInt(16);
             int y = world.getHeightValue(x, z);
             new cedric_base().generate(world, rand, x, y, z);
-        }else if((chunkx%50 ==1&&chunkz%50==1)||(chunkx%50 ==49&&chunkz%50==49)){
+        }else if((chunkx%50==1&&chunkz%50==1)||(chunkx%50 ==49&&chunkz%50==49)){
 
         }else{
             for (int i = 0; i < attempts; i++) {
@@ -62,6 +64,19 @@ public class BiomeGenMagiwoodForestDIM extends BiomeGenBase {
                 }
             }
         }
-
+        if(rand.nextInt(650)<200){
+            int x = chunkx * 16 + rand.nextInt(16);
+            int z = chunkz * 16 + rand.nextInt(16);
+            int y = world.getHeightValue(x, z);
+            world.setBlock(x,y,z, BlockRegistry.PHOENIXEGG);
+            x = chunkx * 16 + rand.nextInt(16);
+            z = chunkz * 16 + rand.nextInt(16);
+            y = world.getHeightValue(x, z);
+            world.setBlock(x,y,z, BlockRegistry.PHOENIXEGG);
+            x = chunkx * 16 + rand.nextInt(16);
+            z = chunkz * 16 + rand.nextInt(16);
+            y = world.getHeightValue(x, z);
+            world.setBlock(x,y,z, BlockRegistry.PHOENIXEGG);
+        }
     }
 }

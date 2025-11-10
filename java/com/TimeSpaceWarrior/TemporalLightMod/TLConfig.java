@@ -18,7 +18,9 @@ public class TLConfig {
     public static boolean addTFCompatability=true;
     public static boolean addChococraftcompatability=true;
     public static boolean addPinkChocoboSpawntoMagiwoodForest=true;
+    //public static boolean canPhoenixesBreedwithChocobos=true;
     public static boolean addFoodExpansionCompatability=true;
+    public static int VillagerEndTraderID = 10;
 
     public static void Load_Config(FMLPreInitializationEvent event){
         Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -32,10 +34,12 @@ public class TLConfig {
         Bunny_Hop_Mountains_DIM_Override = config.get(Configuration.CATEGORY_GENERAL,"bunny hop mountains Dimension ID Manual Override",false).getBoolean();
         BiomeMagiwood_forest_Overworld_ID = config.get(Configuration.CATEGORY_GENERAL,"biomeMagiwoodOVForestID",201).getInt();
         BiomeMagiwood_forest_ID = config.get(Configuration.CATEGORY_GENERAL,"biomeMagiwoodForestID",202).getInt();
+        VillagerEndTraderID = config.get(Configuration.CATEGORY_GENERAL,"villager end trader ID",10).getInt();
         addBBCompatability = config.get(Configuration.CATEGORY_GENERAL,"Add Baubles Compatability",true).getBoolean();
         addTFCompatability = config.get(Configuration.CATEGORY_GENERAL,"Add Twilight Forest Compatability",true).getBoolean();
         addChococraftcompatability = config.get(Configuration.CATEGORY_GENERAL,"Add Chococraft Compatability",true).getBoolean();
         addPinkChocoboSpawntoMagiwoodForest = config.get(Configuration.CATEGORY_GENERAL,"Add pink chocobo spawn to Magiwood Forest",true).getBoolean();
+        //canPhoenixesBreedwithChocobos = config.get(Configuration.CATEGORY_GENERAL,"can phoenixes breed with chocobos",true).getBoolean();
 
         addFoodExpansionCompatability = config.get(Configuration.CATEGORY_GENERAL,"Add Food Expansion Compatability",true).getBoolean();
 

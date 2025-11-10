@@ -62,6 +62,10 @@ public class ItemRegistry {
     public static Item LIFE_CRYSTAL_ESSENCE;
     public static Item EARTH_STAFF;
     public static Item REDSTONE_STAFF;
+    public static Item ENERGYGUN;
+    public static Item GOLDENERGYGUN;
+    public static Item ELEINFUSEDDIAMOND;
+    public static Item DIAMONDENERGYGUN;
 
 
     public static final Item.ToolMaterial MAGIWOODTOOL = EnumHelper.addToolMaterial("magiwood",TLConfig.harvest_lv_floor, 8192,2F,8F,40).setRepairItem(new ItemStack(BlockRegistry.MAGIWOODPLANK));
@@ -112,7 +116,6 @@ public class ItemRegistry {
         FIRE_STAFF = new FireStaff(MAGIWOODTOOL).setUnlocalizedName("fire_staff").setTextureName(modid+"fire_staff").setCreativeTab(TemporalLightMod.TemporalLightTools);
         EARTH_STAFF = new EarthStaff(MAGIWOODTOOL).setUnlocalizedName("Earth_Staff").setTextureName(modid+"earth_staff").setCreativeTab(TemporalLightMod.TemporalLightTools);
         REDSTONE_STAFF = new RedstoneStaff(MAGIWOODTOOL).setUnlocalizedName("redstone_staff").setTextureName(modid+"redstone_staff").setCreativeTab(TemporalLightMod.TemporalLightTools);
-
         HYPERSTEELWIRE = new ItemWire().setUnlocalizedName("hypersteelwire").setCreativeTab(TemporalLightMod.TemporalLightMaterials).setTextureName(modid+"hypersteelwire");
         REDSTONE_HYPERCOIL = new ItemWire().setUnlocalizedName("redstone_hypercoil").setCreativeTab(TemporalLightMod.TemporalLightMaterials).setTextureName(modid+"redstone_hypercoil");
         DEATHMETAL = new Item().setUnlocalizedName("deathmetal").setCreativeTab(TemporalLightMod.TemporalLightMaterials).setTextureName(modid+"deathmetal");
@@ -126,9 +129,10 @@ public class ItemRegistry {
         ELECTRIC_CRYSTAL_ESSENCE = new ItemCrystal("electric").setUnlocalizedName("electric_crystal").setTextureName(modid+"magic_essence_electricity").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
         EARTH_CRYSTAL_ESSENCE = new ItemCrystal("earth").setUnlocalizedName("earth_crystal").setTextureName(modid+"magic_essence_earth").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
         LIFE_CRYSTAL_ESSENCE = new ItemCrystal("life").setUnlocalizedName("life_crystal").setTextureName(modid+"magic_essence_life").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
-
-
-
+        ENERGYGUN = new LightningStaff(Item.ToolMaterial.IRON).setUnlocalizedName("energygun").setTextureName(modid+"energy_gun").setCreativeTab(TemporalLightMod.TemporalLightTools);
+        GOLDENERGYGUN = new LightningStaff(Item.ToolMaterial.GOLD).setMaxDamage(512).setUnlocalizedName("goldenergygun").setTextureName(modid+"GoldEnergy_gun").setCreativeTab(TemporalLightMod.TemporalLightTools);
+        ELEINFUSEDDIAMOND = new ItemCrystal("electric").setUnlocalizedName("electricinfuseddiamond").setTextureName(modid+"infused_Diamond").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
+        DIAMONDENERGYGUN = new LightningStaff(Item.ToolMaterial.EMERALD).setUnlocalizedName("diamondenergygun").setTextureName(modid+"diamondenergy_gun").setCreativeTab(TemporalLightMod.TemporalLightTools);
 
 
     }
@@ -182,6 +186,10 @@ public class ItemRegistry {
         GameRegistry.registerItem(REDSTONE_STAFF,REDSTONE_STAFF.getUnlocalizedName());
         GameRegistry.registerItem(EARTH_CRYSTAL_ESSENCE,EARTH_CRYSTAL_ESSENCE.getUnlocalizedName());
         GameRegistry.registerItem(LIFE_CRYSTAL_ESSENCE,LIFE_CRYSTAL_ESSENCE.getUnlocalizedName());
+        GameRegistry.registerItem(ENERGYGUN,ENERGYGUN.getUnlocalizedName());
+        GameRegistry.registerItem(GOLDENERGYGUN, GOLDENERGYGUN.getUnlocalizedName());
+        GameRegistry.registerItem(ELEINFUSEDDIAMOND, ELEINFUSEDDIAMOND.getUnlocalizedName());
+        GameRegistry.registerItem(DIAMONDENERGYGUN, DIAMONDENERGYGUN.getUnlocalizedName());
 
         GameRegistry.registerFuelHandler(new IFuelHandler() {
             @Override

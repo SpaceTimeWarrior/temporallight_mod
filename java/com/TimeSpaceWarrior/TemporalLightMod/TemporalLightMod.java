@@ -1,13 +1,20 @@
 package com.TimeSpaceWarrior.TemporalLightMod;
 
 
+import baubles.client.ClientProxy;
+import com.TimeSpaceWarrior.TemporalLightMod.blocks.PhoenixEgg;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.KitsuneItem;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.phoenixF.EntityPhoenixF;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.villager.End_TraderHandler;
 import com.TimeSpaceWarrior.TemporalLightMod.network.PacketSyncInventory;
 import com.TimeSpaceWarrior.TemporalLightMod.tile_entity.HyperSteel_Assembler_TileEntity;
+import com.TimeSpaceWarrior.TemporalLightMod.tile_entity.PhoenixEgg_TileEntity;
 import com.TimeSpaceWarrior.TemporalLightMod.world.DimensionRegistry;
 import com.TimeSpaceWarrior.TemporalLightMod.world.TemporalLightWorldGenerator;
 import com.TimeSpaceWarrior.TemporalLightMod.world.biome.BiomeGenMagiwoodForestDIM;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -18,6 +25,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.VillagerRegistry;
 import cpw.mods.fml.relauncher.Side;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
@@ -42,6 +50,7 @@ public class TemporalLightMod
     public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("temporal_light");
     public static int packetId = 0;
     public static int stariId = 200;
+
 
     public static ArrayList<Item> KitsuneRandomTame = new ArrayList<Item>(0);//for random taming preference
     public static ArrayList<KitsuneItem> KitsuneAltRandomTame = new ArrayList<KitsuneItem>(0);//cooked safe alternate form. there os a linking number to link to Random Tame
@@ -134,9 +143,13 @@ public class TemporalLightMod
         RenderingRegistrys.Register();
         EntityRegistrys.Register();
         registerEntityEgg(EntityKitsune.class,0xffaf5344,0xffaf8844);
+        registerEntityEgg(EntityPhoenixF.class, 0xac3232,0xfbf236);
         BiomeRegistry.register();
         GameRegistry.registerWorldGenerator(new TemporalLightWorldGenerator(),0);
         DimensionRegistry.register();
+        VillagerRegistry.instance().registerVillagerId(TLConfig.VillagerEndTraderID);
+        VillagerRegistry.instance().registerVillageTradeHandler(TLConfig.VillagerEndTraderID, new End_TraderHandler());
+        VillagerRegistry.instance().registerVillagerSkin(TLConfig.VillagerEndTraderID, new ResourceLocation("tmpl_lgt", "textures/entity/villager/profession/end_trader.png"));
         if(Loader.isModLoaded("Baubles")&&TLConfig.addBBCompatability){
             com.TimeSpaceWarrior.TemporalLightMod.Compatability.baubles.BBItemRegistry.Register();
         }
@@ -147,8 +160,10 @@ public class TemporalLightMod
     public void init(FMLInitializationEvent event)
     {
         GameRegistry.registerTileEntity(HyperSteel_Assembler_TileEntity.class,"hypersteelassembler");
+        GameRegistry.registerTileEntity(PhoenixEgg_TileEntity.class,"phoenixegg");
         CraftingRegistry.register();
         MinecraftForge.EVENT_BUS.register(new MobDropHandler());
+
         //MinecraftForge.EVENT_BUS.register(new HorseArmorHandler());
         if(Loader.isModLoaded("Baubles")){
             com.TimeSpaceWarrior.TemporalLightMod.Compatability.baubles.CraftingRegistry.register();

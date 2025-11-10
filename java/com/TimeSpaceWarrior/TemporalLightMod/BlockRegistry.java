@@ -33,6 +33,7 @@ public class BlockRegistry {
     public static Block LIGHTSTEELFENCE;
     public static Block MAGIWOODFENCE;
     public static Block KITSUNEPORTAL;
+    public static Block PHOENIXEGG;
 
     public static void setupforRegistry(){
         String modid = TemporalLightMod.MODID+":";
@@ -74,7 +75,7 @@ public class BlockRegistry {
         MAGIWOODSTAIRS = new Magiwood_Stairs(MAGIWOODPLANK).setBlockName("magiwoodstairs").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
         MAGIWOODFENCE = new TL_Fence(modid+"magiwoodplanks",woodmat,TLConfig.harvest_lv_floor-1,1).setBlockName("magiwoodfence").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
         KITSUNEPORTAL = new KitsunePBlock(portalmat).setBlockName("kitsune_portal").setBlockTextureName("eatherian_sleep_portal").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
-
+        PHOENIXEGG = new PhoenixEgg().setBlockName("PhoenixEgg").setBlockTextureName(modid+"phoenix_egg").setCreativeTab(TemporalLightMod.TemporalLightBlocks);
     }
     public static void GmRegistry(){
         GameRegistry.registerBlock(HYPERSTEEL_BLOCK,HYPERSTEEL_BLOCK.getUnlocalizedName());
@@ -92,17 +93,18 @@ public class BlockRegistry {
         GameRegistry.registerBlock(LIGHTSTEEL_STAIRS,LIGHTSTEEL_STAIRS.getUnlocalizedName());
         GameRegistry.registerBlock(LIGHTSTEEL_SLAB,LightSteel_Slab_Item.class,LIGHTSTEEL_SLAB.getUnlocalizedName());
         GameRegistry.registerBlock(LIGHTSTEEL_SLAB_D,LightSteel_Slab_Item.class,LIGHTSTEEL_SLAB_D.getUnlocalizedName());
-        GameRegistry.registerBlock(MAGIWOODLOG, MAGIWOODLOG.getLocalizedName());
-        GameRegistry.registerBlock(MAGIWOODLEAVES, MAGIWOODLEAVES.getLocalizedName());
-        GameRegistry.registerBlock(MAGIWOODSAPLING, MAGIWOODSAPLING.getLocalizedName());
-        GameRegistry.registerBlock(MAGIWOODPLANK, MAGIWOODPLANK.getLocalizedName());
+        GameRegistry.registerBlock(MAGIWOODLOG, MAGIWOODLOG.getUnlocalizedName());
+        GameRegistry.registerBlock(MAGIWOODLEAVES, MAGIWOODLEAVES.getUnlocalizedName());
+        GameRegistry.registerBlock(MAGIWOODSAPLING, MAGIWOODSAPLING.getUnlocalizedName());
+        GameRegistry.registerBlock(MAGIWOODPLANK, MAGIWOODPLANK.getUnlocalizedName());
         GameRegistry.registerBlock(MAGIWOODSLAB,Magiwood_Slab_Item.class,MAGIWOODSLAB.getUnlocalizedName());
         GameRegistry.registerBlock(MAGIWOODSLAB_D,Magiwood_Slab_Item.class,MAGIWOODSLAB_D.getUnlocalizedName());
         GameRegistry.registerBlock(MAGIWOODSTAIRS,MAGIWOODSTAIRS.getUnlocalizedName());
         GameRegistry.registerBlock(HYPERSTEELFENCE,HYPERSTEELFENCE.getUnlocalizedName());
         GameRegistry.registerBlock(LIGHTSTEELFENCE,LIGHTSTEELFENCE.getUnlocalizedName());
-        GameRegistry.registerBlock(MAGIWOODFENCE, MAGIWOODFENCE.getLocalizedName());
-        GameRegistry.registerBlock(KITSUNEPORTAL, KITSUNEPORTAL.getLocalizedName());
+        GameRegistry.registerBlock(MAGIWOODFENCE, MAGIWOODFENCE.getUnlocalizedName());
+        GameRegistry.registerBlock(KITSUNEPORTAL, KITSUNEPORTAL.getUnlocalizedName());
+        GameRegistry.registerBlock(PHOENIXEGG, PHOENIXEGG.getUnlocalizedName());
     }
     public static void preinitRegistry() {
         setupforRegistry();
