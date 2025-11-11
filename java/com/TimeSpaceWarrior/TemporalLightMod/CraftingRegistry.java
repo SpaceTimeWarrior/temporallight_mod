@@ -1,6 +1,8 @@
 package com.TimeSpaceWarrior.TemporalLightMod;
 
+import com.TimeSpaceWarrior.TemporalLightMod.blocks.MagiwoodPlanks;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -19,7 +21,7 @@ public class CraftingRegistry {
         GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.HYPERSTEELINGOT,9),BlockRegistry.HYPERSTEEL_BLOCK);
         GameRegistry.addSmelting(ItemRegistry.DEATHMETAL,new ItemStack(BlockRegistry.UNFIRED_DEATHMETAL_BLOCK),1.0f);
         GameRegistry.addRecipe(new ItemStack(BlockRegistry.UNFIRED_DEATHMETAL_BLOCK,8),"ODO","III","ODO",'O',Blocks.obsidian,'I',Blocks.iron_block,'d',Blocks.diamond_block);
-        GameRegistry.addRecipe(new ItemStack(BlockRegistry.HYPERSTEEL_ASSEMBLER_unpowered),"XXX", "X#X", "XRX",'#',BlockRegistry.MAGIWOODPLANK,'R',Blocks.unpowered_comparator,'X',ItemRegistry.HYPERSTEELINGOT);
+        GameRegistry.addRecipe(new ItemStack(BlockRegistry.HYPERSTEEL_ASSEMBLER_unpowered),"XXX", "X#X", "XRX",'#',BlockRegistry.MAGIWOODPLANK,'R', ItemRegistry.REDSTONE_HYPERCOIL/*Redstone Comparitor*/,'X',ItemRegistry.HYPERSTEELINGOT);
         TemporalLightMod.assem_recipe.addRecipe(new ItemStack[]{null,new ItemStack(Items.coal),null,new ItemStack(Items.coal),new ItemStack(Blocks.coal_block),new ItemStack(Items.coal),null,new ItemStack(Items.coal),null,new ItemStack(Items.coal),new ItemStack(Items.diamond,1)},5);
         TemporalLightMod.assem_recipe.addRecipe(new ItemStack[]{new ItemStack(Items.quartz),new ItemStack(Blocks.glowstone),new ItemStack(Items.quartz),new ItemStack(Items.gold_ingot),new ItemStack(Blocks.enchanting_table),new ItemStack(Items.gold_ingot),new ItemStack(Items.quartz),new ItemStack(Items.blaze_rod),new ItemStack(Items.quartz),new ItemStack(Items.redstone),new ItemStack(Items.nether_star,2)},8,10);
         TemporalLightMod.assem_recipe.addRecipe(new ItemStack[]{new ItemStack(Items.quartz),new ItemStack(ItemRegistry.REDSTONE_HYPERCOIL),new ItemStack(Items.quartz),new ItemStack(Items.gold_ingot),new ItemStack(Items.emerald),new ItemStack(Items.gold_ingot),new ItemStack(Items.quartz),new ItemStack(Items.iron_ingot),new ItemStack(Items.quartz),new ItemStack(Items.blaze_rod),new ItemStack(ItemRegistry.DEATHMETAL)},5);
@@ -93,7 +95,7 @@ public class CraftingRegistry {
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE)," R ","RNR"," R ",'R',ItemRegistry.REDSTONE_HYPERCOIL,'N',ItemRegistry.NULL_CRYSTAL_ESSENCE);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.EARTH_STAFF),"SSS","DND","SSS",'S',Blocks.stone,'D',Items.diamond,'N',ItemRegistry.NULL_CRYSTAL_ESSENCE);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.ENERGYGUN),"III","RCC","I  ",'I',Items.iron_ingot,'R',ItemRegistry.REDSTONE_HYPERCOIL,'C',ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE);
-        GameRegistry.addRecipe(new ItemStack(ItemRegistry.ENERGYGUN),"GGG","RCC","G  ",'G',Items.gold_ingot,'R',ItemRegistry.REDSTONE_HYPERCOIL,'C',ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.GOLDENERGYGUN),"GGG","RCC","G  ",'G',Items.gold_ingot,'R',ItemRegistry.REDSTONE_HYPERCOIL,'C',ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.ELEINFUSEDDIAMOND),"CCC","CDC","CCC",'C',ItemRegistry.ELECTRIC_CRYSTAL_ESSENCE,'D',Items.diamond);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.DIAMONDENERGYGUN),"DDD","RCC","D  ",'D',Items.diamond,'R',ItemRegistry.REDSTONE_HYPERCOIL,'C',ItemRegistry.ELEINFUSEDDIAMOND);
 
@@ -122,10 +124,15 @@ public class CraftingRegistry {
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.MAGIWOODCHESTPLATE),"SWS","SSS","SSS",'S',BlockRegistry.MAGIWOODPLANK,'W',Blocks.wool);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.HYPERSTEELLEGGINGS),"SSS","WSW","WSW",'S',ItemRegistry.HYPERSTEELINGOT,'W',Blocks.wool);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.LIGHTSTEELLEGGINGS),"SSS","WSW","WSW",'S',ItemRegistry.LIGHTSTEELINGOT,'W',Blocks.wool);
-        GameRegistry.addRecipe(new ItemStack(ItemRegistry.MAGIWOODLEGGINGS),"SSS","LSL","LSL",'S',BlockRegistry.MAGIWOODPLANK,'W',Blocks.wool);
+        GameRegistry.addRecipe(new ItemStack(ItemRegistry.MAGIWOODLEGGINGS),"SSS","WSW","WSW",'S',BlockRegistry.MAGIWOODPLANK,'W',Blocks.wool);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.HYPERSTEELBOOTS),"S S","W W",'S',ItemRegistry.HYPERSTEELINGOT,'W',Blocks.wool);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.LIGHTSTEELBOOTS),"S S","W W",'S',ItemRegistry.LIGHTSTEELINGOT,'W',Blocks.wool);
         GameRegistry.addRecipe(new ItemStack(ItemRegistry.MAGIWOODBOOTS),"S S","W W",'S',BlockRegistry.MAGIWOODPLANK,'W',Blocks.wool);
+
+        GameRegistry.addShapelessRecipe(new ItemStack(BlockRegistry.MAGIWOODPLANK,4),BlockRegistry.MAGIWOODLOG);
+        GameRegistry.addRecipe(new ItemStack(BlockRegistry.MAGIWOODFENCE),"WSW","WSW",'W', BlockRegistry.MAGIWOODPLANK,'S',Items.stick);
+        GameRegistry.addRecipe(new ItemStack(BlockRegistry.HYPERSTEELFENCE),"WSW","WSW",'W', BlockRegistry.HYPERSTEEL_BLOCK,'S',Items.iron_ingot);
+        GameRegistry.addRecipe(new ItemStack(BlockRegistry.LIGHTSTEELFENCE),"WSW","WSW",'W', BlockRegistry.LIGHTSTEEL_BLOCK,'S',Items.iron_ingot);
 
         GameRegistry.addRecipe(new ItemStack(BlockRegistry.KITSUNEPORTAL,8)," P ","WPW","WWW",'P',BlockRegistry.MAGIWOODPLANK,'W',Blocks.log);
 

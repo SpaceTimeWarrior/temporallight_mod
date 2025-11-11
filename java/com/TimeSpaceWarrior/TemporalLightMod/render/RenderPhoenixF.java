@@ -1,12 +1,12 @@
 package com.TimeSpaceWarrior.TemporalLightMod.render;
 
+import com.TimeSpaceWarrior.TemporalLightMod.Compatability.Tconstruct.Villager_checkerTC;
+import com.TimeSpaceWarrior.TemporalLightMod.Compatability.thaumcraft.villager_checkerTMC;
 import com.TimeSpaceWarrior.TemporalLightMod.TLConfig;
 import com.TimeSpaceWarrior.TemporalLightMod.TemporalLightMod;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.phoenixF.EntityPhoenixF;
-import com.TimeSpaceWarrior.TemporalLightMod.entity.phoenixF.PhoenixModelF;
 import cpw.mods.fml.common.Loader;
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -45,6 +45,14 @@ public class RenderPhoenixF extends RenderLiving {
                     if(Loader.isModLoaded("chococraft")){
                         String str = com.TimeSpaceWarrior.TemporalLightMod.Compatability.chococraft.ChocoPlusSelector.get_stablehand(phoenixF.getProfession());
                         if(str!=null){return new ResourceLocation(TemporalLightMod.MODID,str);}
+                    }
+                    if(Loader.isModLoaded("TConstruct")){
+                        String str = Villager_checkerTC.Check_Villager(phoenixF.getProfession());
+                        if(str!=null){return  new ResourceLocation(TemporalLightMod.MODID,str);}
+                    }
+                    if(Loader.isModLoaded("Thaumcraft")){
+                        String str = villager_checkerTMC.Check_profession(phoenixF.getProfession());
+                        if(str!=null){return  new ResourceLocation(TemporalLightMod.MODID,str);}
                     }
                     if(phoenixF.getProfession()== TLConfig.VillagerEndTraderID){
                         return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/phoenixf/end_trader.png");
