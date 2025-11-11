@@ -22,7 +22,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "0.0.6"
+version = "0.0.7"
 group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "Temporal Light"
 
@@ -42,8 +42,11 @@ dependencies {
     //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
     //compileOnly "curse.maven:twilight-forest-227639:2224825"
     compileOnly  files('libs/Galacticraft-1.7-3.0.12.504.jar')
+    compileOnly  files('Mantle-1.7.10-0.3.2b.jar')
+    compileOnly  files('TConstruct-1.7.10-1.8.8.jar')
     compileOnly  files('Baubles-1.7.10-1.0.1.10.jar')
     compileOnly  files('appliedenergistics2-rv3-beta-6.jar')
+    compileOnly  files('Thaumcraft-1.7.10-4.2.3.5.jar')
     compileOnly  files('TwilightForest-2.4.3.jar')
     compileOnly  files('ChocoCraft-4.1.5.jar')
     compileOnly  files('ChocoCraftPlus-1.7.10-4.5.0.jar');
