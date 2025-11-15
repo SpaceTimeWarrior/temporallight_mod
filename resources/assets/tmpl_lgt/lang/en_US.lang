@@ -19,11 +19,22 @@ item.lightsteelpickaxe.name=LightSteel Pickaxe
 item.lightsteelaxe.name=LightSteel Axe
 item.lightsteelshovel.name=LightSteel Shovel
 item.lightsteelhoe.name=LightSteel Hoe
+item.hypersteel hammer pixel.name=Hypersteel Hammer-Pixelmon
+item.lightsteel hammer pixel.name=Lightsteel Hammer-Pixelmon
+item.magiwood hammer pixel.name=Magiwood Hammer-Pixelmon
+item.hypersteel hammer nihilo.name=Hypersteel Hammer-Ex Nihilo
+item.lightsteel hammer nihilo.name=Lightsteel Hammer-Ex Nihilo
+item.magiwood hammer nihilo.name=Magiwood Hammer-Ex Nihilo
+item.hypersteel crook nihilo.name=Hypersteel Crook
+item.lightsteel crook nihilo.name=Lightsteel Crook
+item.magiwood crook nihilo.name=Magiwood Crook
+
 
 item.lightsteelhelmet.name=Lightsteel Helmet
 item.lightsteelchestplate.name=Lightsteel Chestplate
 item.lightsteelleggings.name=Lightsteel Leggings
 item.lightsteelboots.name=Lightsteel Boots
+item.succubus oil_pxl.name=Synthetic Succubus Oil-pixelmon
 
 item.magiwoodclubaxe.name=Magiwood Axe
 item.magiwoodpickaxe.name=Magiwood Pickaxe
@@ -111,4 +122,4 @@ entity.tmpl_lgt.kitsune.name=Kitsune
 entity.tmpl_lgt.phoenixf.name=Female Phoenix
 
 kitsune.inventory=Kitsune Inventory
-pkitsune.inventory=Inventory
+
