@@ -33,10 +33,14 @@ import net.minecraft.entity.EntityList;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 @Mod(modid = TemporalLightMod.MODID,name=TemporalLightMod.NAME, version = TemporalLightMod.VERSION)
 public class TemporalLightMod
@@ -61,7 +65,7 @@ public class TemporalLightMod
         //returns the id of the item provided
         //-1 if item is null
         //-2 if item is not in KitsuneRandomTame
-        //0+ if successful
+        // 0+ if successful
         if(item == null){
             return -1;
         }
@@ -153,6 +157,12 @@ public class TemporalLightMod
         if(Loader.isModLoaded("Baubles")&&TLConfig.addBBCompatability){
             com.TimeSpaceWarrior.TemporalLightMod.Compatability.baubles.BBItemRegistry.Register();
         }
+        if(Loader.isModLoaded("pixelmon")&&TLConfig.addPixelmonCompatability){
+            com.TimeSpaceWarrior.TemporalLightMod.Compatability.pixelmon.PixRegistry.Register();
+        }
+        if(Loader.isModLoaded("exnihilo")&&TLConfig.addEx_NihiloCompatability){
+            com.TimeSpaceWarrior.TemporalLightMod.Compatability.ex_nihilo.NihiloRegistry.register();
+        }
 
     }
 
@@ -184,16 +194,44 @@ public class TemporalLightMod
     }
     @EventHandler
     public void postinit(FMLPostInitializationEvent event){
-        System.out.println("===KITSUNE SYSTEM===");
-        System.out.println("Random Preference Items Raw");
-        System.out.println(KitsuneRandomTame);
-        System.out.println("Random Preference Items Cooked");
-        System.out.println(KitsuneAltRandomTame);
-        System.out.println("Guaranteed tame but causes negitive effects");
-        System.out.println(KitsuneBadGut);
-        System.out.println("Guaranteed tame");
-        System.out.println(KitsuneGut);
-        System.out.println("===KITSUNE SYSTEM===");
+        if(TLConfig.ShowKitsuneConfigonPostinit) {
+            System.out.println("===KITSUNE SYSTEM===");
+            System.out.println("Random Preference Items Raw");
+            System.out.println(KitsuneRandomTame);
+            System.out.println("Random Preference Items Cooked");
+            System.out.println(KitsuneAltRandomTame);
+            System.out.println("Guaranteed tame but causes negitive effects");
+            System.out.println(KitsuneBadGut);
+            System.out.println("Guaranteed tame");
+            System.out.println(KitsuneGut);
+            System.out.println("===KITSUNE SYSTEM===");
+        }
+        if(TLConfig.ShowBiomeArrayInformation) {
+            System.out.println("===Biome check===");
+            BiomeGenBase[] biomes = BiomeGenBase.getBiomeGenArray();
+            for (int id = 0; id < biomes.length; id++) {
+                if (!BiomeDictionary.isBiomeRegistered(id)) {
+                    System.out.println("Biome open on id " + id);
+                } else {
+                    System.out.println("Biome is used on id:" + id + ":" + biomes[id].biomeName);
+                }
+            }
+            System.out.println("===Biome check===");
+        }
+        if(TLConfig.ShowDimensionIDs) {
+            System.out.println("===Dimension IDS===");
+            Integer[] Dims = DimensionManager.getStaticDimensionIDs();
+            for (int dim = 0; dim < Dims.length; dim++) {
+                System.out.println(Dims[dim] + ":" + DimensionManager.getProvider(dim).getDimensionName());
+            }
+            System.out.println("===Dimension IDS===");
+        }
+        if(TLConfig.ShowCustomVillagerIDArray) {
+            Collection<Integer> Villager = VillagerRegistry.getRegisteredVillagers();
+            System.out.println("===Villager Professions===");
+            System.out.println(Villager);
+            System.out.println("===Villager Professions===");
+        }
     }
     public static CreativeTabs TemporalLightMaterials = new CreativeTabs("temporallightmaterials") {
         @Override

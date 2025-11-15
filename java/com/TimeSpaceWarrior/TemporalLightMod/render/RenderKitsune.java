@@ -256,6 +256,28 @@ public class RenderKitsune extends RenderLiving {
                         return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_orange.png");
                     case 4:
                         return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_white.png");
+                    case 5:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_blue.png");
+                    case 6:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_purple.png");
+                    case 7:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_grey.png");
+                    case 8:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_Dark_Green.png");
+                    case 9:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_red.png");
+                    case 10:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_neonorange.png");
+                    case 11:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_pink.png");
+                    case 12:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_cyan.png");
+                    case 13:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_light_grey.png");
+                    case 14:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_green.png");
+                    case 15:
+                        return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_gold.png");
                     default:
                         return new ResourceLocation(TemporalLightMod.MODID, "textures/entity/kitsune/kitsune_brown.png");
                 }

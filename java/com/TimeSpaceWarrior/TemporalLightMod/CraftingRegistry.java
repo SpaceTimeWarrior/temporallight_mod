@@ -136,5 +136,10 @@ public class CraftingRegistry {
 
         GameRegistry.addRecipe(new ItemStack(BlockRegistry.KITSUNEPORTAL,8)," P ","WPW","WWW",'P',BlockRegistry.MAGIWOODPLANK,'W',Blocks.log);
 
+        if(TLConfig.addSkyblockRecipes){
+            GameRegistry.addRecipe(new ItemStack(BlockRegistry.MAGIWOODSAPLING),"DOD"," W ","DOD",'D',Blocks.diamond_block,'O',Blocks.obsidian,'W',Blocks.log);
+            GameRegistry.addRecipe(new ItemStack(BlockRegistry.SYNTHETICTIMECRYSTALORE_DEEPSLATE,8),"DDD","ODO","WWW",'D',Items.diamond,'O',Blocks.obsidian,'W',Blocks.wool);
+        }
+
     }
 }

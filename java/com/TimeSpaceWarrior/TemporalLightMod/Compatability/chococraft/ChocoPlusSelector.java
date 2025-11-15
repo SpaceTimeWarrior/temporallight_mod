@@ -1,10 +1,8 @@
 package com.TimeSpaceWarrior.TemporalLightMod.Compatability.chococraft;
 
-import chococraft.common.ModChocoCraft;
 import chococraft.common.config.GeneralConfig;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModContainer;
-import net.minecraft.world.biome.BiomeGenBase;
 
 public class ChocoPlusSelector {
 
@@ -23,7 +21,7 @@ public class ChocoPlusSelector {
         }
     }
 
-    public static String get_stablehand(int profession) {
+    public static String Check_profession(int profession) {
         ModContainer mod = Loader.instance().getIndexedModList().get("chococraft");
         if (mod == null) {
             return null;

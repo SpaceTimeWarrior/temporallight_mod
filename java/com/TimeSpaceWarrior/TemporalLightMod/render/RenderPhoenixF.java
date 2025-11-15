@@ -1,7 +1,5 @@
 package com.TimeSpaceWarrior.TemporalLightMod.render;
 
-import com.TimeSpaceWarrior.TemporalLightMod.Compatability.Tconstruct.Villager_checkerTC;
-import com.TimeSpaceWarrior.TemporalLightMod.Compatability.thaumcraft.villager_checkerTMC;
 import com.TimeSpaceWarrior.TemporalLightMod.TLConfig;
 import com.TimeSpaceWarrior.TemporalLightMod.TemporalLightMod;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.phoenixF.EntityPhoenixF;
@@ -43,15 +41,27 @@ public class RenderPhoenixF extends RenderLiving {
 
                 default:
                     if(Loader.isModLoaded("chococraft")){
-                        String str = com.TimeSpaceWarrior.TemporalLightMod.Compatability.chococraft.ChocoPlusSelector.get_stablehand(phoenixF.getProfession());
+                        String str = com.TimeSpaceWarrior.TemporalLightMod.Compatability.chococraft.ChocoPlusSelector.Check_profession(phoenixF.getProfession());
                         if(str!=null){return new ResourceLocation(TemporalLightMod.MODID,str);}
                     }
                     if(Loader.isModLoaded("TConstruct")){
-                        String str = Villager_checkerTC.Check_Villager(phoenixF.getProfession());
+                        String str = com.TimeSpaceWarrior.TemporalLightMod.Compatability.Tconstruct.Villager_checkerTC.Check_profession(phoenixF.getProfession());
                         if(str!=null){return  new ResourceLocation(TemporalLightMod.MODID,str);}
                     }
                     if(Loader.isModLoaded("Thaumcraft")){
-                        String str = villager_checkerTMC.Check_profession(phoenixF.getProfession());
+                        String str = com.TimeSpaceWarrior.TemporalLightMod.Compatability.thaumcraft.villager_checkerTMC.Check_profession(phoenixF.getProfession());
+                        if(str!=null){return  new ResourceLocation(TemporalLightMod.MODID,str);}
+                    }
+                    if(Loader.isModLoaded("Forestry")){
+                        String str = com.TimeSpaceWarrior.TemporalLightMod.Compatability.forestry.villager_selecterFST.check_Profession(phoenixF.getProfession());
+                        if(str!=null){return  new ResourceLocation(TemporalLightMod.MODID,str);}
+                    }
+                    if(Loader.isModLoaded("witchery")){
+                        String str = com.TimeSpaceWarrior.TemporalLightMod.Compatability.witchery.Villager_SelectorWITCH.check_Profession(phoenixF.getProfession());
+                        if(str!=null){return  new ResourceLocation(TemporalLightMod.MODID,str);}
+                    }
+                    if(Loader.isModLoaded("ImmersiveEngineering")){
+                        String str = com.TimeSpaceWarrior.TemporalLightMod.Compatability.immersive_engineering.villager_selecterIMM.Check_profession(phoenixF.getProfession());
                         if(str!=null){return  new ResourceLocation(TemporalLightMod.MODID,str);}
                     }
                     if(phoenixF.getProfession()== TLConfig.VillagerEndTraderID){

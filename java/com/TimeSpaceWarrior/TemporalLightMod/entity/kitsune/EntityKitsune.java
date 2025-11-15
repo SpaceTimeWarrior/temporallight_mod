@@ -98,6 +98,20 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
             }else{
                 parentVarient = 4;
             }
+            if(parentVarient>=5&&parentVarient<=8){
+                parentVarient = 2;
+            }else if(parentVarient>=9&&parentVarient<=11){
+                parentVarient = 0;
+            }else if(parentVarient>=12&&parentVarient<=15){
+                parentVarient = 4;
+            }
+            if(thisvarient>=5&&thisvarient<=8){
+                thisvarient = 2;
+            }else if(thisvarient>=9&&thisvarient<=11){
+                thisvarient = 0;
+            }else if(thisvarient>=12&&thisvarient<=15){
+                thisvarient = 4;
+            }
             child.setVariant(getChildColor(parentVarient,thisvarient));
             child.setTamed(true);
             int roll = rand.nextInt(100);
@@ -121,11 +135,11 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
         Random random = new Random();
 
         if (random.nextInt(100) < 3) {
-            return 4;
+            return getRareVariant(4);
         }
 
         if (parent1 == parent2) {
-            if (parent1 == 4) return 4;
+            if (parent1 == 4) return getRareVariant(4);
             return parent1;
         }
         int a = Math.min(parent1, parent2);
@@ -134,23 +148,23 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
 
         if (a == 0 && b == 1) {
             if (roll < 70) {
-                return 0;
+                return getRareVariant(0);
             } else {
                 return 1;
             }
         }
         if (a == 0 && b == 2) {
             if (roll < 25){
-                return 0;
+                return getRareVariant(0);
             }else if (roll < 50) {
-                return 2;
+                return getRareVariant(2);
             }else {
                 return 1;
             }
         }
         if (a == 0 && b == 3) {
             if(roll < 70){
-                return 0;
+                return getRareVariant(0);
             }else{
                 return 3;
             }
@@ -163,7 +177,7 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
         }
         if (a == 1 && b == 2) {
             if(roll<60){
-                return 2;
+                return getRareVariant(2);
             }else{
                 return 1;
             }
@@ -176,10 +190,10 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
                 return 3;
             }
             else if (roll < 82) {
-                return 0;
+                return getRareVariant(0);
             }
             else {
-                return 2;
+                return getRareVariant(2);
             }
         }
         if (a == 1 && b == 4) {
@@ -190,11 +204,11 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
             }
         }
         if (a == 2 && b == 2) {
-            return 2;
+            return getRareVariant(2);
         }
         if (a == 2 && b == 3) {
             if(roll <60){
-                return 2;
+                return getRareVariant(2);
             }else{
                 return 3;
             }
@@ -216,6 +230,28 @@ public class EntityKitsune extends EntityTameable implements IRangedAttackMob {
             return parent1;
         }else{
             return parent2;
+        }
+    }
+    public static int getRareVariant(int baseColor) {
+        int roll = new Random().nextInt(1000);
+        if(roll<5) {
+            switch (baseColor) {
+                case 2: // Black
+                    if (roll < 60) return 5;  // Blue
+                    else if (roll < 80) return 6; // Purple
+                    else if (roll < 95) return 7; // Grey
+                    else return 8; // Dark Green
+                case 0: // Brown
+                    if (roll < 40) return 9;  // Red
+                    else if (roll < 80) return 10; // Neon Orange
+                    else return 11; // Pink
+                case 4: // White
+                    return 12 + roll % 4; // Cyan, Light Grey, Green, Gold
+                default:
+                    return baseColor; // fallback
+            }
+        }else{
+            return baseColor;
         }
     }
 

@@ -30,7 +30,7 @@ public class PhoenixEgg_TileEntity extends TileEntity {
         super.updateEntity();
         if(countdown2hatch-1==0){
             Random rand = new Random(worldObj.getWorldTime());
-            if(rand.nextInt(4)>4){
+            if(/*rand.nextInt(4)>4*/true){
                 //System.out.println("Creating Entity Phoenix Female");
                 EntityPhoenixF phoenix = new EntityPhoenixF(worldObj);
                 phoenix.setLocationAndAngles(xCoord + 0.5, yCoord + 1.0, zCoord + 0.5, 0, 0);
