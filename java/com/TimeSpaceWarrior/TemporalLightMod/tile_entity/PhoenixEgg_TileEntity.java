@@ -2,6 +2,7 @@ package com.TimeSpaceWarrior.TemporalLightMod.tile_entity;
 
 import com.TimeSpaceWarrior.TemporalLightMod.blocks.PhoenixEgg;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.phoenixF.EntityPhoenixF;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.phoenixM.EntityPhoenixM;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import org.lwjgl.Sys;
@@ -30,13 +31,15 @@ public class PhoenixEgg_TileEntity extends TileEntity {
         super.updateEntity();
         if(countdown2hatch-1==0){
             Random rand = new Random(worldObj.getWorldTime());
-            if(/*rand.nextInt(4)>4*/true){
+            if(rand.nextInt(4)<=2){
                 //System.out.println("Creating Entity Phoenix Female");
                 EntityPhoenixF phoenix = new EntityPhoenixF(worldObj);
                 phoenix.setLocationAndAngles(xCoord + 0.5, yCoord + 1.0, zCoord + 0.5, 0, 0);
                 worldObj.spawnEntityInWorld(phoenix);
             }else{
-                System.out.println("TODO ADD COUNTERPART");
+                EntityPhoenixM phoenix = new EntityPhoenixM(worldObj);
+                phoenix.setLocationAndAngles(xCoord + 0.5, yCoord + 1.0, zCoord + 0.5, 0, 0);
+                worldObj.spawnEntityInWorld(phoenix);
             }
             worldObj.setBlock(this.xCoord,this.yCoord,this.zCoord, Blocks.air);
             worldObj.removeTileEntity(xCoord, yCoord, zCoord);

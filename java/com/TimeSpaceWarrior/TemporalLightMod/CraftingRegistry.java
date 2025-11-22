@@ -6,6 +6,9 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.List;
 
 public class CraftingRegistry {
     public static void register() {
@@ -135,6 +138,10 @@ public class CraftingRegistry {
         GameRegistry.addRecipe(new ItemStack(BlockRegistry.LIGHTSTEELFENCE),"WSW","WSW",'W', BlockRegistry.LIGHTSTEEL_BLOCK,'S',Items.iron_ingot);
 
         GameRegistry.addRecipe(new ItemStack(BlockRegistry.KITSUNEPORTAL,8)," P ","WPW","WWW",'P',BlockRegistry.MAGIWOODPLANK,'W',Blocks.log);
+        GameRegistry.addRecipe(new ItemStack(Items.golden_apple,1,1),"SSS","SAS","SSS",'S',ItemRegistry.SOULFEATHER,'A',Items.golden_apple);
+
+
+
 
         if(TLConfig.addSkyblockRecipes){
             GameRegistry.addRecipe(new ItemStack(BlockRegistry.MAGIWOODSAPLING),"DOD"," W ","DOD",'D',Blocks.diamond_block,'O',Blocks.obsidian,'W',Blocks.log);

@@ -1,11 +1,15 @@
 package com.TimeSpaceWarrior.TemporalLightMod;
 
 import com.TimeSpaceWarrior.TemporalLightMod.Items.*;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.KitsuneItem;
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.potion.PotionHealth;
 import net.minecraftforge.common.util.EnumHelper;
+
+import java.util.ArrayList;
 
 public class ItemRegistry {
     public static Item TIMECRYSTALSHARD;
@@ -66,6 +70,8 @@ public class ItemRegistry {
     public static Item GOLDENERGYGUN;
     public static Item ELEINFUSEDDIAMOND;
     public static Item DIAMONDENERGYGUN;
+    public static Item SOULFEATHER;
+    public static ArrayList<KitsuneItem> ItemCrystalRegistry = new ArrayList<KitsuneItem>(0);
 
 
     public static final Item.ToolMaterial MAGIWOODTOOL = EnumHelper.addToolMaterial("magiwood",TLConfig.harvest_lv_floor, 8192,2F,8F,40).setRepairItem(new ItemStack(BlockRegistry.MAGIWOODPLANK));
@@ -126,14 +132,17 @@ public class ItemRegistry {
         NULL_CRYSTAL_ESSENCE = new ItemCrystal("null").setUnlocalizedName("null_crystal").setTextureName(modid+"magic_essence_null").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
         FIRE_CRYSTAL_ESSENCE = new ItemCrystal("fire").setUnlocalizedName("fire_crystal").setTextureName(modid+"magic_essence_fire").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
         FIRE_CRYSTAL_ESSENCE_FUEL = new ItemCrystalFuel("fire").setUnlocalizedName("fire_crystal_burnable").setTextureName(modid+"magic_essence_fire_burnable").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
-        ELECTRIC_CRYSTAL_ESSENCE = new ItemCrystal("electric").setUnlocalizedName("electric_crystal").setTextureName(modid+"magic_essence_electricity").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
+        ELECTRIC_CRYSTAL_ESSENCE = new ItemCrystal("electric",3000).setUnlocalizedName("electric_crystal").setTextureName(modid+"magic_essence_electricity").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
         EARTH_CRYSTAL_ESSENCE = new ItemCrystal("earth").setUnlocalizedName("earth_crystal").setTextureName(modid+"magic_essence_earth").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
         LIFE_CRYSTAL_ESSENCE = new ItemCrystal("life").setUnlocalizedName("life_crystal").setTextureName(modid+"magic_essence_life").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
         ENERGYGUN = new LightningStaff(Item.ToolMaterial.IRON).setUnlocalizedName("energygun").setTextureName(modid+"energy_gun").setCreativeTab(TemporalLightMod.TemporalLightTools);
         GOLDENERGYGUN = new LightningStaff(Item.ToolMaterial.GOLD).setMaxDamage(512).setUnlocalizedName("goldenergygun").setTextureName(modid+"GoldEnergy_gun").setCreativeTab(TemporalLightMod.TemporalLightTools);
-        ELEINFUSEDDIAMOND = new ItemCrystal("electric").setUnlocalizedName("electricinfuseddiamond").setTextureName(modid+"infused_Diamond").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
+        ELEINFUSEDDIAMOND = new ItemCrystal("electric",10000).setUnlocalizedName("electricinfuseddiamond").setTextureName(modid+"infused_Diamond").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
         DIAMONDENERGYGUN = new LightningStaff(Item.ToolMaterial.EMERALD).setUnlocalizedName("diamondenergygun").setTextureName(modid+"diamondenergy_gun").setCreativeTab(TemporalLightMod.TemporalLightTools);
+        SOULFEATHER = new ItemFuels(Items.feather).setUnlocalizedName("Soul Feather").setTextureName(modid+"soulfeather").setCreativeTab(TemporalLightMod.TemporalLightMaterials);
 
+        ItemCrystalRegistry.add(new KitsuneItem(ELECTRIC_CRYSTAL_ESSENCE,5000));
+        ItemCrystalRegistry.add(new KitsuneItem(ELEINFUSEDDIAMOND,10000));
 
     }
     public static void GmRegistry(){
@@ -190,12 +199,15 @@ public class ItemRegistry {
         GameRegistry.registerItem(GOLDENERGYGUN, GOLDENERGYGUN.getUnlocalizedName());
         GameRegistry.registerItem(ELEINFUSEDDIAMOND, ELEINFUSEDDIAMOND.getUnlocalizedName());
         GameRegistry.registerItem(DIAMONDENERGYGUN, DIAMONDENERGYGUN.getUnlocalizedName());
+        GameRegistry.registerItem(SOULFEATHER,SOULFEATHER.getUnlocalizedName());
 
         GameRegistry.registerFuelHandler(new IFuelHandler() {
             @Override
             public int getBurnTime(ItemStack fuel) {
                 if (fuel.getItem() == ItemRegistry.FIRE_CRYSTAL_ESSENCE_FUEL) {
-                    return 1600; // burn time in ticks (e.g. 1600 = 8 seconds)
+                    return 1600;
+                }else if(fuel.getItem() == ItemRegistry.SOULFEATHER){
+                    return 3200;
                 }
                 return 0;
             }

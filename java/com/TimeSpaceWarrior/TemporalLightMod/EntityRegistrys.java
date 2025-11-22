@@ -5,6 +5,7 @@ import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.FireballProjectileEntity;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.LightningProjectileEntity;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.phoenixF.EntityPhoenixF;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.phoenixM.EntityPhoenixM;
 import cpw.mods.fml.common.registry.EntityRegistry;
 
 public class EntityRegistrys {
@@ -14,6 +15,7 @@ public class EntityRegistrys {
         EntityRegistry.registerModEntity(EntityKitsune.class,"kitsune",2,TemporalLightMod.instance,80,3,true);
         EntityRegistry.registerModEntity(EarthProjectileEntity.class,"earthprojectile",3,TemporalLightMod.instance,800,1,true);
         EntityRegistry.registerModEntity(EntityPhoenixF.class,"phoenixf",4,TemporalLightMod.instance,800,3,true);
+        EntityRegistry.registerModEntity(EntityPhoenixM.class,"phoenixm",5,TemporalLightMod.instance,800,3,true);
 
     }
 }

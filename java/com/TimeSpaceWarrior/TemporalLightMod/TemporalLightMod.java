@@ -6,6 +6,7 @@ import com.TimeSpaceWarrior.TemporalLightMod.blocks.PhoenixEgg;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.KitsuneItem;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.kitsune.EntityKitsune;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.phoenixF.EntityPhoenixF;
+import com.TimeSpaceWarrior.TemporalLightMod.entity.phoenixM.EntityPhoenixM;
 import com.TimeSpaceWarrior.TemporalLightMod.entity.villager.End_TraderHandler;
 import com.TimeSpaceWarrior.TemporalLightMod.network.PacketSyncInventory;
 import com.TimeSpaceWarrior.TemporalLightMod.tile_entity.HyperSteel_Assembler_TileEntity;
@@ -38,6 +39,8 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -54,6 +57,7 @@ public class TemporalLightMod
     public static final SimpleNetworkWrapper network = NetworkRegistry.INSTANCE.newSimpleChannel("temporal_light");
     public static int packetId = 0;
     public static int stariId = 200;
+    static final Logger LOG = LogManager.getLogger("TemporalLight");
 
 
     public static ArrayList<Item> KitsuneRandomTame = new ArrayList<Item>(0);//for random taming preference
@@ -148,6 +152,7 @@ public class TemporalLightMod
         EntityRegistrys.Register();
         registerEntityEgg(EntityKitsune.class,0xffaf5344,0xffaf8844);
         registerEntityEgg(EntityPhoenixF.class, 0xac3232,0xfbf236);
+        registerEntityEgg(EntityPhoenixM.class,0xac3232,0x5fffe4);
         BiomeRegistry.register();
         GameRegistry.registerWorldGenerator(new TemporalLightWorldGenerator(),0);
         DimensionRegistry.register();
@@ -163,9 +168,18 @@ public class TemporalLightMod
         if(Loader.isModLoaded("exnihilo")&&TLConfig.addEx_NihiloCompatability){
             com.TimeSpaceWarrior.TemporalLightMod.Compatability.ex_nihilo.NihiloRegistry.register();
         }
-
+        if(doesClassExist("cofh.api.energy.IEnergyProvider")) {
+            com.TimeSpaceWarrior.TemporalLightMod.Compatability.cofh.BlockRegistryCOFH.register();
+        }
     }
-
+    public static boolean doesClassExist(String className) {
+        try {
+            Class.forName(className);
+            return true;
+        } catch (ClassNotFoundException ignored) {
+            return false;
+        }
+    }
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
@@ -195,42 +209,34 @@ public class TemporalLightMod
     @EventHandler
     public void postinit(FMLPostInitializationEvent event){
         if(TLConfig.ShowKitsuneConfigonPostinit) {
-            System.out.println("===KITSUNE SYSTEM===");
-            System.out.println("Random Preference Items Raw");
-            System.out.println(KitsuneRandomTame);
-            System.out.println("Random Preference Items Cooked");
-            System.out.println(KitsuneAltRandomTame);
-            System.out.println("Guaranteed tame but causes negitive effects");
-            System.out.println(KitsuneBadGut);
-            System.out.println("Guaranteed tame");
-            System.out.println(KitsuneGut);
-            System.out.println("===KITSUNE SYSTEM===");
+            LOG.warn("===KITSUNE SYSTEM===");
+            LOG.warn("Random Preference Items Raw");
+            LOG.warn(KitsuneRandomTame);
+            LOG.warn("Random Preference Items Cooked");
+            LOG.warn(KitsuneAltRandomTame);
+            LOG.warn("Guaranteed tame but causes negitive effects");
+            LOG.warn(KitsuneBadGut);
+            LOG.warn("Guaranteed tame");
+            LOG.warn(KitsuneGut);
+            LOG.warn("===KITSUNE SYSTEM===");
         }
         if(TLConfig.ShowBiomeArrayInformation) {
-            System.out.println("===Biome check===");
+            LOG.warn("===Biome check===");
             BiomeGenBase[] biomes = BiomeGenBase.getBiomeGenArray();
             for (int id = 0; id < biomes.length; id++) {
                 if (!BiomeDictionary.isBiomeRegistered(id)) {
-                    System.out.println("Biome open on id " + id);
+                    LOG.warn("Biome open on id " + id);
                 } else {
-                    System.out.println("Biome is used on id:" + id + ":" + biomes[id].biomeName);
+                    LOG.warn("Biome is used on id:" + id + ":" + biomes[id].biomeName);
                 }
             }
-            System.out.println("===Biome check===");
-        }
-        if(TLConfig.ShowDimensionIDs) {
-            System.out.println("===Dimension IDS===");
-            Integer[] Dims = DimensionManager.getStaticDimensionIDs();
-            for (int dim = 0; dim < Dims.length; dim++) {
-                System.out.println(Dims[dim] + ":" + DimensionManager.getProvider(dim).getDimensionName());
-            }
-            System.out.println("===Dimension IDS===");
+            LOG.warn("===Biome check===");
         }
         if(TLConfig.ShowCustomVillagerIDArray) {
             Collection<Integer> Villager = VillagerRegistry.getRegisteredVillagers();
-            System.out.println("===Villager Professions===");
-            System.out.println(Villager);
-            System.out.println("===Villager Professions===");
+            LOG.warn("===Villager Professions===");
+            LOG.warn(Villager);
+            LOG.warn("===Villager Professions===");
         }
     }
     public static CreativeTabs TemporalLightMaterials = new CreativeTabs("temporallightmaterials") {

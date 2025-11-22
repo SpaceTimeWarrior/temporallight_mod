@@ -34,7 +34,7 @@ public class TLConfig {
     public static boolean addEx_NihiloCompatability = true;
     public static boolean ShowKitsuneConfigonPostinit = false;
     public static boolean ShowBiomeArrayInformation = false;
-    public static boolean ShowDimensionIDs = false;
+    //public static boolean ShowDimensionIDs = false;
     public static boolean ShowCustomVillagerIDArray = false;
     static Configuration config;
     public static int postpreinit = -1;
@@ -63,7 +63,7 @@ public class TLConfig {
         addEx_NihiloCompatability=config.get(Configuration.CATEGORY_GENERAL,"Add Ex Nihilo compatability",true,"Add Ex Nihilo compatability: adds hammers of the mod's materials").getBoolean();
         ShowKitsuneConfigonPostinit=config.get(Configuration.CATEGORY_GENERAL,"Show Kitsune food items",false,"Show Kitsune food items:weather to show what foods are tied to each item pool for the kitsune in post init").getBoolean();
         ShowBiomeArrayInformation=config.get(Configuration.CATEGORY_GENERAL,"Show Biome Data",false,"Show Biome Data: Weather to show the Biome Dictionary array on post init").getBoolean();
-        ShowDimensionIDs=config.get(Configuration.CATEGORY_GENERAL,"Show Dimension ID Data",false,"Show Dimension ID Data: Weather to show which Dimensions are used on post init").getBoolean();
+        //ShowDimensionIDs=config.get(Configuration.CATEGORY_GENERAL,"Show Dimension ID Data",false,"Show Dimension ID Data: Weather to show which Dimensions are used on post init").getBoolean();
         ShowCustomVillagerIDArray=config.get(Configuration.CATEGORY_GENERAL,"Show custom Villager ID Array",false,"Show custom Villager ID Array: Weather to show the villager ID array").getBoolean();
 
         if(!Kitsune_Forests_DIM_Override) {
@@ -124,7 +124,7 @@ public class TLConfig {
             addEx_NihiloCompatability=config.get(Configuration.CATEGORY_GENERAL,"Add Ex Nihilo compatability",true,"Add Ex Nihilo compatability: adds hammers of the mod's materials").getBoolean();
             ShowKitsuneConfigonPostinit=config.get(Configuration.CATEGORY_GENERAL,"Show Kitsune food items",false,"Show Kitsune food items:weather to show what foods are tied to each item pool for the kitsune in post init").getBoolean();
             ShowBiomeArrayInformation=config.get(Configuration.CATEGORY_GENERAL,"Show Biome Data",false,"Show Biome Data: Weather to show the Biome Dictionary array on post init").getBoolean();
-            ShowDimensionIDs=config.get(Configuration.CATEGORY_GENERAL,"Show Dimension ID Data",false,"Show Dimension ID Data: Weather to show which Dimensions are used on post init").getBoolean();
+            //ShowDimensionIDs=config.get(Configuration.CATEGORY_GENERAL,"Show Dimension ID Data",false,"Show Dimension ID Data: Weather to show which Dimensions are used on post init").getBoolean();
             ShowCustomVillagerIDArray=config.get(Configuration.CATEGORY_GENERAL,"Show custom Villager ID Array",false,"Show custom Villager ID Array: Weather to show the villager ID array").getBoolean();
 
             if (!Kitsune_Forests_DIM_Override) {
@@ -180,14 +180,6 @@ public class TLConfig {
                     }
                 }
                 System.out.println("===Biome check===");
-            }
-            if(TLConfig.ShowDimensionIDs) {
-                System.out.println("===Dimension IDS===");
-                Integer[] Dims = DimensionManager.getStaticDimensionIDs();
-                for (int dim = 0; dim < Dims.length; dim++) {
-                    System.out.println(Dims[dim] + ":" + DimensionManager.getProvider(dim).getDimensionName());
-                }
-                System.out.println("===Dimension IDS===");
             }
             if(TLConfig.ShowCustomVillagerIDArray) {
                 Collection<Integer> Villager = VillagerRegistry.getRegisteredVillagers();
